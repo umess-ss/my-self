@@ -16,9 +16,14 @@ export default function Home(){
               <button className="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition">
                 Download CV
               </button>
-              <button className="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition">
-                View GitHub
-              </button>
+<a
+  href="https://github.com/umess-ss"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition inline-block"
+>
+  View GitHub
+</a>
             </div>
           </div>
           <div className="flex justify-center">
