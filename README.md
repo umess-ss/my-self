@@ -1,16 +1,31 @@
-# React + Vite
+# 🚀 Umesh Rajbanshi | Professional Portfolio
+### Electronics & Communication Engineer | AI & ML Enthusiast
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my portfolio! This project showcases my journey in building scalable backend systems, orchestrating Generative AI pipelines, and automating infrastructure with MLOps.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+## 🛠 Tech Stack
+- **Frontend:** React.js, Tailwind CSS, Lucide React
+- **AI/ML:** Langchain, Google Gemini API, Crawl4ai, PyTorch, YOLO v8
+- **Backend & DevOps:** Django (MVT), AWS (EC2, S3, VPC), Docker, GitHub Actions
+- **Infrastructure:** AWS CloudFormation, MLOps Pipelines
 
-## React Compiler
+## 🌟 Key Features
+- **Interactive Resume:** Dynamic tabbed interface for Experience, Education, and Skills.
+- **AI-Powered Blog:** Technical insights into RAG pipelines and LLM orchestration.
+- **Optimized Performance:** Fully responsive UI with high-speed asset delivery and SEO optimization.
+- **Automated Contact:** Integrated Web3Forms with environment variable protection for secure communication.
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 📧 Contact Me
+If you're interested in collaborating on Generative AI or DevOps projects, feel free to reach out:
 
-## Expanding the ESLint configuration
+Email: ums.rbc07@gmail.com
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+LinkedIn: linkedin.com/in/umeshrajbanshi
+
+Website: umeshrajbanshi.com.np
+
+---
+### Created with ❤️ by Umesh Rajbanshi.
