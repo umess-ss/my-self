@@ -1,11 +1,10 @@
 export const personalInfo = {
   name: "Umesh Rajbanshi",
   title: "Electronics and Communication Engineer | AI & ML Enthusiast",
-  email: "umesh@gmail.com",
-  phone: "98123121231",
+  email: "ums.rbc07@gmail.com",
+  phone: "9816386181",
   website: "umeshrajbanshi.com.np",
   location: "Kathmandu, Nepal",
-  profileImage: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500",
 };
 
 export const aboutStats = [
@@ -16,14 +15,36 @@ export const aboutStats = [
 
 export const experiences = [
   {
-    company: "ABC",
-    position: "System Engineer",
+    company: "Prixa Academy & ACEM",
+    position: "AWS Cloud & Backend Operations (Training)",
     location: "Kathmandu, Nepal",
-    duration: "July 2026 - Present",
+    duration: "2025",
     responsibilities: [
-      "Participated in research, system architecture design, technical planning, coding",
-      "Contributed to CI/CD pipeline implementation using AWS CloudFormation",
-      "Improved performance, maintainability, and scalability of core systems",
+      "Performed hands-on configuration of core AWS services including EC2, S3, IAM, and VPC for secure infrastructure setup.",
+      "Managed global cloud resources and monitored system health within the AWS Management Console.",
+      "Developed scalable web applications using Django MVT architecture, focusing on REST API development and secure database management."
+    ],
+  },
+  {
+    company: "Research & Open Source (GitHub)",
+    position: "Backend & MLOps Developer",
+    location: "Kathmandu, Nepal",
+    duration: "2024 - Present",
+    responsibilities: [
+      "Integrating Generative AI tools like Langchain, Crawl4ai, and Gemini to automate business intelligence and data retrieval.",
+      "Containerizing deep learning models using Docker and establishing CI/CD pipelines via GitHub Actions for automated deployment.",
+      "Architecting real-time systems such as the Blind Vision App, integrating YOLO and MIDAS for high-efficiency object detection and depth estimation."
+    ],
+  },
+  {
+    company: "Advanced College of Engineering & Management",
+    position: "Electronics & Communication Engineering Student",
+    location: "Kathmandu, Nepal",
+    duration: "Jan 2022 - Present",
+    responsibilities: [
+      "Designing intelligent electronic systems and applying signal processing techniques to engineering problems.",
+      "Conducting technical feasibility research for deep learning integration in assistive technologies.",
+      "Maintaining a disciplined approach to version control and debugging across various backend and hardware-interfacing projects."
     ],
   },
 ];
@@ -31,53 +52,64 @@ export const experiences = [
 export const projects = [
   {
     id: 1,
-    title: "AI-Powered Chatbot",
-    type: "Webapp",
-    description: "Intelligent chatbot using NLP and machine learning",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400",
-    technologies: ["React", "Node.js", "OpenAI"],
+    title: "Blind Vision App",
+    type: "AI & Computer Vision",
+    description: "Real-time object detection and depth estimation using YOLO and MIDAS to assist visually impaired individuals with voice-guided navigation.",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+    technologies: ["Python", "PyTorch", "YOLO", "MIDAS", "Deep Learning"],
   },
   {
     id: 2,
-    title: "Blood Bank Management System",
-    type: "Webapp",
-    description: "Complete blood donation and inventory management",
-    image: "https://images.unsplash.com/photo-1615461066159-fea0960485d5?w=400",
-    technologies: ["React", "MongoDB", "Express"],
+    title: "Real-time Trading Dashboard",
+    type: "Backend & DevOps",
+    description: "A high-performance trading dashboard focused on data accuracy, featuring containerization and automated CI/CD pipelines.",
+    image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800", // New Working Link
+    technologies: ["Docker", "GitHub Actions", "Lightweight Charts", "CI/CD", "Python"],
   },
   {
     id: 3,
-    title: "Smart Health Prediction System",
-    type: "Webapp",
-    description: "AI-based health prediction and diagnosis system",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400",
-    technologies: ["Python", "TensorFlow", "React"],
+    title: "AI Integration Engine",
+    type: "LLM & Automation",
+    description: "Built a sophisticated AI engine integrating Langchain, Crawl4ai, and Gemini to automate business intelligence and enhance user engagement.",
+    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    technologies: ["Langchain", "Gemini", "Crawl4ai", "Python", "REST API"],
   },
   {
     id: 4,
-    title: "POS System",
-    type: "Webapp",
-    description: "Point of Sale system for retail management",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400",
-    technologies: ["React", "Node.js", "PostgreSQL"],
+    title: "E-commerce Backend Architecture",
+    type: "Backend",
+    description: "Robust Django-based backend for e-commerce platforms, focusing on clean code, MVT architecture, and secure database management.",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800",
+    technologies: ["Django", "REST API", "PostgreSQL", "MVT Architecture"],
   },
 ];
 
 export const blogPosts = [
   {
     id: 1,
-    title: "Unlock the Power of Reverse Image Search: A Step-by-Step Guide",
-    date: "15 May 2023",
-    tag: "Reverse Image Search",
-    excerpt: "Learn how to effectively use reverse image search tools...",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400",
+    title: "Orchestrating LLMs: Building RAG Pipelines with Langchain and Gemini",
+    date: "12 Jan 2026",
+    tag: "Generative AI",
+    excerpt: "Exploring the integration of Gemini and Langchain to create context-aware AI applications with Crawl4ai for real-time data retrieval.",
+    // A high-tech abstract visualization of neural networks and AI nodes
+    image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&auto=format&fit=crop",
   },
   {
     id: 2,
-    title: "Mastering ChatGPT: How to Effectively Use AI Chatbot for Your Business",
-    date: "01 May 2023",
-    tag: "Mastering ChatGPT",
-    excerpt: "Discover best practices for integrating ChatGPT...",
-    image: "https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=400",
+    title: "MLOps Essentials: Containerizing Deep Learning Models with Docker",
+    date: "05 Jan 2026",
+    tag: "MLOps & DevOps",
+    excerpt: "A guide on using Docker and GitHub Actions to automate the deployment of computer vision models like YOLO and MIDAS.",
+    // A dark, modern representation of server racks/data centers representing DevOps
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?w=800&auto=format&fit=crop",
+  },
+  {
+    id: 3,
+    title: "Scaling Backend Infrastructure on AWS: From EC2 to VPC Security",
+    date: "28 Dec 2025",
+    tag: "Cloud Operations",
+    excerpt: "Best practices for setting up secure, scalable cloud environments for production-grade backend architectures.",
+    // A digital "global connection" or satellite view representing AWS cloud reach
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&auto=format&fit=crop",
   },
 ];

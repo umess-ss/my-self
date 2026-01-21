@@ -1,13 +1,13 @@
 {
-  "name": "my-portfolio",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "my-self",
+  "homepage": "https://umess-ss.github.io/my-self/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
@@ -15,6 +15,7 @@
     "lucide-react": "^0.562.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-hook-form": "^7.70.0",
     "react-router-dom": "^7.11.0"
   },
   "devDependencies": {
@@ -26,6 +27,7 @@
     "eslint": "^9.39.1",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
+    "gh-pages": "^6.3.0",
     "globals": "^16.5.0",
     "init": "^0.1.2",
     "npx": "^10.2.2",
