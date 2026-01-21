@@ -1,6 +1,7 @@
 import React from "react";
 import {personalInfo} from "../data/PortfolioData";
-import rohanImage from "../assets/rohan.jpg"; 
+import rohanImage from "../assets/rohan.jpg";
+import myCV from '../assets/myCV.pdf';
 
 
 export default function Home(){
@@ -13,18 +14,19 @@ export default function Home(){
             <h1 className="text-5xl md:text-6xl font-bold mb-4">I am {personalInfo.name}</h1>
             <p className="text-xl text-gray-600 mb-8">{personalInfo.title}</p>
             <div className="flex gap-4">
-              <button className="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition">
+              <a href={myCV} download="umesh_cv.pdf" className="cursor-pointer inline-block">
+              <button className="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition cursor-pointer font-semibold">
                 Download CV
               </button>
-              
-<a
-  href="https://github.com/umess-ss"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition inline-block"
->
-  View GitHub
-</a>
+              </a>
+              <a
+                href="https://github.com/umess-ss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition inline-block"
+              >
+                View GitHub
+              </a>
             </div>
           </div>
           <div className="flex justify-center">
