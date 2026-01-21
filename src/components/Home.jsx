@@ -6,7 +6,7 @@ import myCV from '../assets/myCV.pdf';
 
 export default function Home(){
          return (
-    <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-gray-200 pt-20">
+    <section id="home" className="min-h-screen flex items-center from-gray-50 to-gray-200 pt-20">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import rohanImage from "../assets/rohan.jpg"; // ✅ adjust path if file is elsewhere
+import rohanImage from "../assets/rohan.jpg";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
