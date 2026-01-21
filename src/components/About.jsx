@@ -2,19 +2,26 @@ import React from 'react';
 import { aboutStats } from '../data/PortfolioData';
 
 const ProgressCircle = ({ percentage, label, color }) => {
+  const colorMap = {
+    purple: "border-purple-500",
+    pink: "border-pink-500",
+    blue: "border-blue-500",
+    orange: "border-orange-500"
+  };
+
   return (
-    <div className="text-center">
-      <div className={`w-28 h-28 rounded-full border-8 border-${color}-500 flex items-center justify-center mb-2`}>
-        <span className="text-3xl font-bold">{percentage}%</span>
+    <div className="text-center flex-1 min-w-[100px]">
+      <div className={`w-20 h-20 md:w-28 md:h-28 rounded-full border-8 ${colorMap[color] || 'border-gray-500'} flex items-center justify-center mb-2 mx-auto`}>
+        <span className="text-xl md:text-3xl font-bold">{percentage}%</span>
       </div>
-      <p className="text-gray-500">{label}</p>
+      <p className="text-gray-500 text-sm md:text-base">{label}</p>
     </div>
   );
 };
 
 export default function About() {
   return (
-    <section id="about" className="min-h-screen py-20 bg-white">
+    <section id="about" className="min-h-screen py-20 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <p className="text-purple-600 font-semibold text-center mb-2">ABOUT ME</p>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
@@ -28,10 +35,12 @@ export default function About() {
           />
           <div>
             <p className="text-gray-600 leading-relaxed mb-6">
-I am a passionate and detail-oriented Electronics and Communication Engineer with a solid foundation in backend architecture and a growing focus on AWS Cloud Operations. With a disciplined approach to debugging and error handling , I specialize in crafting robust, scalable software solutions and maintaining high standards through CI/CD workflows and containerization.
-My expertise extends into AI and Deep Learning, where I have experience integrating cutting-edge tools like Langchain, Crawl4ai, and Gemini into real-world engineering projects. From optimizing system stability to building advanced computer vision applications like Blind Vision , my commitment to technical excellence has led to measurable successes in enhancing system reliability and project performance.
+              I am a passionate and detail-oriented Electronics and Communication Engineer with a solid foundation in backend architecture and a growing focus on AWS Cloud Operations. With a disciplined approach to debugging and error handling, I specialize in crafting robust, scalable software solutions and maintaining high standards through CI/CD workflows and containerization.
+              My expertise extends into AI and Deep Learning, where I have experience integrating cutting-edge tools like Langchain, Crawl4ai, and Gemini into real-world engineering projects. From optimizing system stability to building advanced computer vision applications like Blind Vision, my commitment to technical excellence has led to measurable successes in enhancing system reliability and project performance.
             </p>
-            <div className="flex justify-center gap-8 mt-8">
+            
+            
+            <div className="flex flex-wrap justify-center gap-4 md:gap-8 mt-8">
               {aboutStats.map((stat, index) => (
                 <ProgressCircle
                   key={index}
@@ -46,4 +55,4 @@ My expertise extends into AI and Deep Learning, where I have experience integrat
       </div>
     </section>
   );
-};
+}
