@@ -1,23 +1,29 @@
 import React from 'react';
-import { blogPosts } from '../data/PortfolioData';
+import { blogPosts } from '../data/BlogContent';
+import { useNavigate } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
-// BlogCard Component with error handling
+
+
 const BlogCard = ({ post }) => {
-  // Handle missing or invalid post data
-  if (!post) {
-    return null;
+
+  const navigate = useNavigate();
+
+  if (!post) return null;
+
+  
+  const {id,title,date, tag, excerpt, image } = post;
+
+  const handleCardClick = () => {
+    navigate(`/blog/${id}`);
+    window.scrollTo(0,0);
   }
 
-  const {
-    title = 'Untitled Post',
-    date = 'No date',
-    tag = 'General',
-    excerpt = '',
-    image = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400'
-  } = post;
 
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer">
+    <div
+    onClick={handleCardClick}
+    className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer">
       <img 
         src={image} 
         alt={title} 
@@ -33,6 +39,12 @@ const BlogCard = ({ post }) => {
         <p className="text-gray-500 text-sm mt-3 mb-2">{date}</p>
         <h3 className="font-semibold text-xl mb-2">{title}</h3>
         {excerpt && <p className="text-gray-600">{excerpt}</p>}
+
+        {/* read more arrow */}
+        <div className="mt-3 flex items-center text-purple-600 font-bold text-sm group/btn">
+          <span>READ MORE</span>
+          <ArrowRight className="ml-1.5 w-4 h-4 transform group-hover/btn:translate-x-2 transition-transform duration-300" />
+        </div>
       </div>
     </div>
   );

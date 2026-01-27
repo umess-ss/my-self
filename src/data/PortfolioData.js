@@ -87,33 +87,3 @@ export const projects = [
     githubUrl: "https://github.com/Prativa5791/e-commerce",
   },
 ];
-
-export const blogPosts = [
-  {
-    id: 1,
-    title: "Orchestrating LLMs: Building RAG Pipelines with Langchain and Gemini",
-    date: "12 Jan 2026",
-    tag: "Generative AI",
-    excerpt: "Exploring the integration of Gemini and Langchain to create context-aware AI applications with Crawl4ai for real-time data retrieval.",
-    // A high-tech abstract visualization of neural networks and AI nodes
-    image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&auto=format&fit=crop",
-  },
-  {
-    id: 2,
-    title: "MLOps Essentials: Containerizing Deep Learning Models with Docker",
-    date: "05 Jan 2026",
-    tag: "MLOps & DevOps",
-    excerpt: "A guide on using Docker and GitHub Actions to automate the deployment of computer vision models like YOLO and MIDAS.",
-    // A dark, modern representation of server racks/data centers representing DevOps
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc48?w=800&auto=format&fit=crop",
-  },
-  {
-    id: 3,
-    title: "Scaling Backend Infrastructure on AWS: From EC2 to VPC Security",
-    date: "28 Dec 2025",
-    tag: "Cloud Operations",
-    excerpt: "Best practices for setting up secure, scalable cloud environments for production-grade backend architectures.",
-    // A digital "global connection" or satellite view representing AWS cloud reach
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&auto=format&fit=crop",
-  },
-];
