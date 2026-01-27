@@ -1,4 +1,5 @@
 import { projects } from '../data/PortfolioData';
+import { Github } from 'lucide-react';
 
 const ProjectCard = ({ project }) => {
   return (
@@ -8,13 +9,23 @@ const ProjectCard = ({ project }) => {
         <h3 className="font-semibold text-lg mb-1">{project.title}</h3>
         <p className="text-gray-500 text-sm mb-2">{project.type}</p>
         <p className="text-gray-600 text-sm mb-3">{project.description}</p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.map((tech, index) => (
             <span key={index} className="bg-purple-100 text-purple-600 px-2 py-1 rounded text-xs">
               {tech}
             </span>
           ))}
         </div>
+
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-purple-600 bg-white border border-gray-200 font-medium rounded-lg hover:bg-gray-50 hover:border-gray-300 hover:text-black transition-all duration-200 shadow-sm"
+          >
+            <Github size={18} />
+            <span>View Source</span>
+          </a>
       </div>
     </div>
   );

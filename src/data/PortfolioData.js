@@ -57,6 +57,7 @@ export const projects = [
     description: "Real-time object detection and depth estimation using YOLO and MIDAS to assist visually impaired individuals with voice-guided navigation.",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
     technologies: ["Python", "PyTorch", "YOLO", "MIDAS", "Deep Learning"],
+    githubUrl: "https://github.com/umess-ss/Blind-Navigation-App",
   },
   {
     id: 2,
@@ -65,6 +66,7 @@ export const projects = [
     description: "A high-performance trading dashboard focused on data accuracy, featuring containerization and automated CI/CD pipelines.",
     image: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=800", // New Working Link
     technologies: ["Docker", "GitHub Actions", "Lightweight Charts", "CI/CD", "Python"],
+    githubUrl: "https://github.com/umess-ss/trading-dashboard",
   },
   {
     id: 3,
@@ -73,6 +75,7 @@ export const projects = [
     description: "Built a sophisticated AI engine integrating Langchain, Crawl4ai, and Gemini to automate business intelligence and enhance user engagement.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
     technologies: ["Langchain", "Gemini", "Crawl4ai", "Python", "REST API"],
+    githubUrl: "https://github.com/Prativa5791/e-commerce",
   },
   {
     id: 4,
@@ -81,6 +84,7 @@ export const projects = [
     description: "Robust Django-based backend for e-commerce platforms, focusing on clean code, MVT architecture, and secure database management.",
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800",
     technologies: ["Django", "REST API", "PostgreSQL", "MVT Architecture"],
+    githubUrl: "https://github.com/Prativa5791/e-commerce",
   },
 ];
 

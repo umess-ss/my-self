@@ -39,25 +39,6 @@ const BlogCard = ({ post }) => {
 };
 
 const Blog = () => {
-  // const blogPosts = [
-  //   {
-  //     id: 1,
-  //     title: 'Unlock the Power of Reverse Image Search: A Step-by-Step Guide',
-  //     date: '15 May 2023',
-  //     tag: 'Reverse Image Search',
-  //     excerpt: 'Learn how to effectively use reverse image search tools...',
-  //     image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'Mastering ChatGPT: How to Effectively Use AI Chatbot for Your Business',
-  //     date: '01 May 2023',
-  //     tag: 'Mastering ChatGPT',
-  //     excerpt: 'Discover best practices for integrating ChatGPT...',
-  //     image: 'https://images.unsplash.com/photo-1677756119517-756a188d2d94?w=400',
-  //   },
-  // ];
-
   return (
     <section id="blog" className="min-h-screen py-20 bg-gray-50">
       <div className="container mx-auto px-4">

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import rohanImage from "../assets/rohan.jpg";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { label: "Home", id: "home" },
@@ -63,22 +68,36 @@ const Navigation = () => {
     setIsMobileMenuOpen(false);
   };
 
+
+  const handleNavClick = (id) =>{
+    if (location.pathname !== "/"){
+      navigate("/");
+      setTimeout(() => {
+        scrollToSection(id);
+      }, 100);
+    }else{
+      scrollToSection(id);
+    }
+  }
+
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <img
-            src={rohanImage} // ✅ local image
-            alt="Profile"
-            className="w-12 h-12 rounded-full cursor-pointer hover:opacity-80 transition"
-            onClick={() => scrollToSection("home")}
-          />
+          <Link to= "/">
+            <img
+              src={rohanImage} 
+              alt="Profile"
+              className="w-12 h-12 rounded-full cursor-pointer hover:opacity-80 transition"
+              onClick={() => handleNavClick("home")}
+            />
+          </Link>
 
           <div className="hidden md:flex gap-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className={`px-4 py-2 font-medium transition-all duration-300 ${
                   activeSection === item.id
                     ? "text-pink-600 border-b-2 border-pink-600"
@@ -124,7 +143,7 @@ const Navigation = () => {
             {navItems.map((item) => (
               <button
                 key={item.id}
-                onClick={() => scrollToSection(item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className={`block w-full text-left px-4 py-2 font-medium transition ${
                   activeSection === item.id
                     ? "text-pink-600 bg-pink-50"
