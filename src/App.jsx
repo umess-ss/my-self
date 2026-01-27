@@ -8,22 +8,24 @@ import Projects from "./components/Project";
 import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import BlogPostDetail from "./components/BlogPostDetail";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <Router>
     <div className="min-h-screen bg-white">
+      <ScrollToTop />
       <Navigation />
         <Routes>
           <Route path='/' element={
-            <>
-            <Home />
-            <About />
-            <Resume />
-            <Projects />
-            <Blog isHomePage={true}/>
-            <Contact />
-          </> 
+            <div className="flex flex-col">
+                <section id="home"><Home /></section>
+                <section id="about"><About /></section>
+                <section id="resume"><Resume /></section>
+                <section id="projects"><Projects /></section>
+                <section id="blog"><Blog isHomePage={true} /></section>
+                <section id="contact"><Contact /></section>
+              </div>
           } />
          <Route path='/all-blogs' element={<Blog isHomePage={false} />} />
          <Route path='/blog/:id' element={<BlogPostDetail />} />

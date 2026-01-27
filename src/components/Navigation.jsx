@@ -20,6 +20,7 @@ const Navigation = () => {
   ];
 
   useEffect(() => {
+    if (location.pathname !== "/" ) return;
     const observerOptions = {
       root: null,
       rootMargin: "-100px 0px -66% 0px",
@@ -50,7 +51,7 @@ const Navigation = () => {
         if (element) observer.unobserve(element);
       });
     };
-  }, []);
+  }, [location.pathname]);
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
@@ -72,12 +73,18 @@ const Navigation = () => {
   const handleNavClick = (id) =>{
     if (location.pathname !== "/"){
       navigate("/");
-      setTimeout(() => {
-        scrollToSection(id);
-      }, 100);
+      if (id == 'home'){
+        window.scrollTo(0,0);
+        setActiveSection("home");
+      }else{ 
+        setTimeout(() => {
+          scrollToSection(id);
+        }, 100);
+      }
     }else{
       scrollToSection(id);
     }
+    setIsMobileMenuOpen(false);
   }
 
   return (
@@ -94,7 +101,12 @@ const Navigation = () => {
           </Link>
 
           <div className="hidden md:flex gap-1">
-            {navItems.map((item) => (
+            {navItems.map((item) => {
+
+              const isActive = location.pathname === "/" && activeSection == item.id;
+              return(
+
+                
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
@@ -106,7 +118,8 @@ const Navigation = () => {
               >
                 {item.label}
               </button>
-            ))}
+              );
+            })}
           </div>
 
           <button
