@@ -2,6 +2,7 @@ import React from 'react';
 import { blogPosts } from '../data/BlogContent';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -50,23 +51,36 @@ const BlogCard = ({ post }) => {
   );
 };
 
-const Blog = () => {
+const Blog = ({isHomePage}) => {
+
+  const displayPosts = isHomePage ? blogPosts.slice(0,3): blogPosts;
+
   return (
-    <section id="blog" className="min-h-screen py-20 bg-gray-50">
+<section id="blog" className="min-h-screen py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <p className="text-purple-600 font-semibold text-center mb-2">TECHNO TRENDS</p>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          Check My Blog <span className="text-purple-600">Posts</span>
+          {isHomePage ? 'Recent ' : 'All '} Blog <span className="text-purple-600">Posts</span>
         </h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          {blogPosts && blogPosts.length > 0 ? (
-            blogPosts.map((post) => (
-              <BlogCard key={post.id} post={post} />
-            ))
-          ) : (
-            <p className="text-center text-gray-500 col-span-2">No blog posts available</p>
-          )}
+        
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {displayPosts.map((post) => (
+            <BlogCard key={post.id} post={post} />
+          ))}
         </div>
+
+        {/* Show "See More" button ONLY on the home page */}
+        {isHomePage && blogPosts.length > 5 && (
+          <div className="text-center mt-12">
+            <Link 
+              to="/all-blogs"
+              className="inline-flex items-center px-8 py-3 bg-purple-600 text-white font-bold rounded-full hover:bg-purple-700 transition-all shadow-lg hover:shadow-purple-200"
+            >
+              See All Posts
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

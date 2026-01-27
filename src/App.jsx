@@ -21,10 +21,11 @@ function App() {
             <About />
             <Resume />
             <Projects />
-            <Blog />
+            <Blog isHomePage={true}/>
             <Contact />
           </> 
           } />
+         <Route path='/all-blogs' element={<Blog isHomePage={false} />} />
          <Route path='/blog/:id' element={<BlogPostDetail />} />
       </Routes>
     </div>
