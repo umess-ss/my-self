@@ -67,7 +67,7 @@ const BlogPostDetail = () => {
           <img 
             src={post.image} 
             alt={post.title} 
-            className="w-full h-auto object-cover max-h-[500px]"
+            className="w-full h-auto object-cover `max-h-125`"
           />
         </div>
 
