@@ -2,19 +2,41 @@ import React from 'react';
 import { aboutStats } from '../data/PortfolioData';
 
 const ProgressCircle = ({ percentage, label, color }) => {
-  const colorMap = {
-    purple: "border-purple-500",
-    pink: "border-pink-500",
-    blue: "border-blue-500",
-    orange: "border-orange-500"
+  const strokeColors = {
+    purple: "#a855f7",
+    green: "#22c55e",
+    orange: "#f97316",
+    blue: "#3b82f6"
   };
 
+  const radius = 45;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (percentage / 100) * circumference;
+
   return (
-    <div className="text-center flex-1 min-w-[100px]">
-      <div className={`w-20 h-20 md:w-28 md:h-28 rounded-full border-8 ${colorMap[color] || 'border-gray-500'} flex items-center justify-center mb-2 mx-auto`}>
-        <span className="text-xl md:text-3xl font-bold">{percentage}%</span>
+    <div className="text-center flex-1 min-w-[120px] flex flex-col items-center">
+      <div className="relative w-24 h-24 md:w-32 md:h-32 mb-4">
+        <svg className="w-full h-full transform -rotate-90">
+          <circle
+            cx="50%" cy="50%" r={radius}
+            stroke="#e5e7eb" strokeWidth="8" fill="transparent"
+          />
+          <circle
+            cx="50%" cy="50%" r={radius}
+            stroke={strokeColors[color] || "#6b7280"}
+            strokeWidth="8"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            strokeLinecap="round"
+            fill="transparent"
+            className="transition-all duration-1000 ease-out"
+          />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-xl md:text-2xl font-bold">{percentage}%</span>
+        </div>
       </div>
-      <p className="text-gray-500 text-sm md:text-base">{label}</p>
+      <p className="text-gray-600 font-medium text-sm md:text-base">{label}</p>
     </div>
   );
 };
