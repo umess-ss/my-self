@@ -19,6 +19,7 @@ export const experiences = [
     position: "AWS Cloud & Backend Operations (Training)",
     location: "Kathmandu, Nepal",
     duration: "2025",
+    category: "Training",
     responsibilities: [
       "Performed hands-on configuration of core AWS services including EC2, S3, IAM, and VPC for secure infrastructure setup.",
       "Managed global cloud resources and monitored system health within the AWS Management Console.",
@@ -30,6 +31,7 @@ export const experiences = [
     position: "Backend & MLOps Developer",
     location: "Kathmandu, Nepal",
     duration: "2024 - Present",
+    category: "Training",
     responsibilities: [
       "Integrating Generative AI tools like Langchain, Crawl4ai, and Gemini to automate business intelligence and data retrieval.",
       "Containerizing deep learning models using Docker and establishing CI/CD pipelines via GitHub Actions for automated deployment.",
@@ -41,12 +43,41 @@ export const experiences = [
     position: "Electronics & Communication Engineering Student",
     location: "Kathmandu, Nepal",
     duration: "Jan 2022 - Present",
+    category: "Education",
     responsibilities: [
       "Designing intelligent electronic systems and applying signal processing techniques to engineering problems.",
       "Conducting technical feasibility research for deep learning integration in assistive technologies.",
       "Maintaining a disciplined approach to version control and debugging across various backend and hardware-interfacing projects."
     ],
   },
+  {
+    company: "Technical Proficiencies",
+    position: "Core Engineering & Development",
+    category: "Hard Skills",
+    duration: "Continuous",
+    responsibilities: [
+      "Backend Architecture: Robust and scalable software solutions",
+      "Cloud Operations: AWS Cloud Operations and system stability",
+      "AI & Deep Learning: Integration of Langchain, Crawl4ai, and Gemini",
+      "Computer Vision: Developing advanced applications (e.g., Blind Vision)",
+      "DevOps: CI/CD workflows, containerization (Docker), and automated debugging",
+      "Electronics: Communication systems and cellular communication engineering"
+    ]
+  },
+  {
+    company: "Professional Attributes",
+    position: "Interpersonal & Leadership",
+    category: "Soft Skills",
+    duration: "Continuous",
+    responsibilities: [
+      "Disciplined Debugging: Methodical approach to error handling and problem-solving",
+      "Technical Excellence: High standards for project performance and reliability",
+      "Detail-Oriented: Focus on precision in electronics and software architecture",
+      "Social Activism: Community engagement and collaborative leadership",
+      "Continuous Learning: Passionate about staying updated with cutting-edge AI tools",
+      "Communication: Bridging the gap between complex engineering and real-world application"
+    ]
+  }
 ];
 
 export const projects = [

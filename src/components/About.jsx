@@ -6,15 +6,14 @@ const ProgressCircle = ({ percentage, label, color }) => {
     purple: "#a855f7",
     green: "#22c55e",
     orange: "#f97316",
-    blue: "#3b82f6"
   };
 
-  const radius = 45;
+  const radius = 35;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div className="text-center flex-1 min-w-[120px] flex flex-col items-center">
+    <div className="text-center flex-1 min-w-2 flex flex-col items-center">
       <div className="relative w-24 h-24 md:w-32 md:h-32 mb-4">
         <svg className="w-full h-full transform -rotate-90">
           <circle
