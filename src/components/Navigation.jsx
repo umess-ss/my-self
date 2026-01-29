@@ -110,7 +110,7 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`px-4 py-2 font-medium transition-all duration-300 ${
+                className={`px-4 py-2 font-medium transition-all duration-300 cursor-pointer ${
                   activeSection === item.id
                     ? "text-pink-600 border-b-2 border-pink-600"
                     : "text-gray-700 hover:text-pink-600"
