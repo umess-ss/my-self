@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import rohanImage from "../assets/rohan.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -20,7 +21,7 @@ const Navigation = () => {
   ];
 
   useEffect(() => {
-    if (location.pathname !== "/" ) return;
+    if (location.pathname !== "/") return;
     const observerOptions = {
       root: null,
       rootMargin: "-100px 0px -66% 0px",
@@ -70,85 +71,88 @@ const Navigation = () => {
   };
 
 
-  const handleNavClick = (id) =>{
-    if (location.pathname !== "/"){
+  const handleNavClick = (id) => {
+    if (location.pathname !== "/") {
       navigate("/");
-      if (id == 'home'){
-        window.scrollTo(0,0);
+      if (id == 'home') {
+        window.scrollTo(0, 0);
         setActiveSection("home");
-      }else{ 
+      } else {
         setTimeout(() => {
           scrollToSection(id);
         }, 100);
       }
-    }else{
+    } else {
       scrollToSection(id);
     }
     setIsMobileMenuOpen(false);
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+    <nav className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md z-40 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
-          <Link to= "/">
+          <Link to="/">
             <img
-              src={rohanImage} 
+              src={rohanImage}
               alt="Profile"
-              className="w-12 h-12 rounded-full cursor-pointer hover:opacity-80 transition"
+              className="w-12 h-12 rounded-full cursor-pointer hover:opacity-80 transition object-cover"
               onClick={() => handleNavClick("home")}
             />
           </Link>
 
-          <div className="hidden md:flex gap-1">
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
 
               const isActive = location.pathname === "/" && activeSection == item.id;
-              return(
+              return (
 
-                
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className={`px-4 py-2 font-medium transition-all duration-300 cursor-pointer ${
-                  activeSection === item.id
-                    ? "text-pink-600 border-b-2 border-pink-600"
-                    : "text-gray-700 hover:text-pink-600"
-                }`}
-              >
-                {item.label}
-              </button>
+
+                <button
+                  key={item.id}
+                  onClick={() => handleNavClick(item.id)}
+                  className={`px-4 py-2 font-medium transition-all duration-300 cursor-pointer ${activeSection === item.id
+                      ? "text-pink-600 border-b-2 border-pink-600 dark:text-pink-400 dark:border-pink-400"
+                      : "text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400"
+                    }`}
+                >
+                  {item.label}
+                </button>
               );
             })}
+            <ThemeToggle className="ml-4" />
           </div>
 
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div className="flex items-center gap-4 md:hidden">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
             >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                {isMobileMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
 
         {isMobileMenuOpen && (
@@ -157,11 +161,10 @@ const Navigation = () => {
               <button
                 key={item.id}
                 onClick={() => handleNavClick(item.id)}
-                className={`block w-full text-left px-4 py-2 font-medium transition ${
-                  activeSection === item.id
-                    ? "text-pink-600 bg-pink-50"
-                    : "text-gray-700 hover:bg-gray-50"
-                }`}
+                className={`block w-full text-left px-4 py-2 font-medium transition ${activeSection === item.id
+                    ? "text-pink-600 bg-pink-50 dark:text-pink-400 dark:bg-pink-900/20"
+                    : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
+                  }`}
               >
                 {item.label}
               </button>

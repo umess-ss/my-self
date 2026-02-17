@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Configure Tailwind CSS v4 dark mode to use class strategy */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-dark-bg: #111827;
+  --color-dark-surface: #1f2937;
+}
+
 section {
-  scroll-margin-top: 80px; /* same as navHeight */
+  scroll-margin-top: 80px;
+  /* same as navHeight */
 }

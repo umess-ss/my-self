@@ -9,7 +9,7 @@ const ProgressCircle = ({ percentage, label, color }) => {
   };
 
   // Reduced radius so it fits in the w-24 (96px) mobile container
-  const radius = 40; 
+  const radius = 40;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference - (percentage / 100) * circumference;
 
@@ -22,6 +22,7 @@ const ProgressCircle = ({ percentage, label, color }) => {
           <circle
             cx="50" cy="50" r={radius}
             stroke="#e5e7eb" strokeWidth="6" fill="transparent"
+            className="dark:stroke-gray-700 transition-colors duration-300"
           />
           <circle
             cx="50" cy="50" r={radius}
@@ -38,7 +39,7 @@ const ProgressCircle = ({ percentage, label, color }) => {
           <span className="text-sm md:text-xl font-bold">{percentage}%</span>
         </div>
       </div>
-      <p className="text-gray-600 font-medium text-[10px] md:text-sm truncate w-full px-1">
+      <p className="text-gray-600 dark:text-gray-300 font-medium text-[10px] md:text-sm truncate w-full px-1">
         {label}
       </p>
     </div>
@@ -47,7 +48,7 @@ const ProgressCircle = ({ percentage, label, color }) => {
 
 export default function About() {
   return (
-    <section id="about" className="py-20 bg-white overflow-hidden">
+    <section id="about" className="py-20 bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300">
       <div className="container mx-auto px-4">
         <p className="text-purple-600 font-semibold text-center mb-2">ABOUT ME</p>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
@@ -60,15 +61,15 @@ export default function About() {
             className="w-full rounded-lg shadow-lg"
           />
           <div>
-            <p className="text-gray-600 leading-relaxed mb-6">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
               I am a passionate and detail-oriented Electronics and Communication Engineer with a solid foundation in backend architecture and
               a growing focus on AWS Cloud Operations. With a disciplined approach to debugging and error handling, I specialize in crafting robust,
               scalable software solutions and maintaining high standards through CI/CD workflows and containerization. My expertise extends into AI and Deep Learning,
-               where I have experience integrating cutting-edge tools like Langchain, Crawl4ai, and Gemini into real-world engineering projects.
+              where I have experience integrating cutting-edge tools like Langchain, Crawl4ai, and Gemini into real-world engineering projects.
               From optimizing system stability to building advanced computer vision applications like Blind Vision, my commitment to technical excellence has led to measurable successes in enhancing system reliability and project performance.
               {/* Keep bio text same */}
             </p>
-            
+
             {/* Added flex-nowrap to force single row on mobile */}
             <div className="flex flex-nowrap justify-between items-center gap-2 md:gap-8 mt-8">
               {aboutStats.map((stat, index) => (

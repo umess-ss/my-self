@@ -9,16 +9,20 @@ import Blog from "./components/Blog";
 import Contact from "./components/Contact";
 import BlogPostDetail from "./components/BlogPostDetail";
 import ScrollToTop from "./components/ScrollToTop";
+import { ThemeProvider } from "./context/ThemeContext";
+import MouseFollower from "./components/MouseFollower";
 
 function App() {
   return (
-    <Router>
-    <div className="min-h-screen bg-white">
-      <ScrollToTop />
-      <Navigation />
-        <Routes>
-          <Route path='/' element={
-            <div className="flex flex-col">
+    <ThemeProvider>
+      <Router>
+        <div className="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+          <MouseFollower />
+          <ScrollToTop />
+          <Navigation />
+          <Routes>
+            <Route path='/' element={
+              <div className="flex flex-col">
                 <section id="home"><Home /></section>
                 <section id="about"><About /></section>
                 <section id="resume"><Resume /></section>
@@ -26,13 +30,13 @@ function App() {
                 <section id="blog"><Blog isHomePage={true} /></section>
                 <section id="contact"><Contact /></section>
               </div>
-          } />
-         <Route path='/all-blogs' element={<Blog isHomePage={false} />} />
-         <Route path='/blog/:id' element={<BlogPostDetail />} />
-      </Routes>
-    </div>
-    </Router>
-
+            } />
+            <Route path='/all-blogs' element={<Blog isHomePage={false} />} />
+            <Route path='/blog/:id' element={<BlogPostDetail />} />
+          </Routes>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

@@ -3,18 +3,19 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { personalInfo } from '../data/PortfolioData';
 
 const ContactInfoCard = ({ icon: Icon, text, color }) => {
+
   const colorMap = {
-    blue: "bg-blue-100 text-blue-600",
-    purple: "bg-purple-100 text-purple-600",
-    pink: "bg-pink-100 text-pink-600",
+    blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
+    purple: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400",
+    pink: "bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400",
   };
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 flex items-center gap-4 shadow-sm hover:shadow-md transition-all duration-300" >
       <div className={`w-14 h-14 rounded-full flex items-center justify-center ${colorMap[color]}`}>
         <Icon size={24} />
       </div>
-      <span className="text-lg font-semibold truncate">{text}</span>
-    </div>
+      <span className="text-lg font-semibold truncate dark:text-gray-200">{text}</span>
+    </div >
   );
 };
 
@@ -61,7 +62,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="min-h-screen py-20 bg-gray-50">
+    <section id="contact" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">Contact <span className="text-purple-600">Me</span></h2>
         <div className="grid md:grid-cols-2 gap-12">
@@ -71,37 +72,37 @@ export default function Contact() {
                 <ContactInfoCard key={index} {...info} />
               ))}
             </div>
-            
+
             {/* 3. The Form now calls the onSubmit function defined above */}
-            <form onSubmit={onSubmit} className="space-y-4 bg-white p-6 rounded-lg shadow-sm">
+            <form onSubmit={onSubmit} className="space-y-4 bg-white dark:bg-gray-800 dark:border dark:border-gray-700 p-6 rounded-lg shadow-sm transition-colors duration-300">
               <input
                 type="text"
                 name="name"
                 placeholder="Your Name"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
               />
               <input
                 type="text"
                 name="subject"
                 placeholder="Subject"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
               />
               <textarea
                 name="message"
                 placeholder="Message"
                 rows="4"
                 required
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
               />
-              
+
               <button
                 type="submit"
                 className="w-full px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition font-semibold cursor-pointer"
@@ -110,7 +111,7 @@ export default function Contact() {
               </button>
             </form>
           </div>
-          
+
           <div className="w-full h-full min-h-96 rounded-lg overflow-hidden shadow-lg">
             <iframe
               title="Kathmandu Map"
