@@ -2,7 +2,7 @@ export const blogPosts = [
   {
     id: 1,
     title: "Orchestrating LLMs: Building RAG Pipelines with Langchain and Gemini",
-    date: "12 Jan 2026",
+    date: "14 Feb 2026",
     tag: "Generative AI",
     excerpt: "Exploring the integration of Gemini and Langchain to create context-aware AI applications with Crawl4ai for real-time data retrieval.",
     image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&auto=format&fit=crop",
@@ -41,7 +41,7 @@ Real-time data retrieval is the bridge between a generic chatbot and a specializ
   {
     id: 2,
     title: "MLOps Essentials: Containerizing Deep Learning Models with Docker",
-    date: "05 Jan 2026",
+    date: "10 Feb 2026",
     tag: "MLOps & DevOps",
     excerpt: "A guide on using Docker and GitHub Actions to automate the deployment of computer vision models like YOLO and MIDAS.",
     image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400",
@@ -66,7 +66,7 @@ Containerization isn't just a trend; it is the foundation of modern, reliable ML
   {
     id: 3,
     title: "Scaling Backend Infrastructure on AWS: From EC2 to VPC Security",
-    date: "28 Dec 2025",
+    date: "05 Feb 2026",
     tag: "Cloud Operations",
     excerpt: "Best practices for setting up secure, scalable cloud environments for production-grade backend architectures.",
     image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&auto=format&fit=crop",
@@ -90,7 +90,7 @@ Once your architecture is set, don't build it manually again. Using **Infrastruc
   {
     id: 4,
     title: "Django 6.x: Modernizing the 'Batteries-Included' Framework",
-    date: "24 Jan 2026",
+    date: "17 Feb 2026",
     tag: "Web Development",
     excerpt: "Exploring the latest shifts in Django 6.0+, including native background tasks and the move towards build-free frontend integration.",
     image: "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800&auto=format&fit=crop",
@@ -121,7 +121,7 @@ The message is clear: Django isn't just staying relevant; it’s setting the sta
   {
     id: 5,
     title: "Beyond Chatbots: The Rise of Agentic AI Systems",
-    date: "26 Jan 2026",
+    date: "12 Feb 2026",
     tag: "Artificial Intelligence",
     excerpt: "Moving from passive AI to active agents that can plan, use tools, and solve complex multi-step problems autonomously.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop",
@@ -148,7 +148,7 @@ For developers, this means the focus is shifting from **Prompt Engineering** to 
   {
     id: 6,
     title: "React in 2026: The 'Compiler-First' Era",
-    date: "20 Jan 2026",
+    date: "08 Feb 2026",
     tag: "Frontend Development",
     excerpt: "How the React Compiler and Server Components have finally solved the performance and boilerplate issues of the past.",
     image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
@@ -175,7 +175,7 @@ React has evolved from a UI library into a highly optimized, full-stack engine f
   {
     id: 7,
     title: "Platform Engineering: The Evolution of DevOps",
-    date: "15 Jan 2026",
+    date: "03 Feb 2026",
     tag: "MLOps & DevOps",
     excerpt: "Why 80% of large engineering teams are moving toward Internal Developer Platforms (IDPs) to reduce cognitive load.",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",

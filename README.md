@@ -12,8 +12,11 @@ Welcome to my portfolio! This project showcases my journey in building scalable 
 - **Infrastructure:** AWS CloudFormation, MLOps Pipelines
 
 ## 🌟 Key Features
-- **Interactive Resume:** Dynamic tabbed interface for Experience, Education, and Skills.
-- **AI-Powered Blog:** Technical insights into RAG pipelines and LLM orchestration.
+- **Interactive Resume:** Dynamic tabbed interface with 5 filterable categories — Experience, Education, Trainings, Hard Skills, and Soft Skills.
+- **Project Showcase:** Portfolio of projects including AI/ML, Backend, DevOps, and Hackathon builds with live GitHub links.
+- **Hackathon Projects:** Featuring HamroAwaj (Protobytes 2.0) — a Smart City Civic Complaint Platform.
+- **AI-Powered Blog:** 7+ in-depth technical articles on RAG pipelines, Agentic AI, MLOps, Cloud Infrastructure, and modern frameworks.
+- **CV-Accurate Skills:** Hard skills (Python, Django, React, AWS, Docker, AI/ML) and Soft skills (Problem Solving, Research, Collaboration) pulled directly from CV.
 - **Optimized Performance:** Fully responsive UI with high-speed asset delivery and SEO optimization.
 - **Automated Contact:** Integrated Web3Forms with environment variable protection for secure communication.
 ---

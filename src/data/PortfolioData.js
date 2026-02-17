@@ -19,7 +19,7 @@ export const experiences = [
     position: "AWS Cloud & Backend Operations (Training)",
     location: "Kathmandu, Nepal",
     duration: "2025",
-    category: "Training",
+    category: "Trainings",
     responsibilities: [
       "Performed hands-on configuration of core AWS services including EC2, S3, IAM, and VPC for secure infrastructure setup.",
       "Managed global cloud resources and monitored system health within the AWS Management Console.",
@@ -27,11 +27,23 @@ export const experiences = [
     ],
   },
   {
+    company: "CloudMandap",
+    position: "Cloud Fellowship Program",
+    location: "Nepal",
+    duration: "2025 - Present",
+    category: "Trainings",
+    responsibilities: [
+      "Participating in an intensive cloud computing fellowship focused on modern cloud architecture and DevOps practices.",
+      "Gaining hands-on experience with cloud-native services, infrastructure provisioning, and scalable deployment strategies.",
+      "Collaborating with industry mentors on real-world cloud engineering projects and best practices."
+    ],
+  },
+  {
     company: "Research & Open Source (GitHub)",
     position: "Backend & MLOps Developer",
     location: "Kathmandu, Nepal",
     duration: "2024 - Present",
-    category: "Training",
+    category: "Trainings",
     responsibilities: [
       "Integrating Generative AI tools like Langchain, Crawl4ai, and Gemini to automate business intelligence and data retrieval.",
       "Containerizing deep learning models using Docker and establishing CI/CD pipelines via GitHub Actions for automated deployment.",
@@ -40,7 +52,7 @@ export const experiences = [
   },
   {
     company: "Advanced College of Engineering & Management",
-    position: "Electronics & Communication Engineering Student",
+    position: "Bachelor in Electronics & Communication Engineering",
     location: "Kathmandu, Nepal",
     duration: "Jan 2022 - Present",
     category: "Education",
@@ -51,17 +63,28 @@ export const experiences = [
     ],
   },
   {
+    company: "Adarsha Secondary School",
+    position: "+2 Science",
+    location: "Biratnagar, Nepal",
+    duration: "2020",
+    category: "Education",
+    responsibilities: [
+      "Completed higher secondary education in the Science stream with a focus on Physics, Chemistry, and Mathematics.",
+      "Built a strong analytical and mathematical foundation for engineering studies."
+    ],
+  },
+  {
     company: "Technical Proficiencies",
     position: "Core Engineering & Development",
     category: "Hard Skills",
     duration: "Continuous",
     responsibilities: [
-      "Backend Architecture: Robust and scalable software solutions",
-      "Cloud Operations: AWS Cloud Operations and system stability",
-      "AI & Deep Learning: Integration of Langchain, Crawl4ai, and Gemini",
-      "Computer Vision: Developing advanced applications (e.g., Blind Vision)",
-      "DevOps: CI/CD workflows, containerization (Docker), and automated debugging",
-      "Electronics: Communication systems and cellular communication engineering"
+      "Languages: Python, C, C++, JavaScript, SQL",
+      "Web Development: Django, React, REST APIs, HTML/CSS",
+      "Electronics & Hardware: Arduino, MATLAB, Sensor Integration (Bio-sensors), System Triggering & Alert Systems",
+      "AI/ML & Data Science: Langchain, RAG, Transformers, Attention Mechanisms, CNN, RNN, YOLO, MIDAS",
+      "Cloud & DevOps: AWS (EC2, S3, IAM, VPC), Docker, CI/CD, Git/GitHub",
+      "Tools: PyTorch, TensorFlow, VS Code, Linux"
     ]
   },
   {
@@ -70,10 +93,10 @@ export const experiences = [
     category: "Soft Skills",
     duration: "Continuous",
     responsibilities: [
-      "Disciplined Debugging: Methodical approach to error handling and problem-solving",
-      "Technical Excellence: High standards for project performance and reliability",
-      "Detail-Oriented: Focus on precision in electronics and software architecture",
-      "Social Activism: Community engagement and collaborative leadership",
+      "Problem Solving: Disciplined Debugging & Error Handling",
+      "Management: Technical Project Planning & Documentation",
+      "Research: Technical Feasibility & System Architecture",
+      "Collaboration: Open Source Contribution & Version Control",
       "Continuous Learning: Passionate about staying updated with cutting-edge AI tools",
       "Communication: Bridging the gap between complex engineering and real-world application"
     ]
@@ -116,5 +139,14 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=800",
     technologies: ["Django", "REST API", "PostgreSQL", "MVT Architecture"],
     githubUrl: "https://github.com/Prativa5791/e-commerce",
+  },
+  {
+    id: 5,
+    title: "HamroAwaj — Smart City Platform",
+    type: "Hackathon | E-Governance",
+    description: "A civic complaint platform where citizens report city-related problems and track their resolution in real time, helping authorities respond faster. Built at Protobytes 2.0 Hackathon (Team BEI BEAST).",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=800",
+    technologies: ["React", "TypeScript", "Django", "Tailwind CSS", "REST API"],
+    githubUrl: "https://github.com/JungRoshan/protobytes-2.0-team--BEI-BEAST-",
   },
 ];
