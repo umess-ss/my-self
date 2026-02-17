@@ -17,6 +17,14 @@ const MouseFollower = () => {
             cursorY.set(e.clientY);
         };
 
+        const handleTouch = (e) => {
+            if (e.touches && e.touches.length > 0) {
+                const touch = e.touches[0];
+                cursorX.set(touch.clientX);
+                cursorY.set(touch.clientY);
+            }
+        };
+
         const handleMouseOver = (e) => {
             const target = e.target;
             if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('button') || target.closest('a')) {
@@ -26,12 +34,19 @@ const MouseFollower = () => {
             }
         };
 
+        // Mouse events for desktop
         window.addEventListener('mousemove', moveCursor);
         document.addEventListener('mouseover', handleMouseOver);
+
+        // Touch events for mobile
+        window.addEventListener('touchstart', handleTouch);
+        window.addEventListener('touchmove', handleTouch);
 
         return () => {
             window.removeEventListener('mousemove', moveCursor);
             document.removeEventListener('mouseover', handleMouseOver);
+            window.removeEventListener('touchstart', handleTouch);
+            window.removeEventListener('touchmove', handleTouch);
         };
     }, []);
 
