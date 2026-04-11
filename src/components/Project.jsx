@@ -4,6 +4,7 @@ import { Github, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import BlurText from './reactbits/BlurText';
 import ScrollReveal from './reactbits/ScrollReveal';
+import AbstractBackground from './AbstractBackground';
 
 const ProjectCard = ({ project }) => {
   return (
@@ -89,7 +90,8 @@ export default function Projects() {
   const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <section id="projects" className="min-h-screen py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section id="projects" className="relative min-h-screen py-20 bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300">
+      <AbstractBackground variant="both" opacity={0.05} colorClass="text-purple-400 dark:text-purple-600" flip />
       <div className="container mx-auto px-4">
         {/* Header with nav buttons */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">

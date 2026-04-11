@@ -6,11 +6,13 @@ import SplitText from "./reactbits/SplitText";
 import BlurText from "./reactbits/BlurText";
 import ScrollReveal from "./reactbits/ScrollReveal";
 import DecryptedText from "./reactbits/DecryptedText";
+import AbstractBackground from "./AbstractBackground";
 
 export default function Home({ splashDone = false }) {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden transition-colors duration-300">
-      {/* Background decorative blobs */}
+      {/* Decorative background layers */}
+      <AbstractBackground variant="both" opacity={0.06} colorClass="text-pink-400 dark:text-pink-600" />
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-20 left-10 w-72 h-72 bg-pink-200/30 dark:bg-pink-900/20 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-200/30 dark:bg-purple-900/20 rounded-full blur-3xl" />

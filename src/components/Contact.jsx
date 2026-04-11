@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin } from 'lucide-react';
 import { personalInfo } from '../data/PortfolioData';
 import BlurText from './reactbits/BlurText';
 import ScrollReveal from './reactbits/ScrollReveal';
+import AbstractBackground from './AbstractBackground';
 
 const ContactInfoCard = ({ icon: Icon, text, color }) => {
 
@@ -64,7 +65,8 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+    <section id="contact" className="relative min-h-screen py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden transition-colors duration-300">
+      <AbstractBackground variant="waves" opacity={0.04} colorClass="text-pink-300 dark:text-pink-800" />
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">
           <BlurText

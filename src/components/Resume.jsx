@@ -4,6 +4,7 @@ import { experiences } from '../data/PortfolioData';
 import BlurText from './reactbits/BlurText';
 import ScrollReveal from './reactbits/ScrollReveal';
 import DecryptedText from './reactbits/DecryptedText';
+import AbstractBackground from './AbstractBackground';
 
 /* ── Icon grid data for Hard Skills ─────────────────────── */
 const techGroups = [
@@ -166,7 +167,8 @@ const Resume = () => {
   const filteredData = experiences.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="resume" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+    <section id="resume" className="relative min-h-screen py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden transition-colors duration-300">
+      <AbstractBackground variant="arrows" opacity={0.04} colorClass="text-pink-400 dark:text-pink-700" />
       <div className="container mx-auto px-4">
         <ScrollReveal direction="up" distance={20}>
           <p className="text-pink-600 font-semibold text-center mb-2">MY RESUME</p>
