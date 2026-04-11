@@ -26,7 +26,7 @@ export default function Home({ splashDone = false }) {
             <ScrollReveal delay={0.1} direction="up" distance={20} startAnimation={splashDone}>
               <p className="text-pink-600 dark:text-pink-400 font-semibold text-lg mb-4 tracking-wider">
                 <DecryptedText
-                  text="HELLO THERE 👋"
+                  text="HELLO THERE"
                   speed={40}
                   maxIterations={12}
                   sequential={true}
@@ -49,18 +49,26 @@ export default function Home({ splashDone = false }) {
               />
             </h1>
 
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              <SplitText
-                text={personalInfo.name}
-                className="bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent"
-                delay={50}
-                duration={0.6}
-                splitBy="chars"
-                from={{ opacity: 0, y: 50, scale: 0.8 }}
-                to={{ opacity: 1, y: 0, scale: 1 }}
-                tag="span"
-                startAnimation={splashDone}
-              />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight whitespace-nowrap">
+              <span style={{
+                background: "linear-gradient(to right, #db2777, #9333ea, #4f46e5)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                display: "inline-block",
+              }}>
+                <SplitText
+                  text={personalInfo.name}
+                  className=""
+                  delay={50}
+                  duration={0.6}
+                  splitBy="chars"
+                  from={{ opacity: 0, y: 50, scale: 0.8 }}
+                  to={{ opacity: 1, y: 0, scale: 1 }}
+                  tag="span"
+                  startAnimation={splashDone}
+                />
+              </span>
             </h1>
 
             <ScrollReveal delay={0.4} direction="up" distance={20} startAnimation={splashDone}>
