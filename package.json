@@ -6,14 +6,15 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist --repo https://github.com/umess-ss/my-self.git"
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.1.18",
     "framer-motion": "^12.23.26",
+    "lenis": "^1.3.21",
     "lucide-react": "^0.562.0",
+    "motion": "^12.38.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.70.0",

@@ -3,6 +3,8 @@ import { blogPosts } from '../data/BlogContent';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import BlurText from './reactbits/BlurText';
+import ScrollReveal from './reactbits/ScrollReveal';
 
 
 
@@ -58,15 +60,31 @@ const Blog = ({ isHomePage }) => {
   return (
     <section id="blog" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container mx-auto px-4">
-        <p className="text-purple-600 font-semibold text-center mb-2">TECHNO TRENDS</p>
+        <ScrollReveal direction="up" distance={20}>
+          <p className="text-purple-600 font-semibold text-center mb-2">TECHNO TRENDS</p>
+        </ScrollReveal>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          {isHomePage ? 'Recent ' : 'All '} Blog <span className="text-purple-600">Posts</span>
+          <BlurText
+            text={isHomePage ? 'Recent Blog' : 'All Blog'}
+            animateBy="words"
+            delay={80}
+            direction="top"
+          />{" "}
+          <BlurText
+            text="Posts"
+            animateBy="words"
+            delay={100}
+            direction="bottom"
+            className="text-purple-600"
+          />
         </h2>
 
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
+          {displayPosts.map((post, index) => (
+            <ScrollReveal key={post.id} delay={index * 0.1} direction="up" distance={40}>
+              <BlogCard post={post} />
+            </ScrollReveal>
           ))}
         </div>
 

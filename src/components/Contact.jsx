@@ -1,6 +1,8 @@
-import React, { useState } from 'react'; // Switched from useRef to useState
+import React, { useState } from 'react';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { personalInfo } from '../data/PortfolioData';
+import BlurText from './reactbits/BlurText';
+import ScrollReveal from './reactbits/ScrollReveal';
 
 const ContactInfoCard = ({ icon: Icon, text, color }) => {
 
@@ -64,12 +66,28 @@ export default function Contact() {
   return (
     <section id="contact" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">Contact <span className="text-purple-600">Me</span></h2>
+        <h2 className="text-4xl font-bold text-center mb-12">
+          <BlurText
+            text="Contact"
+            animateBy="words"
+            delay={80}
+            direction="top"
+          />{" "}
+          <BlurText
+            text="Me"
+            animateBy="words"
+            delay={100}
+            direction="bottom"
+            className="text-purple-600"
+          />
+        </h2>
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
-                <ContactInfoCard key={index} {...info} />
+                <ScrollReveal key={index} delay={index * 0.1} direction="left" distance={30}>
+                  <ContactInfoCard {...info} />
+                </ScrollReveal>
               ))}
             </div>
 
@@ -112,6 +130,7 @@ export default function Contact() {
             </form>
           </div>
 
+          <ScrollReveal direction="right" distance={40} delay={0.3}>
           <div className="w-full h-full min-h-96 rounded-lg overflow-hidden shadow-lg">
             <iframe
               title="Kathmandu Map"
@@ -119,6 +138,7 @@ export default function Contact() {
               width="100%" height="100%" style={{ border: 0 }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

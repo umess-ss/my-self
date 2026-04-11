@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Rocket, Code, GraduationCap, Award, Brain } from 'lucide-react';
 import { experiences } from '../data/PortfolioData';
+import BlurText from './reactbits/BlurText';
+import ScrollReveal from './reactbits/ScrollReveal';
+import DecryptedText from './reactbits/DecryptedText';
 
 /* ── Icon grid data for Hard Skills ─────────────────────── */
 const techGroups = [
@@ -99,7 +102,16 @@ const HardSkillsPanel = () => {
       {techGroups.map((group) => (
         <div key={group.label}>
           <h4 className={`text-sm font-bold uppercase tracking-widest mb-3 bg-gradient-to-r ${group.color} bg-clip-text text-transparent`}>
-            {group.label}
+            <DecryptedText
+              text={group.label}
+              speed={40}
+              maxIterations={15}
+              sequential={true}
+              revealDirection="start"
+              animateOn="view"
+              className={`bg-gradient-to-r ${group.color} bg-clip-text text-transparent`}
+              encryptedClassName="text-gray-400 dark:text-gray-600"
+            />
           </h4>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {group.skills.map((skill, i) => (
@@ -156,22 +168,37 @@ const Resume = () => {
   return (
     <section id="resume" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
       <div className="container mx-auto px-4">
-        <p className="text-pink-600 font-semibold text-center mb-2">MY RESUME</p>
+        <ScrollReveal direction="up" distance={20}>
+          <p className="text-pink-600 font-semibold text-center mb-2">MY RESUME</p>
+        </ScrollReveal>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          My <span className="text-purple-600">Experience &amp; Skills</span>
+          <BlurText
+            text="My"
+            animateBy="words"
+            delay={80}
+            direction="top"
+          />{" "}
+          <BlurText
+            text="Experience & Skills"
+            animateBy="words"
+            delay={100}
+            direction="bottom"
+            className="text-purple-600"
+          />
         </h2>
 
         {/* Category tabs */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((cat, index) => (
-            <ResumeCard
-              key={index}
-              icon={cat.icon}
-              label={cat.label}
-              color={cat.color}
-              isActive={activeCategory === cat.label}
-              onClick={() => setActiveCategory(cat.label)}
-            />
+            <ScrollReveal key={index} delay={index * 0.08} direction="up" distance={30}>
+              <ResumeCard
+                icon={cat.icon}
+                label={cat.label}
+                color={cat.color}
+                isActive={activeCategory === cat.label}
+                onClick={() => setActiveCategory(cat.label)}
+              />
+            </ScrollReveal>
           ))}
         </div>
 

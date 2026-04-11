@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import BlogPostDetail from "./components/BlogPostDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./context/ThemeContext";
+import SmoothScroll from "./components/SmoothScroll";
 
 
 function App() {
@@ -19,29 +20,31 @@ function App() {
   return (
     <>
       {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
-    <ThemeProvider>
-      <Router>
-        <div className="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <ThemeProvider>
+        <Router>
+          <SmoothScroll>
+          <div className="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-          <ScrollToTop />
-          <Navigation />
-          <Routes>
-            <Route path='/' element={
-              <div className="flex flex-col">
-                <section id="home"><Home /></section>
-                <section id="about"><About /></section>
-                <section id="resume"><Resume /></section>
-                <section id="projects"><Projects /></section>
-                <section id="blog"><Blog isHomePage={true} /></section>
-                <section id="contact"><Contact /></section>
-              </div>
-            } />
-            <Route path='/all-blogs' element={<Blog isHomePage={false} />} />
-            <Route path='/blog/:id' element={<BlogPostDetail />} />
-          </Routes>
-        </div>
-      </Router>
-    </ThemeProvider>
+            <ScrollToTop />
+            <Navigation />
+            <Routes>
+              <Route path='/' element={
+                <div className="flex flex-col">
+                  <section id="home"><Home splashDone={splashDone} /></section>
+                  <section id="about"><About /></section>
+                  <section id="resume"><Resume /></section>
+                  <section id="projects"><Projects /></section>
+                  <section id="blog"><Blog isHomePage={true} /></section>
+                  <section id="contact"><Contact /></section>
+                </div>
+              } />
+              <Route path='/all-blogs' element={<Blog isHomePage={false} />} />
+              <Route path='/blog/:id' element={<BlogPostDetail />} />
+            </Routes>
+          </div>
+          </SmoothScroll>
+        </Router>
+      </ThemeProvider>
     </>
   );
 }
