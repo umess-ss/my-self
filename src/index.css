@@ -12,3 +12,98 @@ section {
   scroll-margin-top: 80px;
   /* same as navHeight */
 }
+
+/* ===================== SPLASH SCREEN ===================== */
+@keyframes ringPulse {
+  0%   { transform: scale(0.8); opacity: 0.8; }
+  50%  { transform: scale(1.1); opacity: 0.3; }
+  100% { transform: scale(0.8); opacity: 0.8; }
+}
+
+@keyframes splashFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadBar {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.splash-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid;
+  inset: 0;
+  animation: ringPulse 1.8s ease-in-out infinite;
+}
+.splash-ring-1 {
+  border-color: rgba(244, 114, 182, 0.6);
+  animation-delay: 0s;
+}
+.splash-ring-2 {
+  border-color: rgba(168, 85, 247, 0.4);
+  inset: -16px;
+  animation-delay: 0.3s;
+}
+.splash-ring-3 {
+  border-color: rgba(99, 102, 241, 0.3);
+  inset: -32px;
+  animation-delay: 0.6s;
+}
+
+.splash-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  animation: splashFadeUp 0.7s ease 0.3s both;
+  margin-bottom: 8px;
+}
+
+.splash-tagline {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  animation: splashFadeUp 0.7s ease 0.6s both;
+  margin-bottom: 40px;
+  letter-spacing: 0.5px;
+}
+
+.splash-bar-track {
+  width: 200px;
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 99px;
+  overflow: hidden;
+  animation: splashFadeUp 0.5s ease 0.8s both;
+}
+
+.splash-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f472b6, #a855f7);
+  border-radius: 99px;
+  animation: loadBar 1.8s cubic-bezier(0.4,0,0.2,1) 0.8s both;
+}
+
+/* ===================== SKILL BARS ===================== */
+@keyframes skillFill {
+  from { width: 0%; }
+  to   { width: var(--skill-pct); }
+}
+
+.skill-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  animation: skillFill 1.2s cubic-bezier(0.4,0,0.2,1) both;
+  width: var(--skill-pct);
+}
+
+@keyframes iconPop {
+  from { opacity: 0; transform: scale(0.6) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.skill-icon-card {
+  animation: iconPop 0.4s ease both;
+}

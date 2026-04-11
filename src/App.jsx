@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import SplashScreen from "./components/SplashScreen";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -10,14 +11,18 @@ import Contact from "./components/Contact";
 import BlogPostDetail from "./components/BlogPostDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./context/ThemeContext";
-import MouseFollower from "./components/MouseFollower";
+
 
 function App() {
+  const [splashDone, setSplashDone] = useState(false);
+
   return (
+    <>
+      {!splashDone && <SplashScreen onFinish={() => setSplashDone(true)} />}
     <ThemeProvider>
       <Router>
         <div className="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-          <MouseFollower />
+
           <ScrollToTop />
           <Navigation />
           <Routes>
@@ -37,6 +42,7 @@ function App() {
         </div>
       </Router>
     </ThemeProvider>
+    </>
   );
 }
 
