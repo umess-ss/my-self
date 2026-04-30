@@ -126,13 +126,13 @@ const Navigation = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md z-40 transition-colors duration-300">
+      <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md z-40 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
             <Link to="/">
               <img
                 src={rohanImage}
-                alt="Profile"
+                alt="Umesh Rajbanshi"
                 className="w-12 h-12 rounded-full cursor-pointer hover:opacity-80 transition object-cover"
                 onClick={() => handleNavClick("home")}
               />

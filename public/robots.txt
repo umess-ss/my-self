@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://umeshrajbanshi.com.np/sitemap.xml

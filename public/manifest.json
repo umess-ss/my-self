@@ -1,0 +1,16 @@
+{
+  "name": "Umesh Rajbanshi — Portfolio",
+  "short_name": "Umesh R.",
+  "description": "Portfolio of Umesh Rajbanshi — Electronics & Communication Engineer, AI/ML Enthusiast, and Backend Developer based in Kathmandu, Nepal.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#db2777",
+  "icons": [
+    {
+      "src": "/favicon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}

@@ -63,7 +63,7 @@ export default function About() {
           <ScrollReveal direction="left" distance={60} delay={0.1}>
             <img
               src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600"
-              alt="About"
+              alt="Umesh Rajbanshi working on engineering projects"
               className="w-full rounded-lg shadow-lg mb-6 md:mb-0"
             />
           </ScrollReveal>

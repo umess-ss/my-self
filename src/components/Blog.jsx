@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import BlurText from './reactbits/BlurText';
 import ScrollReveal from './reactbits/ScrollReveal';
+import SEOHead from './SEOHead';
 
 
 
@@ -59,6 +60,13 @@ const Blog = ({ isHomePage }) => {
 
   return (
     <section id="blog" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      {!isHomePage && (
+        <SEOHead
+          title="All Blog Posts"
+          description="Read all blog posts by Umesh Rajbanshi on AI, MLOps, Cloud Computing, Django, React, and modern software engineering."
+          url="https://umeshrajbanshi.com.np/all-blogs"
+        />
+      )}
       <div className="container mx-auto px-4">
         <ScrollReveal direction="up" distance={20}>
           <p className="text-purple-600 font-semibold text-center mb-2">TECHNO TRENDS</p>

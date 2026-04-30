@@ -12,6 +12,7 @@ import BlogPostDetail from "./components/BlogPostDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import { ThemeProvider } from "./context/ThemeContext";
 import SmoothScroll from "./components/SmoothScroll";
+import SEOHead from "./components/SEOHead";
 
 
 function App() {
@@ -29,14 +30,15 @@ function App() {
             <Navigation />
             <Routes>
               <Route path='/' element={
-                <div className="flex flex-col">
+                <main className="flex flex-col">
+                  <SEOHead />
                   <section id="home"><Home splashDone={splashDone} /></section>
                   <section id="about"><About /></section>
                   <section id="resume"><Resume /></section>
                   <section id="projects"><Projects /></section>
                   <section id="blog"><Blog isHomePage={true} /></section>
                   <section id="contact"><Contact /></section>
-                </div>
+                </main>
               } />
               <Route path='/all-blogs' element={<Blog isHomePage={false} />} />
               <Route path='/blog/:id' element={<BlogPostDetail />} />

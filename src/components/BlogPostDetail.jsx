@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { blogPosts } from '../data/BlogContent';
 import { ArrowLeft, Calendar, Tag, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import SEOHead from './SEOHead';
 
 const BlogPostDetail = () => {
   const { id } = useParams();
@@ -29,6 +30,13 @@ const BlogPostDetail = () => {
 
   return (
     <article className="min-h-screen bg-white dark:bg-gray-900 pt-28 pb-20 transition-colors duration-300">
+      <SEOHead
+        title={post.title}
+        description={post.excerpt}
+        image={post.image}
+        url={`https://umeshrajbanshi.com.np/blog/${post.id}`}
+        type="article"
+      />
       <div className="container mx-auto px-4 max-w-4xl">
 
 
@@ -50,7 +58,7 @@ const BlogPostDetail = () => {
             </span>
             <div className="flex items-center gap-4 text-gray-400 text-sm">
               <span className="flex items-center gap-1"><Calendar size={14} /> {post.date}</span>
-              <span className="flex items-center gap-1"><User size={14} /> By Rohan</span>
+              <span className="flex items-center gap-1"><User size={14} /> By Umesh Rajbanshi</span>
             </div>
           </div>
 

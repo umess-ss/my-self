@@ -2,8 +2,7 @@ import React from "react";
 import { personalInfo } from "../data/PortfolioData";
 import rohanImage from "../assets/rohan.jpg";
 import myCV from '../assets/myCV.pdf';
-import SplitText from "./reactbits/SplitText";
-import BlurText from "./reactbits/BlurText";
+import SplitText from "./reactbits/SplitText";import BlurText from "./reactbits/BlurText";
 import ScrollReveal from "./reactbits/ScrollReveal";
 import DecryptedText from "./reactbits/DecryptedText";
 import AbstractBackground from "./AbstractBackground";
@@ -49,25 +48,30 @@ export default function Home({ splashDone = false }) {
               />
             </h1>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight whitespace-nowrap">
-              <span style={{
-                background: "linear-gradient(to right, #db2777, #9333ea, #4f46e5)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                display: "inline-block",
-              }}>
-                <SplitText
-                  text={personalInfo.name}
-                  className=""
-                  delay={50}
-                  duration={0.6}
-                  splitBy="chars"
-                  from={{ opacity: 0, y: 50, scale: 0.8 }}
-                  to={{ opacity: 1, y: 0, scale: 1 }}
-                  tag="span"
-                  startAnimation={splashDone}
-                />
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 leading-tight whitespace-nowrap relative text-transparent">
+              {/* Animated split chars for the entrance animation */}
+              <SplitText
+                text={personalInfo.name}
+                delay={50}
+                duration={0.6}
+                splitBy="chars"
+                from={{ opacity: 0, y: 50, scale: 0.8 }}
+                to={{ opacity: 1, y: 0, scale: 1 }}
+                tag="span"
+                startAnimation={splashDone}
+              />
+              {/* Gradient overlay — single span so bg-clip-text works on mobile */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 whitespace-nowrap pointer-events-none select-none"
+                style={{
+                  background: "linear-gradient(to right, #db2777, #9333ea, #4f46e5)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {personalInfo.name}
               </span>
             </h1>
 
@@ -104,7 +108,7 @@ export default function Home({ splashDone = false }) {
                 <div className="absolute -inset-8 rounded-full border border-purple-200/30 dark:border-purple-800/20" />
                 <img
                   src={rohanImage}
-                  alt="Profile"
+                  alt="Umesh Rajbanshi — Electronics and Communication Engineer"
                   className="w-72 h-72 md:w-80 md:h-80 rounded-full shadow-2xl shadow-pink-200/40 dark:shadow-pink-900/20 object-cover ring-4 ring-white dark:ring-gray-800"
                 />
               </div>
