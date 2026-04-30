@@ -13,6 +13,8 @@ const SplitText = ({
   tag: Tag = "p",
   startAnimation, // external trigger (true = animate now)
   onAnimationComplete,
+  gradientStyle = null, // optional gradient styles applied per character
+  forceInline = false, // use display:inline (needed for bg-clip-text gradient)
 }) => {
   const ref = useRef(null);
   const [shouldAnimate, setShouldAnimate] = useState(false);
@@ -84,7 +86,7 @@ const SplitText = ({
             key={i}
             variants={child}
             style={{
-              display: "inline-block",
+              display: forceInline ? "inline" : "inline-block",
               whiteSpace: el === " " ? "pre" : "normal",
               willChange: "transform, opacity",
             }}
