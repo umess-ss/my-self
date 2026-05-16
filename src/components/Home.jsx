@@ -24,7 +24,7 @@ const heroSkillRows = [
 
 export default function Home({ splashDone = false }) {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-14 overflow-hidden bg-[#FBFAFC] dark:bg-gray-950 transition-colors duration-300">
+    <section id="home" className="hero-section relative min-h-screen flex items-center overflow-hidden bg-[#FBFAFC] pt-20 pb-10 dark:bg-gray-950 transition-colors duration-300">
       {/* Decorative background layers */}
       <AbstractBackground variant="waves" opacity={0.08} colorClass="text-sky-500 dark:text-sky-500" />
       <div className="absolute inset-0 -z-10">
@@ -33,7 +33,7 @@ export default function Home({ splashDone = false }) {
       </div>
 
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-14 lg:gap-[4.5rem] xl:gap-20 items-center">
           {/* Left — Text content */}
           <div className="hero-left-content text-left">
             <ScrollReveal delay={0.1} direction="up" distance={20} startAnimation={splashDone}>
@@ -131,13 +131,13 @@ export default function Home({ splashDone = false }) {
             <div className="flex justify-center md:justify-end md:-translate-y-3 lg:-translate-y-4">
               <div className="hero-portrait-shell group relative grid place-items-center">
                 <div className="hero-portrait-ambient absolute -inset-16 rounded-full" />
-                <div className="absolute -inset-7 rounded-full border border-blue-200/80 dark:border-blue-600/50" />
-                <div className="absolute -inset-12 rounded-full border border-sky-200/70 dark:border-sky-500/40" />
-                <div className="absolute -inset-4 rounded-full bg-white/45 shadow-[0_28px_90px_rgba(37,99,235,0.20)] backdrop-blur-xl dark:bg-slate-950/35 dark:shadow-[0_28px_90px_rgba(14,165,233,0.16)]" />
+                <div className="hero-portrait-ring hero-portrait-ring--inner absolute -inset-7 rounded-full" />
+                <div className="hero-portrait-ring hero-portrait-ring--outer absolute -inset-12 rounded-full" />
+                <div className="hero-portrait-glass absolute -inset-4 rounded-full" />
                 <img
                   src={homeImage}
                   alt="Umesh Rajbanshi — Backend and Cloud Engineer"
-                  className="relative z-10 h-80 w-80 rounded-full object-cover object-center shadow-[0_26px_70px_rgba(15,23,42,0.24)] ring-8 ring-white/95 transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-[1.025] group-hover:shadow-[0_34px_90px_rgba(37,99,235,0.28)] md:h-[23rem] md:w-[23rem] lg:h-[26rem] lg:w-[26rem] dark:shadow-[0_26px_80px_rgba(14,165,233,0.18)] dark:ring-slate-900/95 dark:group-hover:shadow-[0_34px_96px_rgba(14,165,233,0.24)]"
+                  className="hero-portrait-image relative z-10 h-[21rem] w-[21rem] rounded-full object-cover object-[50%_38%] transition-all duration-700 ease-out group-hover:scale-[1.025] md:h-[24.5rem] md:w-[24.5rem] lg:h-[27.5rem] lg:w-[27.5rem]"
                 />
               </div>
             </div>
