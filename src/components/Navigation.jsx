@@ -24,6 +24,15 @@ const Navigation = () => {
     { label: "Contact", id: "contact" },
   ];
 
+  const routeSection = location.pathname === "/"
+    ? "home"
+    : location.pathname.replace("/", "").split("/")[0];
+  const activeNavId = location.pathname === "/"
+    ? activeSection
+    : navItems.some((item) => item.id === routeSection)
+      ? routeSection
+      : null;
+
   // Update sliding underline position
   const updateIndicator = (sectionId) => {
     if (!navRef.current) return;
@@ -40,21 +49,21 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    if (location.pathname === "/") {
-      updateIndicator(activeSection);
+    if (activeNavId) {
+      updateIndicator(activeNavId);
     } else {
       setIndicatorStyle({ opacity: 0 });
     }
-  }, [activeSection, location.pathname]);
+  }, [activeNavId, location.pathname]);
 
   // Re-measure on resize
   useEffect(() => {
     const handleResize = () => {
-      if (location.pathname === "/") updateIndicator(activeSection);
+      if (activeNavId) updateIndicator(activeNavId);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [activeSection, location.pathname]);
+  }, [activeNavId, location.pathname]);
 
   useEffect(() => {
     if (location.pathname !== "/") return;
@@ -108,6 +117,7 @@ const Navigation = () => {
   };
 
   const handleNavClick = (id) => {
+    setActiveSection(id);
     if (location.pathname !== "/") {
       navigate("/");
       if (id === "home") {
@@ -160,7 +170,7 @@ const Navigation = () => {
                   data-nav-id={item.id}
                   onClick={() => handleNavClick(item.id)}
                   className={`px-4 py-2 font-medium transition-colors duration-200 cursor-pointer outline-none ${
-                    activeSection === item.id
+                    activeNavId === item.id
                       ? "text-[#2563EB] dark:text-sky-300"
                       : "text-gray-700 hover:text-[#2563EB] dark:text-gray-300 dark:hover:text-sky-300"
                   }`}
@@ -227,7 +237,7 @@ const Navigation = () => {
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   className={`block w-full text-left px-4 py-2 font-medium transition ${
-                    activeSection === item.id
+                    activeNavId === item.id
                       ? "text-[#2563EB] bg-[#EFF6FF] dark:text-sky-300 dark:bg-sky-900/20"
                       : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
                   }`}
