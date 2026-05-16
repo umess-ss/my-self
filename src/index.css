@@ -184,18 +184,46 @@ body,
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.hero-section {
+.portfolio-hero-bg {
+  background:
+    linear-gradient(115deg, rgba(251, 250, 252, 0.98) 0%, rgba(239, 246, 255, 0.72) 48%, rgba(251, 250, 252, 0.98) 100%);
+}
+
+.dark .portfolio-hero-bg {
+  background:
+    linear-gradient(115deg, rgba(15, 23, 42, 0.98) 0%, rgba(12, 34, 66, 0.48) 48%, rgba(15, 23, 42, 0.98) 100%);
+}
+
+.portfolio-hero-grid {
+  background:
+    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.dark .portfolio-hero-grid {
+  background:
+    linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.06) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.hero-section,
+.contact-section {
   isolation: isolate;
 }
 
 .hero-section::before,
-.hero-section::after {
+.hero-section::after,
+.contact-section::before,
+.contact-section::after {
   content: "";
   position: absolute;
   pointer-events: none;
 }
 
-.hero-section::before {
+.hero-section::before,
+.contact-section::before {
   inset: 0;
   z-index: 0;
   background:
@@ -203,7 +231,8 @@ body,
     radial-gradient(circle at 66% 72%, rgba(14, 165, 233, 0.07), transparent 34%);
 }
 
-.hero-section::after {
+.hero-section::after,
+.contact-section::after {
   top: 18%;
   right: max(2rem, 8vw);
   width: min(34rem, 58vw);
@@ -216,13 +245,15 @@ body,
   opacity: 0.72;
 }
 
-.dark .hero-section::before {
+.dark .hero-section::before,
+.dark .contact-section::before {
   background:
     radial-gradient(circle at 82% 18%, rgba(59, 130, 246, 0.13), transparent 38%),
     radial-gradient(circle at 66% 72%, rgba(14, 165, 233, 0.09), transparent 34%);
 }
 
-.dark .hero-section::after {
+.dark .hero-section::after,
+.dark .contact-section::after {
   opacity: 0.58;
 }
 
