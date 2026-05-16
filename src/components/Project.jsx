@@ -1,182 +1,335 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { projects } from '../data/PortfolioData';
-import { Github, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import BlurText from './reactbits/BlurText';
+import { useMemo, useState } from 'react';
+import {
+  ArrowUpRight,
+  BrainCircuit,
+  Cloud,
+  Code2,
+  Github,
+  Layers3,
+  Server,
+  Smartphone,
+  TerminalSquare,
+} from 'lucide-react';
 import ScrollReveal from './reactbits/ScrollReveal';
 import AbstractBackground from './AbstractBackground';
 
-const ProjectCard = ({ project }) => {
-  return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer duration-300 h-full border border-[#E2E8F0] dark:border-gray-700">
-      <div className="relative overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-52 object-cover transition-transform duration-500 hover:scale-105"
-        />
-        <div className="absolute top-3 right-3">
-          <span className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-blue-600 dark:text-sky-500 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
-            {project.type}
-          </span>
-        </div>
-      </div>
-      <div className="p-5">
-        <h3 className="font-bold text-lg mb-2 dark:text-white">{project.title}</h3>
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed line-clamp-2">{project.description}</p>
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.technologies.slice(0, 4).map((tech, index) => (
-            <span key={index} className="bg-[#EFF6FF] text-[#2563EB] dark:bg-blue-900/30 dark:text-blue-400 px-2.5 py-1 rounded-full text-xs font-medium">
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 4 && (
-            <span className="bg-gray-100 text-gray-500 dark:bg-gray-700 dark:text-gray-400 px-2.5 py-1 rounded-full text-xs font-medium">
-              +{project.technologies.length - 4}
-            </span>
-          )}
-        </div>
+const filters = ['All', 'Backend', 'Cloud/DevOps', 'AI/ML', 'Full Stack', 'Mobile', 'Go'];
 
-        <a
-          href={project.githubUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-600 bg-[#EFF6FF] rounded-lg hover:bg-blue-100 hover:text-[#1D4ED8] transition-all duration-200 dark:bg-blue-900/20 dark:text-blue-400 dark:hover:bg-blue-900/40"
-        >
-          <Github size={16} />
-          View Source
-        </a>
+const projectIconMap = {
+  backend: Server,
+  cloud: Cloud,
+  ai: BrainCircuit,
+  go: TerminalSquare,
+  mobile: Smartphone,
+  fullstack: Layers3,
+  frontend: Code2,
+  devops: Cloud,
+};
+
+const projects = [
+  {
+    id: 'restrox',
+    title: 'Restrox Restaurant Management System',
+    category: 'Backend & Cloud',
+    filters: ['Backend', 'Cloud/DevOps'],
+    description: 'Production-style restaurant management system with role-based workflows, QR ordering, inventory management, and real-time kitchen/order updates.',
+    tech: ['Node.js', 'Express.js', 'MongoDB', 'Socket.IO', 'Docker', 'AWS ECS', 'ECR', 'ALB', 'SSM', 'CloudWatch', 'Terraform', 'GitHub Actions'],
+    sourceUrl: 'https://github.com/umess-ss/restrox-resturant',
+    iconType: 'cloud',
+    featured: true,
+  },
+  {
+    id: 'daai',
+    title: 'DAAI Fellowship Platform',
+    category: 'Full Stack / LMS',
+    filters: ['Full Stack', 'Backend'],
+    description: 'Fellowship learning management platform with public website, admin dashboard, fellow dashboard, quiz modules, course/track flow, and role-based navigation.',
+    tech: ['FastAPI', 'React', 'MongoDB', 'Tailwind CSS', 'RBAC', 'LMS'],
+    sourceUrl: '#',
+    iconType: 'fullstack',
+    featured: true,
+  },
+  {
+    id: 'banking-api',
+    title: 'Banking API App',
+    category: 'Go Backend',
+    filters: ['Go', 'Backend'],
+    description: 'Banking backend application built with Go to practice clean project structure, middleware, response helpers, PostgreSQL repositories, migrations, safe DB transactions, register/login, protected routes, and account ownership.',
+    tech: ['Go', 'PostgreSQL', 'REST API', 'Middleware', 'JWT', 'Transactions'],
+    sourceUrl: '#',
+    iconType: 'go',
+    featured: true,
+  },
+  {
+    id: 'light-orm',
+    title: 'Light ORM',
+    category: 'Python Internals',
+    filters: ['Backend'],
+    description: 'Minimal ORM built from scratch to understand Python descriptors, metaclasses, model fields, table mapping, SQLite integration, and query logic.',
+    tech: ['Python', 'SQLite', 'OOP', 'Descriptors', 'Metaclasses', 'ORM'],
+    sourceUrl: 'https://github.com/umess-ss/light-orm',
+    iconType: 'backend',
+  },
+  {
+    id: 'emotion-detection',
+    title: 'Emotion Detection',
+    category: 'AI / ML',
+    filters: ['AI/ML'],
+    description: 'Python-based emotion detection project exploring machine learning/computer vision workflows.',
+    tech: ['Python', 'AI/ML', 'Computer Vision'],
+    sourceUrl: 'https://github.com/umess-ss/emotion-detection',
+    iconType: 'ai',
+  },
+  {
+    id: 'blind-navigation',
+    title: 'Blind Navigation Assistant App',
+    category: 'AI / Mobile',
+    filters: ['AI/ML', 'Mobile'],
+    description: 'Assistive navigation app for visually impaired users, focused on indoor navigation and AI-assisted object/depth awareness.',
+    tech: ['Kotlin', 'Android', 'YOLO', 'MIDAS', 'Computer Vision'],
+    sourceUrl: 'https://github.com/umess-ss/Blind-Navigation-Assistant-App',
+    iconType: 'mobile',
+  },
+  {
+    id: 'trading-dashboard',
+    title: 'Trading Dashboard',
+    category: 'Backend / DevOps',
+    filters: ['Backend', 'Cloud/DevOps'],
+    description: 'Trading dashboard project focused on backend foundation, Docker-based workflow, and CI/CD pipeline practice.',
+    tech: ['Python', 'Docker', 'GitHub Actions', 'Backend'],
+    sourceUrl: 'https://github.com/umess-ss/trading-dashboard',
+    iconType: 'devops',
+  },
+  {
+    id: 'hamroawaj',
+    title: 'HamroAwaj - Smart City Platform',
+    category: 'Full Stack / Hackathon',
+    filters: ['Full Stack', 'Backend'],
+    description: 'Civic complaint platform where citizens report city-related problems and authorities can track and respond to issues.',
+    tech: ['TypeScript', 'React', 'Django', 'Tailwind CSS'],
+    sourceUrl: 'https://github.com/umess-ss/protobytes-2.0-team--BEI-BEAST-',
+    iconType: 'fullstack',
+  },
+  {
+    id: 'bigdata-hadoop',
+    title: 'Big Data Docker Hadoop',
+    category: 'Data Engineering / DevOps',
+    filters: ['Cloud/DevOps'],
+    description: 'Big data environment setup using Docker and Hadoop ecosystem concepts.',
+    tech: ['Docker', 'Hadoop', 'Makefile', 'Big Data'],
+    sourceUrl: 'https://github.com/umess-ss/bigdata-docker-hadoop',
+    iconType: 'devops',
+  },
+  {
+    id: 'expense-tracker',
+    title: 'Django Expense Tracker',
+    category: 'Backend',
+    filters: ['Backend'],
+    description: 'Backend-focused expense management system for tracking user expenses.',
+    tech: ['Django', 'Backend', 'REST API'],
+    sourceUrl: 'https://github.com/umess-ss/django-expense-tracker',
+    iconType: 'backend',
+  },
+  {
+    id: 'saas-content-planner',
+    title: 'SaaS Content Planner',
+    category: 'Full Stack',
+    filters: ['Full Stack'],
+    description: 'SaaS-style content planning project exploring dashboard/productivity workflows.',
+    tech: ['TypeScript', 'SaaS', 'Dashboard'],
+    sourceUrl: 'https://github.com/umess-ss/saas-content-planner',
+    iconType: 'fullstack',
+  },
+  {
+    id: 'portfolio',
+    title: 'Portfolio Website',
+    category: 'Frontend / Personal Brand',
+    filters: ['Full Stack'],
+    description: 'Personal developer portfolio website showcasing projects, resume, skills, and cloud/backend engineering journey.',
+    tech: ['React', 'JavaScript', 'Tailwind CSS', 'Portfolio'],
+    sourceUrl: 'https://github.com/umess-ss/my-self',
+    iconType: 'frontend',
+  },
+];
+
+const ProjectVisual = ({ iconType, featured }) => {
+  const Icon = projectIconMap[iconType] || Server;
+
+  return (
+    <div className={`project-visual relative flex items-center justify-center overflow-hidden rounded-[18px] ${featured ? 'h-36' : 'h-28'}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(135deg,rgba(37,99,235,0.92),rgba(14,165,233,0.58))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:22px_22px] opacity-35" />
+      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/25 bg-white/14 text-white shadow-[0_18px_60px_rgba(2,6,23,0.25)] backdrop-blur-md">
+        <Icon size={featured ? 34 : 30} strokeWidth={1.8} />
       </div>
     </div>
   );
 };
 
-export default function Projects() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const [slidesPerView, setSlidesPerView] = useState(3);
-  const intervalRef = useRef(null);
-
-  // Responsive slides count
-  useEffect(() => {
-    const updateSlides = () => {
-      if (window.innerWidth < 640) setSlidesPerView(1);
-      else if (window.innerWidth < 1024) setSlidesPerView(2);
-      else setSlidesPerView(3);
-    };
-    updateSlides();
-    window.addEventListener('resize', updateSlides);
-    return () => window.removeEventListener('resize', updateSlides);
-  }, []);
-
-  const maxIndex = Math.max(0, projects.length - slidesPerView);
-
-  const goNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-  }, [maxIndex]);
-
-  const goPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-  }, [maxIndex]);
-
-  // Auto-slide every 4 seconds
-  useEffect(() => {
-    if (isPaused) return;
-    intervalRef.current = setInterval(goNext, 4000);
-    return () => clearInterval(intervalRef.current);
-  }, [goNext, isPaused]);
-
-  const handleMouseEnter = () => setIsPaused(true);
-  const handleMouseLeave = () => setIsPaused(false);
+const ProjectCard = ({ project, featured = false }) => {
+  const sourceDisabled = project.sourceUrl === '#';
 
   return (
-    <section id="projects" className="relative min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-900 overflow-hidden transition-colors duration-300">
-      <AbstractBackground variant="both" opacity={0.05} colorClass="text-sky-500 dark:text-sky-500" flip />
-      <div className="container mx-auto px-4">
-        {/* Header with nav buttons */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-          <div>
-            <ScrollReveal direction="up" distance={20}>
-              <p className="text-sky-500 font-semibold mb-2">MY PORTFOLIO</p>
-            </ScrollReveal>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              <BlurText
-                text="See My Recent"
-                animateBy="words"
-                delay={80}
-                direction="top"
-              />{" "}
-              <BlurText
-                text="Projects"
-                animateBy="words"
-                delay={100}
-                direction="bottom"
-                className="text-blue-600"
-              />
-            </h2>
-          </div>
+    <article className={`project-card group flex h-full flex-col rounded-[20px] p-4 transition-all duration-300 hover:-translate-y-1.5 ${featured ? 'project-card-featured' : ''}`}>
+      <div className="relative">
+        <ProjectVisual iconType={project.iconType} featured={featured} />
+        <span className="absolute right-3 top-3 rounded-full border border-blue-300/25 bg-white/85 px-3 py-1 text-xs font-bold text-blue-700 shadow-sm backdrop-blur dark:bg-slate-950/72 dark:text-blue-100">
+          {project.category}
+        </span>
+      </div>
 
-          {/* Navigation buttons */}
-          <div className="flex items-center gap-3 mt-6 md:mt-0">
-            <button
-              onClick={goPrev}
-              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-blue-600 hover:text-blue-600 dark:hover:border-sky-500 dark:hover:text-sky-500 transition-all duration-200 hover:shadow-md cursor-pointer outline-none focus:outline-none"
-              aria-label="Previous project"
-            >
-              <ChevronLeft size={20} />
-            </button>
-            <button
-              onClick={goNext}
-              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-blue-600 hover:text-blue-600 dark:hover:border-sky-500 dark:hover:text-sky-500 transition-all duration-200 hover:shadow-md cursor-pointer outline-none focus:outline-none"
-              aria-label="Next project"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+      <div className="flex flex-1 flex-col pt-5">
+        <h3 className={`${featured ? 'text-xl' : 'text-lg'} font-bold leading-snug text-[#0F172A] dark:text-white`}>
+          {project.title}
+        </h3>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#475569] dark:text-gray-300">
+          {project.description}
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {project.tech.map((tech) => (
+            <span key={tech} className="rounded-full border border-blue-400/20 bg-blue-500/10 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+              {tech}
+            </span>
+          ))}
         </div>
 
-        {/* Carousel */}
-        <ScrollReveal direction="up" distance={30}>
-          <div
-            className="overflow-hidden"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <motion.div
-              className="flex gap-6"
-              animate={{ x: `-${currentIndex * (100 / slidesPerView + (6 * 4 / (typeof window !== 'undefined' ? window.innerWidth : 1024)) * 100 / slidesPerView)}%` }}
-              transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-              style={{ x: 0 }}
+        <div className="mt-6 flex flex-wrap gap-3">
+          {sourceDisabled ? (
+            <span className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-slate-300/70 px-4 py-2 text-sm font-semibold text-slate-400 dark:border-slate-700 dark:text-slate-500">
+              <Github size={16} />
+              View Source
+            </span>
+          ) : (
+            <a
+              href={project.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:shadow-blue-500/30"
             >
-              {projects.map((project) => (
-                <div
-                  key={project.id}
-                  className="flex-shrink-0"
-                  style={{ width: `calc(${100 / slidesPerView}% - ${(slidesPerView - 1) * 24 / slidesPerView}px)` }}
-                >
-                  <ProjectCard project={project} />
-                </div>
-              ))}
-            </motion.div>
+              <Github size={16} />
+              View Source
+            </a>
+          )}
+          {featured && (
+            sourceDisabled ? (
+              <span className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-blue-400/25 px-4 py-2 text-sm font-semibold text-blue-700 opacity-60 dark:text-blue-100">
+                View Details
+                <ArrowUpRight size={16} />
+              </span>
+            ) : (
+              <a
+                href={project.sourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-blue-400/25 px-4 py-2 text-sm font-semibold text-blue-700 transition-all duration-300 hover:border-blue-400/60 hover:bg-blue-500/10 dark:text-blue-100"
+              >
+                View Details
+                <ArrowUpRight size={16} />
+              </a>
+            )
+          )}
+        </div>
+      </div>
+    </article>
+  );
+};
+
+export default function Projects() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === 'All') return projects;
+    return projects.filter((project) => project.filters.includes(activeFilter));
+  }, [activeFilter]);
+
+  const featuredProjects = filteredProjects.filter((project) => project.featured);
+  const regularProjects = filteredProjects.filter((project) => !project.featured);
+
+  return (
+    <section id="projects" className="projects-section relative overflow-hidden bg-[#FBFAFC] py-20 dark:bg-gray-900 transition-colors duration-300">
+      <div className="projects-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
+      <AbstractBackground variant="both" opacity={0.022} colorClass="text-sky-500 dark:text-sky-500" flip />
+
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4">
+        <ScrollReveal direction="up" distance={20}>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
+              MY PORTFOLIO
+            </p>
+            <h2 className="mt-4 text-4xl font-bold leading-tight text-[#0F172A] dark:text-white md:text-5xl">
+              Featured{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-transparent">
+                Projects
+              </span>
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-[#475569] dark:text-gray-300 md:text-lg">
+              A collection of backend, cloud, AI, and full-stack projects I’ve built while learning production-grade engineering.
+            </p>
           </div>
         </ScrollReveal>
 
-        {/* Dot indicators */}
-        <div className="flex justify-center gap-2 mt-8">
-          {Array.from({ length: maxIndex + 1 }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrentIndex(i)}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer outline-none focus:outline-none ${
-                i === currentIndex
-                  ? "w-8 bg-blue-600 dark:bg-sky-500"
-                  : "w-2 bg-gray-300 dark:bg-gray-600 hover:bg-blue-300 dark:hover:bg-blue-700"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+        <ScrollReveal direction="up" distance={18} delay={0.05}>
+          <div className="mt-8 flex gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible">
+            {filters.map((filter) => {
+              const isActive = activeFilter === filter;
+              return (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`project-filter-pill shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
+                    isActive
+                      ? 'project-filter-pill-active text-white'
+                      : 'border-blue-400/20 bg-white/65 text-[#475569] hover:border-blue-400/50 hover:text-blue-600 dark:bg-slate-900/42 dark:text-gray-300 dark:hover:text-sky-200'
+                  }`}
+                >
+                  {filter}
+                </button>
+              );
+            })}
+          </div>
+        </ScrollReveal>
+
+        {featuredProjects.length > 0 && (
+          <ScrollReveal direction="up" distance={30} delay={0.08}>
+            <div className="mt-8 grid gap-5 lg:grid-cols-3">
+              {featuredProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} featured />
+              ))}
+            </div>
+          </ScrollReveal>
+        )}
+
+        {regularProjects.length > 0 && (
+          <ScrollReveal direction="up" distance={30} delay={0.12}>
+            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {regularProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </ScrollReveal>
+        )}
+
+        {filteredProjects.length === 0 && (
+          <p className="mt-12 text-center text-[#64748B] dark:text-gray-400">
+            No projects found for this category.
+          </p>
+        )}
+
+        <div className="mt-12 flex justify-center">
+          <a
+            href="https://github.com/umess-ss"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-white/70 px-6 py-3 font-semibold text-blue-700 shadow-lg shadow-blue-500/10 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/60 hover:bg-blue-500/10 dark:bg-slate-900/50 dark:text-blue-100"
+          >
+            <Github size={18} />
+            View More on GitHub
+            <ArrowUpRight size={18} />
+          </a>
         </div>
       </div>
     </section>
   );
-};
+}
