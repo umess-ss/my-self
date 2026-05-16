@@ -164,39 +164,39 @@ const experienceItems = [
 ];
 
 const Tag = ({ children }) => (
-  <span className="inline-flex rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+  <span className="inline-flex max-w-full rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
     {children}
   </span>
 );
 
 const PanelCard = ({ children, className = '' }) => (
-  <div className={`resume-glass-card rounded-[18px] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:shadow-[0_24px_70px_rgba(37,99,235,0.18)] ${className}`}>
+  <div className={`resume-glass-card w-full max-w-full overflow-hidden rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:shadow-[0_24px_70px_rgba(37,99,235,0.18)] sm:rounded-[18px] sm:p-5 ${className}`}>
     {children}
   </div>
 );
 
 const EducationPanel = () => (
-  <div className="relative space-y-5 pl-7">
-    <div className="absolute left-[9px] top-3 h-[calc(100%-1.5rem)] w-px bg-gradient-to-b from-blue-500/60 via-sky-400/25 to-transparent" />
+  <div className="relative w-full max-w-full space-y-5 pl-5 sm:pl-7">
+    <div className="absolute left-[7px] top-3 h-[calc(100%-1.5rem)] w-px bg-gradient-to-b from-blue-500/60 via-sky-400/25 to-transparent sm:left-[9px]" />
     {educationItems.map((item) => (
-      <div key={item.title} className="relative">
-        <div className="absolute -left-7 top-6 h-5 w-5 rounded-full border-4 border-[#FBFAFC] bg-gradient-to-br from-blue-600 to-sky-400 shadow-[0_0_26px_rgba(37,99,235,0.45)] dark:border-gray-800" />
+      <div key={item.title} className="relative w-full max-w-full">
+        <div className="absolute -left-5 top-6 h-4 w-4 rounded-full border-[3px] border-[#FBFAFC] bg-gradient-to-br from-blue-600 to-sky-400 shadow-[0_0_26px_rgba(37,99,235,0.45)] dark:border-gray-800 sm:-left-7 sm:h-5 sm:w-5 sm:border-4" />
         <PanelCard>
           <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <h3 className="text-xl font-bold text-[#0F172A] dark:text-white">{item.title}</h3>
-              <p className="mt-1 font-semibold text-blue-600 dark:text-sky-300">{item.institution}</p>
+            <div className="min-w-0 max-w-full">
+              <h3 className="break-words text-lg font-bold leading-snug text-[#0F172A] dark:text-white sm:text-xl">{item.title}</h3>
+              <p className="mt-1 break-words font-semibold text-blue-600 dark:text-sky-300">{item.institution}</p>
             </div>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-[#475569] dark:text-blue-100">
-              <MapPin size={13} />
-              {item.meta}
+            <span className="inline-flex max-w-full items-start gap-1.5 rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold leading-relaxed text-[#475569] dark:text-blue-100">
+              <MapPin size={13} className="mt-0.5 shrink-0" />
+              <span className="min-w-0 break-words">{item.meta}</span>
             </span>
           </div>
           <ul className="space-y-2 text-sm leading-relaxed text-[#475569] dark:text-gray-300">
             {item.bullets.map((bullet) => (
               <li key={bullet} className="flex gap-2">
                 <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-blue-500" />
-                <span>{bullet}</span>
+                <span className="min-w-0 break-words">{bullet}</span>
               </li>
             ))}
           </ul>
@@ -207,15 +207,15 @@ const EducationPanel = () => (
 );
 
 const TrainingsPanel = () => (
-  <div className="grid gap-4 lg:grid-cols-3">
+  <div className="grid w-full max-w-full gap-4 lg:grid-cols-3">
     {trainingItems.map((item) => (
       <PanelCard key={item.title} className="flex flex-col">
         <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-600 dark:text-sky-300">
           <Award size={22} />
         </div>
-        <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">{item.title}</h3>
-        <p className="mt-1 text-sm font-semibold text-blue-600 dark:text-sky-300">{item.issuer}</p>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#475569] dark:text-gray-300">{item.description}</p>
+        <h3 className="break-words text-lg font-bold text-[#0F172A] dark:text-white">{item.title}</h3>
+        <p className="mt-1 break-words text-sm font-semibold text-blue-600 dark:text-sky-300">{item.issuer}</p>
+        <p className="mt-3 flex-1 break-words text-sm leading-relaxed text-[#475569] dark:text-gray-300">{item.description}</p>
         <div className="mt-5 flex flex-wrap gap-2">
           {item.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
         </div>
@@ -225,7 +225,7 @@ const TrainingsPanel = () => (
 );
 
 const HardSkillsPanel = () => (
-  <div className="grid gap-4 lg:grid-cols-2">
+  <div className="grid w-full max-w-full gap-4 lg:grid-cols-2">
     {skillGroups.map(({ label, icon: Icon, skills }) => (
       <PanelCard key={label}>
         <div className="mb-4 flex items-center gap-3">
@@ -234,7 +234,7 @@ const HardSkillsPanel = () => (
           </div>
           <h3 className="text-lg font-bold text-[#0F172A] dark:text-white">{label}</h3>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex max-w-full flex-wrap gap-2">
           {skills.map((skill) => <Tag key={skill}>{skill}</Tag>)}
         </div>
       </PanelCard>
@@ -243,7 +243,7 @@ const HardSkillsPanel = () => (
 );
 
 const SoftSkillsPanel = () => (
-  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <div className="grid w-full max-w-full gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {softSkills.map(({ title, icon: Icon }) => (
       <PanelCard key={title} className="min-h-32">
         <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-600 dark:text-sky-300">
@@ -256,29 +256,29 @@ const SoftSkillsPanel = () => (
 );
 
 const ExperiencePanel = () => (
-  <div className="space-y-4">
+  <div className="w-full max-w-full space-y-4">
     {experienceItems.map((item) => (
       <PanelCard key={`${item.role}-${item.project}`}>
         <div className="mb-4 flex flex-wrap items-start justify-between gap-3">
-          <div>
-            <h3 className="text-xl font-bold text-[#0F172A] dark:text-white">{item.role}</h3>
-            <p className="mt-1 font-semibold text-blue-600 dark:text-sky-300">{item.project}</p>
-            <p className="mt-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#64748B] dark:text-gray-400">{item.meta}</p>
+          <div className="min-w-0 max-w-full">
+            <h3 className="break-words text-lg font-bold text-[#0F172A] dark:text-white sm:text-xl">{item.role}</h3>
+            <p className="mt-1 break-words font-semibold text-blue-600 dark:text-sky-300">{item.project}</p>
+            <p className="mt-2 break-words text-xs font-semibold uppercase tracking-[0.12em] text-[#64748B] dark:text-gray-400">{item.meta}</p>
           </div>
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-[#475569] dark:text-blue-100">
+          <span className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-blue-400/20 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-[#475569] dark:text-blue-100">
             <BriefcaseBusiness size={13} />
             Project-based
           </span>
         </div>
         <ul className="space-y-2 text-sm leading-relaxed text-[#475569] dark:text-gray-300">
           {item.bullets.map((bullet) => (
-            <li key={bullet} className="flex gap-2">
-              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-blue-500" />
-              <span>{bullet}</span>
-            </li>
+              <li key={bullet} className="flex gap-2">
+                <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-blue-500" />
+                <span className="min-w-0 break-words">{bullet}</span>
+              </li>
           ))}
         </ul>
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-5 flex max-w-full flex-wrap gap-2">
           {item.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
         </div>
       </PanelCard>
@@ -298,17 +298,17 @@ const Resume = () => {
   const [activeCategory, setActiveCategory] = useState('education');
 
   return (
-    <section id="resume" className="resume-section relative overflow-hidden bg-[#FBFAFC] pt-12 pb-16 dark:bg-gray-900 transition-colors duration-300">
+    <section id="resume" className="resume-section relative w-full max-w-full overflow-hidden bg-[#FBFAFC] px-0 pt-10 pb-12 transition-colors duration-300 dark:bg-gray-900 sm:pt-12 sm:pb-16">
       <div className="resume-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
       <AbstractBackground variant="both" opacity={0.02} colorClass="text-sky-500 dark:text-sky-500" />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1160px] px-4">
+      <div className="relative z-10 mx-auto w-full max-w-[1160px] overflow-hidden px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up" distance={20}>
-          <div className="mb-7">
+          <div className="mb-6 max-w-full sm:mb-7">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
               MY RESUME
             </p>
-            <h2 className="mt-4 text-4xl font-bold leading-tight text-[#0F172A] dark:text-white md:text-5xl">
+            <h2 className="mt-4 max-w-full break-words text-3xl font-bold leading-tight text-[#0F172A] dark:text-white sm:text-4xl lg:text-5xl">
               Experience &{" "}
               <span className="bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-transparent">
                 Skills
@@ -317,10 +317,10 @@ const Resume = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
-          <ScrollReveal direction="left" distance={30} delay={0.05}>
-            <nav aria-label="Resume categories" className="lg:sticky lg:top-28">
-              <div className="flex gap-3 overflow-x-auto pb-3 lg:flex-col lg:overflow-visible lg:pb-0">
+        <div className="grid w-full max-w-full min-w-0 gap-4 sm:gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
+          <ScrollReveal direction="left" distance={30} delay={0.05} className="min-w-0 max-w-full">
+            <nav aria-label="Resume categories" className="w-full max-w-full lg:sticky lg:top-28">
+              <div className="scrollbar-hide flex w-full max-w-full gap-2 overflow-x-auto whitespace-nowrap pb-3 sm:gap-3 lg:flex-col lg:overflow-visible lg:pb-0">
                 {categories.map(({ key, label, icon: Icon }) => {
                   const isActive = activeCategory === key;
                   return (
@@ -328,16 +328,16 @@ const Resume = () => {
                       key={key}
                       type="button"
                       onClick={() => setActiveCategory(key)}
-                      className={`resume-tab group inline-flex shrink-0 items-center gap-3 rounded-full border px-4 py-3 text-sm font-semibold transition-all duration-300 lg:w-full lg:rounded-2xl ${
+                      className={`resume-tab group inline-flex shrink-0 items-center gap-2 rounded-full border px-3 py-2.5 text-xs font-semibold transition-all duration-300 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm lg:w-full lg:rounded-2xl ${
                         isActive
                           ? 'resume-tab-active text-white'
                           : 'border-blue-400/15 bg-white/60 text-[#475569] hover:-translate-y-0.5 hover:border-blue-400/40 hover:text-blue-600 dark:bg-slate-900/40 dark:text-gray-300 dark:hover:text-sky-200'
                       }`}
                     >
-                      <span className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors sm:h-9 sm:w-9 ${
                         isActive ? 'bg-white/[0.18] text-white' : 'bg-blue-500/10 text-blue-600 dark:text-sky-300'
                       }`}>
-                        <Icon size={18} />
+                        <Icon size={16} className="sm:h-[18px] sm:w-[18px]" />
                       </span>
                       {label}
                     </button>
@@ -347,8 +347,8 @@ const Resume = () => {
             </nav>
           </ScrollReveal>
 
-          <ScrollReveal direction="right" distance={30} delay={0.1}>
-            <div className="resume-content-panel rounded-[28px] p-4 sm:p-6 lg:p-7">
+          <ScrollReveal direction="right" distance={30} delay={0.1} className="min-w-0 max-w-full">
+            <div className="resume-content-panel w-full max-w-full overflow-hidden rounded-2xl p-3 sm:rounded-[28px] sm:p-6 lg:p-7">
               {panels[activeCategory]}
             </div>
           </ScrollReveal>
