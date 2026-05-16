@@ -28,8 +28,8 @@ export default function Home({ splashDone = false }) {
       {/* Decorative background layers */}
       <AbstractBackground variant="waves" opacity={0.08} colorClass="text-sky-500 dark:text-sky-500" />
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(251,250,252,0.98)_0%,rgba(239,246,255,0.72)_48%,rgba(251,250,252,0.98)_100%)] dark:bg-[linear-gradient(115deg,rgba(15,23,42,0.98)_0%,rgba(12,34,66,0.48)_48%,rgba(15,23,42,0.98)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(37,99,235,0.05)_1px,transparent_1px),linear-gradient(0deg,rgba(14,165,233,0.04)_1px,transparent_1px)] bg-[size:72px_72px] dark:bg-[linear-gradient(90deg,rgba(37,99,235,0.08)_1px,transparent_1px),linear-gradient(0deg,rgba(14,165,233,0.06)_1px,transparent_1px)]" />
+        <div className="portfolio-hero-bg absolute inset-0" />
+        <div className="portfolio-hero-grid absolute inset-0" />
       </div>
 
       <div className="container mx-auto px-4">

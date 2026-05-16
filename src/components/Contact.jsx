@@ -65,9 +65,13 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-800 overflow-hidden transition-colors duration-300">
+    <section id="contact" className="contact-section relative min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-950 overflow-hidden transition-colors duration-300">
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="portfolio-hero-bg absolute inset-0" />
+        <div className="portfolio-hero-grid absolute inset-0" />
+      </div>
       <AbstractBackground variant="waves" opacity={0.04} colorClass="text-sky-500 dark:text-sky-500" />
-      <div className="container mx-auto px-4">
+      <div className="container relative z-10 mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">
           <BlurText
             text="Contact"
