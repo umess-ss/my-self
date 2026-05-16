@@ -1,199 +1,285 @@
 export const blogPosts = [
   {
     id: 1,
-    title: "Orchestrating LLMs: Building RAG Pipelines with Langchain and Gemini",
+    title: "Orchestrating LLMs: Building RAG Pipelines with LangChain and Gemini",
+    category: "AI / Backend",
+    tag: "AI / Backend",
     date: "14 Feb 2026",
-    tag: "Generative AI",
-    excerpt: "Exploring the integration of Gemini and Langchain to create context-aware AI applications with Crawl4ai for real-time data retrieval.",
-    image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=800&auto=format&fit=crop",
+    readTime: "6 min read",
+    author: "Umesh Rajbanshi",
+    excerpt: "How RAG pipelines connect LLMs with live data using LangChain, Gemini, vector search, and retrieval workflows.",
+    tags: ["LangChain", "Gemini", "RAG", "Python", "Crawl4AI"],
+    filters: ["AI", "Backend", "Python"],
+    iconType: "ai",
     content: `
-# Orchestrating LLMs with RAG
+## Why RAG Matters
 
-In the era of Generative AI, static models are no longer enough. Even the most powerful LLMs have a "cutoff date," meaning they don't know what happened this morning. To build truly intelligent applications, we need **Retrieval-Augmented Generation (RAG)**.
+Large language models are useful, but they are limited when the answer depends on private documents, fresh website data, or internal project knowledge. Retrieval-Augmented Generation adds a lookup step before generation, so the model can respond with context instead of guessing.
 
-### Why RAG Matters
-RAG acts like an "open-book exam" for your AI. Instead of relying solely on its memory, the model looks up specific documents to answer a query. This reduces "hallucinations" and ensures your chatbot provides factual, up-to-date information.
+For a backend engineer, the interesting part is not only the prompt. It is the system around the prompt: ingestion, chunking, embeddings, vector search, retrieval quality, and response grounding.
 
-### Our Modern Stack
-* **Gemini 1.5 Flash**: Our core reasoning engine, chosen for its speed and massive context window.
-* **Langchain**: The "glue" that chains prompts, vector databases, and retrievers together.
-* **Crawl4ai**: A powerful tool for converting messy websites into clean, LLM-friendly markdown.
+## A Practical Pipeline
 
-### A Simple Implementation
-By using Langchain, we can connect Gemini to a live data source in just a few lines of code:
+A simple RAG flow usually looks like this:
+
+1. Collect source documents from files, APIs, or crawled pages.
+2. Clean and chunk the content into retrieval-friendly sections.
+3. Embed each chunk and store it in a vector index.
+4. Retrieve the most relevant chunks for a user query.
+5. Send the retrieved context to Gemini with a focused prompt.
 
 \`\`\`python
-from langchain_google_genai import ChatGoogleGenerativeAI
+def answer_question(query, retriever, model):
+    context = retriever.search(query, top_k=5)
+    prompt = f"""
+    Use only this context to answer:
+    {context}
 
-# Initialize the model
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
-
-# The RAG logic: Fetch data -> Vectorize -> Query -> Generate
-# This ensures Gemini answers based on YOUR data, not just training data.
+    Question: {query}
+    """
+    return model.invoke(prompt)
 \`\`\`
 
----
+## Lessons Learned
 
-### The Result
-Real-time data retrieval is the bridge between a generic chatbot and a specialized AI expert. By feeding Gemini fresh data from Crawl4ai, we create applications that actually understand the current state of the world.
-    `
+RAG quality depends heavily on data preparation. Bad chunks create weak retrieval, and weak retrieval creates vague answers. The best improvements often come from better document cleaning, smaller focused chunks, metadata filters, and simple evaluation prompts.
+
+> A good RAG system is less about making the model sound smart and more about making the retrieved context trustworthy.
+
+## Where LangChain Fits
+
+LangChain is useful for connecting loaders, splitters, retrievers, prompts, and model calls. Gemini handles the reasoning, while tools like Crawl4AI can turn messy web pages into cleaner markdown for indexing.
+
+The backend challenge is making the pipeline reliable enough to run repeatedly, observe failures, and improve retrieval over time.
+    `,
   },
   {
     id: 2,
     title: "MLOps Essentials: Containerizing Deep Learning Models with Docker",
+    category: "MLOps / DevOps",
+    tag: "MLOps / DevOps",
     date: "10 Feb 2026",
-    tag: "MLOps & DevOps",
-    excerpt: "A guide on using Docker and GitHub Actions to automate the deployment of computer vision models like YOLO and MIDAS.",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400",
+    readTime: "5 min read",
+    author: "Umesh Rajbanshi",
+    excerpt: "A practical note on packaging computer vision models like YOLO and MiDaS using Docker and CI/CD-friendly workflows.",
+    tags: ["Docker", "MLOps", "YOLO", "MiDaS", "GitHub Actions"],
+    filters: ["DevOps", "AI"],
+    iconType: "devops",
     content: `
-# Containerizing Deep Learning
+## Why Containerize Models
 
-"It works on my machine" is a phrase that haunts every developer. When it comes to Deep Learning, differing versions of CUDA, Python, or PyTorch can break a model instantly. Dockerizing models like **YOLO** or **MIDAS** ensures consistency from your laptop to the cloud.
+Computer vision projects often depend on exact versions of Python, model weights, OpenCV, PyTorch, and system libraries. Docker gives the model a repeatable runtime, which makes development, testing, and deployment much easier.
 
-### The MLOps Workflow
-1.  **Lightweight Base Images**: We avoid heavy OS installs by using "slim" Python images to keep our deployments fast.
-2.  **GPU Acceleration**: Using the NVIDIA Container Toolkit, we allow Docker to "talk" to the local GPU, ensuring our models run at lightning speed.
-3.  **CI/CD Automation**: With GitHub Actions, every time you push code, a new Docker image is built and tested automatically.
+When models like YOLO or MiDaS move from a notebook into an application, the deployment workflow matters as much as the model code.
 
-### Why use Docker for AI?
-* **Isolation**: Run multiple models with different requirements on the same server without conflicts.
-* **Portability**: Package your model once and run it anywhere—AWS, Google Cloud, or an edge device.
-* **Scalability**: Docker makes it easy to spin up 10 copies of your model to handle high traffic using Kubernetes.
+## A Clean Container Setup
 
-Containerization isn't just a trend; it is the foundation of modern, reliable MLOps.
-    `
+A practical image should keep dependencies explicit and avoid unnecessary weight.
+
+\`\`\`dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+CMD ["python", "app.py"]
+\`\`\`
+
+## CI/CD Friendly Workflow
+
+The deployment flow can be simple:
+
+1. Push code to GitHub.
+2. Run tests and lint checks.
+3. Build a Docker image.
+4. Push the image to a registry.
+5. Deploy the new image to a service.
+
+This creates a stable path from experiment to production.
+
+## MLOps Takeaway
+
+MLOps is not only model training. It is packaging, versioning, reproducibility, monitoring, and rollback. Docker is usually the first serious step toward making AI projects operational.
+    `,
   },
   {
     id: 3,
     title: "Scaling Backend Infrastructure on AWS: From EC2 to VPC Security",
-    date: "05 Feb 2026",
+    category: "Cloud Operations",
     tag: "Cloud Operations",
-    excerpt: "Best practices for setting up secure, scalable cloud environments for production-grade backend architectures.",
-    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&auto=format&fit=crop",
+    date: "05 Feb 2026",
+    readTime: "7 min read",
+    author: "Umesh Rajbanshi",
+    excerpt: "Lessons learned while setting up secure and scalable AWS infrastructure for production-style backend systems.",
+    tags: ["AWS", "EC2", "VPC", "Security", "Backend"],
+    filters: ["Cloud", "Backend", "System Design"],
+    iconType: "cloud",
     content: `
-# AWS Infrastructure at Scale
+## From Server to Infrastructure
 
-Building on the cloud is easy; building *securely* is the real challenge. As your application grows, a single server isn't enough. You need a resilient architecture that can handle thousands of users while keeping their data safe.
+Running a backend on one EC2 instance is a useful start, but production systems need clearer boundaries. Networking, security groups, subnets, secrets, logs, and deployment strategy all become part of the backend.
 
-### Security by Design
-We don't just launch an EC2 instance into the wild. We use a **Virtual Private Cloud (VPC)** to create a private network:
-* **Public Subnets**: Reserved only for Load Balancers that "talk" to the internet.
-* **Private Subnets**: This is where the magic happens. Your application servers and databases live here, hidden from the public internet for maximum security.
+The first shift is thinking in layers: public entry points, private services, secure configuration, and observability.
 
-### Keeping an Eye on Things
-Scaling requires visibility. We use **Amazon CloudWatch** to monitor CPU usage and **AWS X-Ray** to trace how a request moves through our system. This helps us find "bottlenecks" before they turn into crashes.
+## VPC and Security Basics
 
-### The Next Step: IaC
-Once your architecture is set, don't build it manually again. Using **Infrastructure as Code (Terraform)** allows you to recreate your entire AWS setup with a single command, making your backend reproducible and disaster-proof.
-    `
+A safer AWS layout separates what users can access from what only internal services should reach.
+
+- Public subnets can host load balancers.
+- Private subnets can run application services.
+- Security groups should allow only required traffic.
+- Secrets should not live in code or plain environment files.
+
+## Observability Matters
+
+CloudWatch logs, alarms, and metrics make debugging possible after deployment. Without logs, every production issue becomes guesswork.
+
+> A backend is not production-ready just because it runs. It is production-ready when it can be monitored, updated, and recovered.
+
+## What I Learned
+
+AWS rewards clear architecture. Small decisions like naming resources, isolating services, and using parameter stores make the system easier to operate later.
+    `,
   },
   {
     id: 4,
-    title: "Django 6.x: Modernizing the 'Batteries-Included' Framework",
-    date: "17 Feb 2026",
-    tag: "Web Development",
-    excerpt: "Exploring the latest shifts in Django 6.0+, including native background tasks and the move towards build-free frontend integration.",
-    image: "https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?w=800&auto=format&fit=crop",
+    title: "Deploying a Backend with ECS Fargate, ALB, ECR, and GitHub Actions",
+    category: "Cloud / DevOps",
+    tag: "Cloud / DevOps",
+    date: "16 Feb 2026",
+    readTime: "8 min read",
+    author: "Umesh Rajbanshi",
+    excerpt: "A build log from deploying a real backend using Docker, Amazon ECS Fargate, ECR, Application Load Balancer, ACM, SSM, and GitHub Actions.",
+    tags: ["AWS ECS", "Docker", "ECR", "ALB", "CI/CD", "Terraform"],
+    filters: ["Cloud", "DevOps", "Backend"],
+    iconType: "cloud",
     content: `
-# Django 6.x: The Modern Backend
+## Deployment Goal
 
-Django has always been known for its "batteries-included" philosophy. In 2026, those batteries have received a major upgrade. With the release of **Django 6.0 and 6.1**, the framework has simplified how we handle modern web requirements like background processing and security.
+The goal was to deploy a backend in a way that feels close to production: containerized builds, managed compute, load balancing, secure configuration, logs, and automated delivery.
 
-### Built-in Background Tasks
-For years, Django developers relied on third-party tools like Celery or Huey for simple background tasks. Now, Django 6.x introduces **native background task support**. You can now defer heavy logic—like sending emails or processing images—directly within the framework without setting up a complex message broker for smaller projects.
+The stack used Docker, Amazon ECR, ECS Fargate, Application Load Balancer, ACM, SSM Parameter Store, CloudWatch, Terraform, and GitHub Actions.
 
-### Security: Native CSP Support
-Web security is getting harder, but Django is making it easier. The new **built-in Content Security Policy (CSP)** middleware allows you to define where your scripts, styles, and images can be loaded from. This significantly reduces the risk of XSS (Cross-Site Scripting) attacks right out of the box.
+## Deployment Flow
 
-### The "Build-Free" Frontend Trend
-One of the most exciting shifts is Django's embrace of native JavaScript modules. By pairing Django templates with **HTMX** and modern browser features, developers are moving away from heavy NPM build steps for many projects. 
+The high-level CI/CD path looks like this:
 
-* **Django + HTMX**: Create reactive UIs with zero custom JavaScript.
-* **Template Partials**: Render only the small piece of the page that needs to change.
-* **Built-in JSONNull**: More precise handling of JSON data in the ORM.
+\`\`\`text
+GitHub push
+  -> Build Docker image
+  -> Push image to ECR
+  -> Update ECS service
+  -> Route traffic through ALB
+  -> Observe logs in CloudWatch
+\`\`\`
 
-### Why Django in 2026?
-Even as new frameworks emerge, Django remains the king of **productivity**. Its ability to evolve while maintaining stability makes it the best choice for SaaS backends where data integrity and developer speed are the top priorities.
+## Why ECS Fargate
 
-The message is clear: Django isn't just staying relevant; it’s setting the standard for what a modern, secure, and integrated web framework should look like.
-    `
+Fargate removes server management while still keeping the deployment model container-native. For backend APIs, it provides a good balance between operational simplicity and production structure.
+
+## Practical Lessons
+
+SSM Parameter Store is useful for configuration, CloudWatch is essential for debugging, and ALB health checks force you to think carefully about readiness endpoints.
+
+Terraform makes the infrastructure repeatable, which matters when rebuilding or changing environments.
+    `,
   },
   {
     id: 5,
-    title: "Beyond Chatbots: The Rise of Agentic AI Systems",
-    date: "12 Feb 2026",
-    tag: "Artificial Intelligence",
-    excerpt: "Moving from passive AI to active agents that can plan, use tools, and solve complex multi-step problems autonomously.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop",
+    title: "Building an ORM from Scratch in Python",
+    category: "Python Internals",
+    tag: "Python Internals",
+    date: "18 Feb 2026",
+    readTime: "6 min read",
+    author: "Umesh Rajbanshi",
+    excerpt: "What I learned about descriptors, metaclasses, model fields, SQLite, and query abstraction by building a minimal ORM.",
+    tags: ["Python", "SQLite", "ORM", "Descriptors", "Metaclasses"],
+    filters: ["Python", "Backend", "System Design"],
+    iconType: "python",
     content: `
-# Beyond Chatbots: The Rise of Agentic AI
+## Why Build an ORM
 
-In 2026, we are moving past the "Chatbot" era. We no longer just want an AI that talks; we want an AI that **acts**. This shift is known as **Agentic AI**.
+Using an ORM is easy. Understanding one is different. Building a minimal ORM from scratch helped me see how models become tables, how fields map to columns, and how Python internals support clean developer APIs.
 
-### What makes an "Agent"?
-Unlike a standard LLM that just predicts the next word, an Agentic system has:
-* **Reasoning**: The ability to break a complex goal (e.g., "Research and book a 3-day trip") into smaller steps.
-* **Tool Use**: The power to use APIs, search the web, and run code to get real-world results.
-* **Memory**: Learning from previous attempts to improve its future performance.
+The project focused on model fields, descriptors, metaclasses, SQLite integration, and simple query logic.
 
-### Multi-Agent Orchestration
-The most exciting development this year is **Multi-Agent Systems (MAS)**. Instead of one giant model trying to do everything, we use a "Manager" agent that assigns tasks to "Specialist" agents (e.g., a Coder Agent, a Researcher Agent, and a Reviewer Agent).
+## Descriptors and Fields
 
-### Why It Matters for Developers
-For developers, this means the focus is shifting from **Prompt Engineering** to **Agent Architecture**. We are no longer just writing text; we are building autonomous workflows that can self-correct and deliver finished products.
+Descriptors let a class control how attribute access works. That makes them a natural fit for model fields.
 
-> **The Future**: In 2026, the best apps won't just provide information—they will provide completed tasks.
-    `
+\`\`\`python
+class Field:
+    def __set_name__(self, owner, name):
+        self.name = name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__.get(self.name)
+
+    def __set__(self, instance, value):
+        instance.__dict__[self.name] = value
+\`\`\`
+
+## Metaclasses and Model Mapping
+
+A metaclass can inspect model definitions when the class is created. That is where field collection and table mapping can happen.
+
+## Takeaway
+
+Building the small version makes the large version less magical. Django ORM and SQLAlchemy are deep systems, but the core idea starts with mapping Python objects to database rows in a predictable way.
+    `,
   },
   {
     id: 6,
-    title: "React in 2026: The 'Compiler-First' Era",
-    date: "08 Feb 2026",
-    tag: "Frontend Development",
-    excerpt: "How the React Compiler and Server Components have finally solved the performance and boilerplate issues of the past.",
-    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+    title: "Building a Banking API with Go",
+    category: "Go Backend",
+    tag: "Go Backend",
+    date: "20 Feb 2026",
+    readTime: "5 min read",
+    author: "Umesh Rajbanshi",
+    excerpt: "Notes from building a Go backend with middleware, config, PostgreSQL repositories, migrations, safe transactions, auth, and account ownership.",
+    tags: ["Go", "PostgreSQL", "REST API", "JWT", "Transactions"],
+    filters: ["Go", "Backend", "System Design"],
+    iconType: "go",
     content: `
-# React in 2026: The Compiler-First Era
+## Why Go for a Banking API
 
-For years, React developers struggled with manual performance optimization—constantly adding \`useMemo\` and \`useCallback\` to keep apps fast. In 2026, that manual labor is officially a thing of the past thanks to the **React Compiler**.
+Go is a good fit for backend APIs because it is simple, fast, explicit, and easy to deploy. A banking API is a useful practice project because it requires authentication, ownership rules, database consistency, and careful error handling.
 
-### 🚀 Automatic Memoization
-The React Compiler now handles code optimization at the build step. It understands exactly when a component needs to re-render, making your apps "fast by default" without the extra boilerplate.
+## Core Backend Pieces
 
-### 🌐 Server Components as the Standard
-**React Server Components (RSC)** have moved from an experimental feature to the industry standard. By rendering parts of the UI on the server, we are:
-* **Reducing Bundle Sizes**: Only the necessary JavaScript is sent to the browser.
-* **Faster "Time to Interactive"**: Pages feel instantaneous even on slow mobile networks.
-* **Zero-API Data Fetching**: You can fetch data directly inside your component, removing the need for complex \`useEffect\` hooks.
+The project included:
 
-### 🛠️ The New Hooks
-New hooks like \`useOptimistic\` and \`useFormStatus\` have simplified state management. We no longer need massive libraries for simple form interactions or "loading" states—React handles them natively now.
+- Configuration management
+- HTTP middleware
+- Response helpers
+- PostgreSQL repositories
+- Database migrations
+- Register and login flows
+- Protected routes
+- Account ownership checks
+- Safe database transactions
 
-React has evolved from a UI library into a highly optimized, full-stack engine for the modern web.
-    `
-  },
-  {
-    id: 7,
-    title: "Platform Engineering: The Evolution of DevOps",
-    date: "03 Feb 2026",
-    tag: "MLOps & DevOps",
-    excerpt: "Why 80% of large engineering teams are moving toward Internal Developer Platforms (IDPs) to reduce cognitive load.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
-    content: `
-# Platform Engineering: The Evolution of DevOps
+## Transaction Safety
 
-In 2026, the "DevOps" role has transformed. As systems grew more complex with microservices and cloud-native tools, developers became overwhelmed by "cognitive load." The solution? **Platform Engineering**.
+Banking-style operations need transaction boundaries. A transfer should not debit one account unless the matching credit also succeeds.
 
-### What is an Internal Developer Platform (IDP)?
-Instead of every developer needing to be an AWS expert, the Platform Team builds an **IDP**. This is a "Golden Path" that allows developers to:
-* **Self-Service**: Spin up a database or a staging environment with one click.
-* **Automated Governance**: Security and compliance are built into the platform, not added as an afterthought.
-* **Standardized CI/CD**: Every project follows the same high-quality deployment pipeline automatically.
+\`\`\`go
+tx, err := db.Begin(ctx)
+if err != nil {
+    return err
+}
+defer tx.Rollback(ctx)
 
-### Why the Shift?
-By 2026, nearly **80% of enterprise software organizations** have dedicated platform teams. The goal is simple: let developers focus on **writing code** while the platform handles the **infrastructure**.
+// debit, credit, write ledger entry
 
-> **Key Takeaway**: DevOps was about *how* we work; Platform Engineering is about *building the tools* that make that work effortless.
-    `
+return tx.Commit(ctx)
+\`\`\`
+
+## What I Practiced
+
+This project strengthened my understanding of clean package structure, repository patterns, middleware, and defensive backend design.
+    `,
   },
 ];
