@@ -1,98 +1,90 @@
 import React from 'react';
-import { aboutStats } from '../data/PortfolioData';
+import { Briefcase, Layers, Rocket } from 'lucide-react';
 import ScrollReveal from './reactbits/ScrollReveal';
 import AbstractBackground from './AbstractBackground';
+import aboutPhoto from '../assets/about.png';
 
-const ProgressCircle = ({ percentage, label, color }) => {
-  const strokeColors = {
-    primary: "#2563EB",
-    green: "#22c55e",
-    orange: "#f97316",
-  };
-
-  const radius = 40;
-  const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (percentage / 100) * circumference;
-
-  return (
-    <div className="text-center flex-1 min-w-0 flex flex-col items-center">
-      <div className="relative w-20 h-20 md:w-28 md:h-28 mb-2">
-        <svg viewBox="0 0 100 100" className="w-full h-full transform -rotate-90">
-          <circle
-            cx="50" cy="50" r={radius}
-            stroke="#e5e7eb" strokeWidth="6" fill="transparent"
-            className="dark:stroke-gray-700 transition-colors duration-300"
-          />
-          <circle
-            cx="50" cy="50" r={radius}
-            stroke={strokeColors[color] || "#6b7280"}
-            strokeWidth="8"
-            strokeDasharray={circumference}
-            strokeDashoffset={offset}
-            strokeLinecap="round"
-            fill="transparent"
-            className="transition-all duration-1000 ease-out"
-          />
-        </svg>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-sm md:text-xl font-bold">{percentage}%</span>
-        </div>
-      </div>
-      <p className="text-gray-600 dark:text-gray-300 font-medium text-[10px] md:text-sm truncate w-full px-1">
-        {label}
-      </p>
-    </div>
-  );
-};
+const stats = [
+  { icon: Briefcase, value: '3+', label: 'Years Experience' },
+  { icon: Rocket, value: '10+', label: 'Projects Shipped' },
+  { icon: Layers, value: '9+', label: 'Technologies' },
+];
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 bg-[#FBFAFC] dark:bg-gray-900 overflow-hidden transition-colors duration-300">
-      <AbstractBackground variant="waves" opacity={0.05} colorClass="text-sky-500 dark:text-sky-500" flip />
-      <div className="container mx-auto px-4">
-        <ScrollReveal direction="up" distance={20}>
-          <p className="text-sky-500 font-semibold text-center mb-2">ABOUT ME</p>
-        </ScrollReveal>
-
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          Who Is{" "}
-          <span className="text-blue-600">Umesh Rajbanshi</span>
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          <ScrollReveal direction="left" distance={60} delay={0.1}>
-            <img
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600"
-              alt="Umesh Rajbanshi working on engineering projects"
-              className="w-full rounded-lg shadow-lg mb-6 md:mb-0"
-            />
-          </ScrollReveal>
-
-          <ScrollReveal direction="right" distance={60} delay={0.2}>
+    <section id="about" className="about-section relative overflow-hidden bg-[#FBFAFC] py-24 dark:bg-gray-900 transition-colors duration-300">
+      <div className="about-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
+      <AbstractBackground variant="waves" opacity={0.025} colorClass="text-sky-500 dark:text-sky-500" flip />
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
+          <ScrollReveal direction="left" distance={50} delay={0.1}>
             <div>
-              {/* Quote block */}
-              <div className="relative mb-8">
-                <span className="absolute -top-4 -left-2 text-7xl leading-none text-sky-500/40 dark:text-sky-500/60 font-serif select-none">"</span>
-                <blockquote className="relative z-10 pl-6 pr-2 pt-4 italic text-gray-600 dark:text-gray-300 leading-relaxed text-lg border-l-4 border-sky-500 dark:border-sky-500">
-                  I am a passionate and detail-oriented Electronics and Communication Engineer with a solid foundation in backend architecture and
-                  a growing focus on AWS Cloud Operations. With a disciplined approach to debugging and error handling, I specialize in crafting robust,
-                  scalable software solutions and maintaining high standards through CI/CD workflows and containerization. My expertise extends into AI and Deep Learning,
-                  where I have experience integrating cutting-edge tools like Langchain, Crawl4ai, and Gemini into real-world engineering projects.
-                  From optimizing system stability to building advanced computer vision applications like Blind Vision, my commitment to technical excellence has led to measurable successes in enhancing system reliability and project performance.
-                </blockquote>
-                <span className="block text-right text-7xl leading-none text-sky-500/40 dark:text-sky-500/60 font-serif select-none -mt-4">"</span>
-                <p className="text-right text-sm font-semibold text-blue-600 dark:text-sky-500 mt-1 pr-2">— Umesh Rajbanshi</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600">
+                ABOUT ME
+              </p>
+              <div className="mt-4 h-0.5 w-16 rounded-full bg-blue-600" />
+
+              <h2 className="mt-6 text-4xl font-bold leading-tight text-[#0F172A] dark:text-white md:text-5xl">
+                Who Is{" "}
+                <span className="text-blue-600">Umesh Rajbanshi</span>
+              </h2>
+              <div className="mt-6 h-0.5 w-16 rounded-full bg-blue-600" />
+
+              <div className="mt-8 space-y-6 text-lg leading-relaxed text-[#475569] dark:text-gray-300">
+                <p>
+                  I'm a Python backend and cloud engineer based in Nepal, building APIs and infrastructure that go from idea to production reliably.
+                </p>
+                <p>
+                  I've worked with FastAPI, Docker, AWS, and Terraform to ship containerized services and automate deployments for real-world projects.
+                </p>
+                <p>
+                  I'm looking for a team that values clean systems, fast iteration, and engineering that actually runs well in production.
+                </p>
               </div>
 
-              <div className="flex flex-nowrap justify-between items-center gap-2 md:gap-8 mt-8">
-                {aboutStats.map((stat, index) => (
-                  <ProgressCircle
-                    key={index}
-                    percentage={stat.percentage}
-                    label={stat.label}
-                    color={stat.color}
-                  />
+              <div className="mt-10 grid gap-4 sm:grid-cols-3">
+                {stats.map(({ icon: Icon, value, label }) => (
+                  <div
+                    key={label}
+                    className="rounded-2xl border border-[#E2E8F0] bg-white p-5 shadow-[0_18px_45px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(37,99,235,0.16)] dark:border-gray-700 dark:bg-gray-800"
+                  >
+                    <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#EFF6FF] text-blue-600">
+                      <Icon size={24} strokeWidth={2} />
+                    </div>
+                    <p className="text-4xl font-bold text-blue-600">{value}</p>
+                    <p className="mt-2 text-base font-medium text-[#0F172A] dark:text-gray-200">{label}</p>
+                  </div>
                 ))}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          <ScrollReveal direction="right" distance={50} delay={0.15}>
+            <div className="relative mx-auto flex min-h-[460px] w-full max-w-xl items-end justify-center overflow-visible pt-10 lg:min-h-[560px]">
+              <div className="about-profile-glow absolute inset-x-4 bottom-10 top-12 rounded-full" aria-hidden="true" />
+              <div
+                className="absolute bottom-8 left-1/2 h-[82%] w-[78%] -translate-x-1/2 rounded-[24px] p-4"
+                style={{
+                  background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
+                }}
+              />
+              <div className="absolute bottom-16 left-[8%] h-36 w-36 rounded-full bg-[#2563EB]/12 blur-3xl" />
+              <div className="absolute right-[4%] top-8 h-40 w-40 rounded-full bg-[#0EA5E9]/16 blur-3xl" />
+              <div
+                className="absolute right-3 top-8 h-32 w-32 opacity-35"
+                style={{
+                  backgroundImage: 'radial-gradient(#2563EB 1.4px, transparent 1.4px)',
+                  backgroundSize: '14px 14px',
+                }}
+                aria-hidden="true"
+              />
+              <div className="absolute bottom-2 left-3 h-24 w-24 rounded-[1.5rem] bg-gradient-to-br from-[#2563EB] to-[#0EA5E9] opacity-90 shadow-[0_18px_50px_rgba(37,99,235,0.22)]" />
+              <div className="about-photo-frame relative z-10 h-[420px] w-full sm:h-[480px] lg:h-[520px]">
+                <img
+                  src={aboutPhoto}
+                  alt="Umesh Rajbanshi"
+                  className="about-photo-image h-full w-full object-contain drop-shadow-[0_28px_42px_rgba(15,23,42,0.18)]"
+                />
               </div>
             </div>
           </ScrollReveal>
