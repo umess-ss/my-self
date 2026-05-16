@@ -1,5 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import homeImage from '../assets/home.jpeg';
+
+const MIN_LOADER_TIME = 2050;
+const MAX_LOADER_TIME = 2450;
+const FADE_OUT_TIME = 500;
 
 const terminalLines = [
   'initializing api...',
@@ -12,22 +16,43 @@ const terminalLines = [
 const SplashScreen = ({ onFinish }) => {
   const [visible, setVisible] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const didExitRef = useRef(false);
 
   useEffect(() => {
-    // Start fade-out after 2s
-    const fadeTimer = setTimeout(() => {
-      setFadeOut(true);
-    }, 2000);
+    const start = Date.now();
+    let exitTimer;
+    let removeTimer;
 
-    // Remove from DOM after fade completes (0.6s transition)
-    const removeTimer = setTimeout(() => {
-      setVisible(false);
-      if (onFinish) onFinish();
-    }, 2600);
+    const startExit = () => {
+      if (didExitRef.current) return;
+      didExitRef.current = true;
+      setFadeOut(true);
+
+      removeTimer = setTimeout(() => {
+        setVisible(false);
+        if (onFinish) onFinish();
+      }, FADE_OUT_TIME);
+    };
+
+    const handleLoad = () => {
+      const elapsed = Date.now() - start;
+      const remaining = Math.max(MIN_LOADER_TIME - elapsed, 0);
+      exitTimer = setTimeout(startExit, remaining);
+    };
+
+    if (document.readyState === 'complete') {
+      handleLoad();
+    } else {
+      window.addEventListener('load', handleLoad, { once: true });
+    }
+
+    const maxTimer = setTimeout(startExit, MAX_LOADER_TIME);
 
     return () => {
-      clearTimeout(fadeTimer);
+      window.removeEventListener('load', handleLoad);
+      clearTimeout(exitTimer);
       clearTimeout(removeTimer);
+      clearTimeout(maxTimer);
     };
   }, [onFinish]);
 
@@ -44,7 +69,7 @@ const SplashScreen = ({ onFinish }) => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        transition: 'opacity 0.6s ease',
+        transition: `opacity ${FADE_OUT_TIME}ms ease`,
         opacity: fadeOut ? 0 : 1,
         pointerEvents: fadeOut ? 'none' : 'all',
       }}
@@ -57,11 +82,13 @@ const SplashScreen = ({ onFinish }) => {
         <div className="splash-ring splash-ring-1" />
         <div className="splash-ring splash-ring-2" />
         <div className="splash-ring splash-ring-3" />
-        <img
-          src={homeImage}
-          alt="Umesh Rajbanshi"
-          className="splash-avatar"
-        />
+        <div className="splash-avatar-frame">
+          <img
+            src={homeImage}
+            alt="Umesh Rajbanshi"
+            className="splash-avatar"
+          />
+        </div>
       </div>
 
       <h1 className="splash-name">
