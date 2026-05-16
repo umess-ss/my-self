@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   Award,
   Brain,
@@ -163,6 +164,48 @@ const experienceItems = [
   },
 ];
 
+const resumePanelVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.06,
+      delayChildren: 0.04,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -8,
+    transition: {
+      duration: 0.22,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
+
+const resumeCardVariants = {
+  initial: { opacity: 0, y: 12 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.28,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -6,
+    transition: {
+      duration: 0.18,
+      ease: [0.4, 0, 1, 1],
+    },
+  },
+};
+
 const Tag = ({ children }) => (
   <span className="inline-flex max-w-full rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
     {children}
@@ -170,9 +213,15 @@ const Tag = ({ children }) => (
 );
 
 const PanelCard = ({ children, className = '' }) => (
-  <div className={`resume-glass-card w-full max-w-full overflow-hidden rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/45 hover:shadow-[0_24px_70px_rgba(37,99,235,0.18)] sm:rounded-[18px] sm:p-5 ${className}`}>
+  <motion.div
+    layout
+    variants={resumeCardVariants}
+    className={`resume-glass-card w-full max-w-full overflow-hidden rounded-2xl p-4 transition-colors duration-300 hover:border-blue-400/45 sm:rounded-[18px] sm:p-5 ${className}`}
+    whileHover={{ y: -4 }}
+    transition={{ type: 'spring', stiffness: 380, damping: 34 }}
+  >
     {children}
-  </div>
+  </motion.div>
 );
 
 const EducationPanel = () => (
@@ -324,23 +373,34 @@ const Resume = () => {
                 {categories.map(({ key, label, icon: Icon }) => {
                   const isActive = activeCategory === key;
                   return (
-                    <button
+                    <motion.button
+                      layout
                       key={key}
                       type="button"
                       onClick={() => setActiveCategory(key)}
-                      className={`resume-tab group inline-flex shrink-0 items-center gap-2 rounded-full border px-3 py-2.5 text-xs font-semibold transition-all duration-300 sm:gap-3 sm:px-4 sm:py-3 sm:text-sm lg:w-full lg:rounded-2xl ${
+                      whileHover={{ y: -2, scale: 1.015 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                      className={`resume-tab group relative inline-flex shrink-0 items-center gap-2 overflow-hidden rounded-full border px-3 py-2.5 text-xs font-semibold transition-all duration-300 ease-in-out sm:gap-3 sm:px-4 sm:py-3 sm:text-sm lg:w-full lg:rounded-2xl ${
                         isActive
                           ? 'resume-tab-active text-white'
                           : 'border-blue-400/15 bg-white/60 text-[#475569] hover:-translate-y-0.5 hover:border-blue-400/40 hover:text-blue-600 dark:bg-slate-900/40 dark:text-gray-300 dark:hover:text-sky-200'
                       }`}
                     >
-                      <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-colors sm:h-9 sm:w-9 ${
+                      {isActive && (
+                        <motion.span
+                          layoutId="resume-active-tab"
+                          className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-blue-600 to-sky-400"
+                          transition={{ type: 'spring', stiffness: 420, damping: 36 }}
+                        />
+                      )}
+                      <span className={`relative z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ease-in-out sm:h-9 sm:w-9 ${
                         isActive ? 'bg-white/[0.18] text-white' : 'bg-blue-500/10 text-blue-600 dark:text-sky-300'
                       }`}>
                         <Icon size={16} className="sm:h-[18px] sm:w-[18px]" />
                       </span>
-                      {label}
-                    </button>
+                      <span className="relative z-10">{label}</span>
+                    </motion.button>
                   );
                 })}
               </div>
@@ -348,9 +408,21 @@ const Resume = () => {
           </ScrollReveal>
 
           <ScrollReveal direction="right" distance={30} delay={0.1} className="min-w-0 max-w-full">
-            <div className="resume-content-panel w-full max-w-full overflow-hidden rounded-2xl p-3 sm:rounded-[28px] sm:p-6 lg:p-7">
-              {panels[activeCategory]}
-            </div>
+            <motion.div layout className="resume-content-panel w-full max-w-full overflow-hidden rounded-2xl p-3 sm:rounded-[28px] sm:p-6 lg:p-7">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeCategory}
+                  layout
+                  variants={resumePanelVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="w-full max-w-full"
+                >
+                  {panels[activeCategory]}
+                </motion.div>
+              </AnimatePresence>
+            </motion.div>
           </ScrollReveal>
         </div>
       </div>
