@@ -3,6 +3,8 @@ import { useEffect } from "react";
 const SITE_NAME = "Umesh Rajbanshi";
 const SITE_URL = "https://umeshrajbanshi.com.np";
 const DEFAULT_IMAGE = `${SITE_URL}/apple-touch-icon.png`;
+const DEFAULT_TITLE = "Umesh Rajbanshi — Python Backend & Cloud Engineer";
+const DEFAULT_DESCRIPTION = "Python Backend & Cloud Engineer building production-ready APIs, cloud infrastructure, and scalable backend systems.";
 
 /**
  * Lightweight SEO component that updates document.title and meta tags
@@ -12,7 +14,7 @@ const DEFAULT_IMAGE = `${SITE_URL}/apple-touch-icon.png`;
  */
 export default function SEOHead({
   title,
-  description = "Portfolio of Umesh Rajbanshi — Electronics & Communication Engineer, AI/ML Enthusiast, and Backend Developer based in Kathmandu, Nepal.",
+  description = DEFAULT_DESCRIPTION,
   image = DEFAULT_IMAGE,
   url = SITE_URL,
   type = "website",
@@ -21,7 +23,7 @@ export default function SEOHead({
     // ---- Document title ----
     const fullTitle = title
       ? `${title} — ${SITE_NAME}`
-      : `${SITE_NAME} — Electronics & Communication Engineer | AI & ML Portfolio`;
+      : DEFAULT_TITLE;
 
     document.title = fullTitle;
 
