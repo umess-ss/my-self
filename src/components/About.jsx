@@ -13,8 +13,9 @@ const stats = [
 export default function About() {
   return (
     <section id="about" className="about-section relative overflow-hidden bg-[#FBFAFC] py-24 dark:bg-gray-900 transition-colors duration-300">
-      <AbstractBackground variant="waves" opacity={0.04} colorClass="text-sky-500 dark:text-sky-500" flip />
-      <div className="container mx-auto px-4">
+      <div className="about-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
+      <AbstractBackground variant="waves" opacity={0.025} colorClass="text-sky-500 dark:text-sky-500" flip />
+      <div className="container relative z-10 mx-auto px-4">
         <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
           <ScrollReveal direction="left" distance={50} delay={0.1}>
             <div>
@@ -60,6 +61,7 @@ export default function About() {
 
           <ScrollReveal direction="right" distance={50} delay={0.15}>
             <div className="relative mx-auto flex min-h-[460px] w-full max-w-xl items-end justify-center overflow-visible pt-10 lg:min-h-[560px]">
+              <div className="about-profile-glow absolute inset-x-4 bottom-10 top-12 rounded-full" aria-hidden="true" />
               <div
                 className="absolute bottom-8 left-1/2 h-[82%] w-[78%] -translate-x-1/2 rounded-[24px] p-4"
                 style={{

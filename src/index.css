@@ -60,6 +60,50 @@ section {
   --about-section-bg: #111827;
 }
 
+.about-bg-grid {
+  background:
+    linear-gradient(115deg, rgba(251, 250, 252, 0.96) 0%, rgba(239, 246, 255, 0.44) 48%, rgba(251, 250, 252, 0.96) 100%),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.028) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.024) 1px, transparent 1px);
+  background-size: auto, 72px 72px, 72px 72px;
+}
+
+.about-bg-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 48%, rgba(59, 130, 246, 0.045), transparent 34%),
+    radial-gradient(circle at 16% 26%, rgba(14, 165, 233, 0.026), transparent 28%);
+}
+
+.dark .about-bg-grid {
+  background:
+    linear-gradient(115deg, rgba(17, 24, 39, 0.98) 0%, rgba(12, 34, 66, 0.3) 48%, rgba(17, 24, 39, 0.98) 100%),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.038) 1px, transparent 1px);
+  background-size: auto, 72px 72px, 72px 72px;
+}
+
+.dark .about-bg-grid::after {
+  background:
+    radial-gradient(circle at 78% 48%, rgba(59, 130, 246, 0.07), transparent 35%),
+    radial-gradient(circle at 16% 26%, rgba(14, 165, 233, 0.035), transparent 30%);
+}
+
+.about-profile-glow {
+  background:
+    radial-gradient(circle at 52% 48%, rgba(59, 130, 246, 0.14), rgba(14, 165, 233, 0.07) 42%, transparent 72%);
+  filter: blur(28px);
+  opacity: 0.55;
+}
+
+.dark .about-profile-glow {
+  background:
+    radial-gradient(circle at 52% 48%, rgba(96, 165, 250, 0.16), rgba(14, 165, 233, 0.09) 44%, transparent 74%);
+  opacity: 0.46;
+}
+
 .about-photo-frame {
   isolation: isolate;
   overflow: hidden;
