@@ -30,9 +30,9 @@ const educationItems = [
   {
     title: 'Bachelor of Electronics, Communication and Information Engineering',
     institution: 'Advanced College of Engineering and Management',
-    meta: 'Kalanki, Kathmandu, Nepal • Tribhuvan University • 2021 - Present',
+    meta: 'Kalanki, Kathmandu, Nepal • Tribhuvan University • Completed 2025',
     bullets: [
-      'Studied electronics, communication systems, computer networks, embedded systems, and information engineering fundamentals.',
+      'Completed engineering degree focused on electronics, communication systems, computer networks, embedded systems, and information engineering.',
       'Built strong engineering foundations in programming, signal processing, system design, and technical problem solving.',
       'Applied software engineering practices through backend, cloud, and full-stack projects.',
     ],
@@ -40,7 +40,7 @@ const educationItems = [
   {
     title: '+2 Science',
     institution: 'Adarsha Secondary School',
-    meta: 'Biratnagar, Nepal • 2020',
+    meta: 'Biratnagar, Nepal • Completed 2020',
     bullets: [
       'Completed higher secondary education in the Science stream.',
       'Built foundations in Physics, Chemistry, Mathematics, and Computer Science.',
@@ -298,9 +298,9 @@ const Resume = () => {
   const [activeCategory, setActiveCategory] = useState('education');
 
   return (
-    <section id="resume" className="resume-section relative overflow-hidden bg-[#FBFAFC] py-16 dark:bg-gray-800 transition-colors duration-300">
+    <section id="resume" className="resume-section relative overflow-hidden bg-[#FBFAFC] pt-12 pb-16 dark:bg-gray-900 transition-colors duration-300">
       <div className="resume-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
-      <AbstractBackground variant="arrows" opacity={0.018} colorClass="text-sky-500 dark:text-sky-500" />
+      <AbstractBackground variant="both" opacity={0.02} colorClass="text-sky-500 dark:text-sky-500" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1160px] px-4">
         <ScrollReveal direction="up" distance={20}>
