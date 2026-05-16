@@ -51,6 +51,57 @@ section {
   /* same as navHeight */
 }
 
+/* ===================== ABOUT PHOTO BLEND ===================== */
+.about-section {
+  --about-section-bg: #FBFAFC;
+}
+
+.dark .about-section {
+  --about-section-bg: #111827;
+}
+
+.about-photo-frame {
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.about-photo-image {
+  position: relative;
+  z-index: 1;
+  -webkit-mask-image:
+    radial-gradient(ellipse 58% 80% at 50% 48%, #000 45%, rgba(0, 0, 0, 0.9) 60%, rgba(0, 0, 0, 0.45) 78%, transparent 100%);
+  mask-image:
+    radial-gradient(ellipse 58% 80% at 50% 48%, #000 45%, rgba(0, 0, 0, 0.9) 60%, rgba(0, 0, 0, 0.45) 78%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.about-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 62% 84% at 50% 48%, transparent 49%, color-mix(in srgb, var(--about-section-bg) 34%, transparent) 75%, var(--about-section-bg) 100%);
+}
+
+@media (max-width: 640px) {
+  .about-photo-frame {
+    border-radius: 1.5rem;
+  }
+
+  .about-photo-image {
+    -webkit-mask-image:
+      radial-gradient(ellipse 68% 84% at 50% 48%, #000 48%, rgba(0, 0, 0, 0.88) 63%, rgba(0, 0, 0, 0.48) 80%, transparent 100%);
+    mask-image:
+      radial-gradient(ellipse 68% 84% at 50% 48%, #000 48%, rgba(0, 0, 0, 0.88) 63%, rgba(0, 0, 0, 0.48) 80%, transparent 100%);
+  }
+}
+
 /* ===================== SPLASH SCREEN ===================== */
 @keyframes ringPulse {
   0%   { transform: scale(0.8); opacity: 0.8; }
@@ -75,6 +126,27 @@ section {
 
 .hero-left-content {
   animation: fadeSlideUp 0.6s ease-out forwards;
+}
+
+.hero-portrait-shell {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.hero-portrait-shell:hover {
+  transform: translateY(-4px);
+}
+
+.hero-portrait-ambient {
+  background:
+    radial-gradient(circle at 48% 42%, rgba(255, 255, 255, 0.72) 0%, rgba(239, 246, 255, 0.34) 34%, rgba(14, 165, 233, 0.18) 56%, rgba(37, 99, 235, 0.08) 74%, transparent 100%);
+  filter: blur(22px);
+  opacity: 0.95;
+}
+
+.dark .hero-portrait-ambient {
+  background:
+    radial-gradient(circle at 48% 42%, rgba(96, 165, 250, 0.2) 0%, rgba(14, 165, 233, 0.17) 42%, rgba(37, 99, 235, 0.12) 66%, transparent 100%);
+  opacity: 0.9;
 }
 
 .splash-ring {

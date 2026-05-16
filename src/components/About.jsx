@@ -7,12 +7,12 @@ import aboutPhoto from '../assets/about.png';
 const stats = [
   { icon: Briefcase, value: '3+', label: 'Years Experience' },
   { icon: Rocket, value: '10+', label: 'Projects Shipped' },
-  { icon: Layers, value: '5+', label: 'Technologies' },
+  { icon: Layers, value: '9+', label: 'Technologies' },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="relative overflow-hidden bg-[#FBFAFC] py-24 dark:bg-gray-900 transition-colors duration-300">
+    <section id="about" className="about-section relative overflow-hidden bg-[#FBFAFC] py-24 dark:bg-gray-900 transition-colors duration-300">
       <AbstractBackground variant="waves" opacity={0.04} colorClass="text-sky-500 dark:text-sky-500" flip />
       <div className="container mx-auto px-4">
         <div className="grid items-center gap-14 lg:grid-cols-[1.08fr_0.92fr]">
@@ -60,7 +60,12 @@ export default function About() {
 
           <ScrollReveal direction="right" distance={50} delay={0.15}>
             <div className="relative mx-auto flex min-h-[460px] w-full max-w-xl items-end justify-center overflow-visible pt-10 lg:min-h-[560px]">
-              <div className="absolute bottom-8 left-1/2 h-[82%] w-[78%] -translate-x-1/2 rotate-6 rounded-[2rem] border border-[#BFDBFE]/80 bg-gradient-to-br from-[#EFF6FF]/95 via-white/60 to-[#DBEAFE]/80 shadow-[0_30px_90px_rgba(37,99,235,0.18)] backdrop-blur-md" />
+              <div
+                className="absolute bottom-8 left-1/2 h-[82%] w-[78%] -translate-x-1/2 rounded-[24px] p-4"
+                style={{
+                  background: 'linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%)',
+                }}
+              />
               <div className="absolute bottom-16 left-[8%] h-36 w-36 rounded-full bg-[#2563EB]/12 blur-3xl" />
               <div className="absolute right-[4%] top-8 h-40 w-40 rounded-full bg-[#0EA5E9]/16 blur-3xl" />
               <div
@@ -72,11 +77,13 @@ export default function About() {
                 aria-hidden="true"
               />
               <div className="absolute bottom-2 left-3 h-24 w-24 rounded-[1.5rem] bg-gradient-to-br from-[#2563EB] to-[#0EA5E9] opacity-90 shadow-[0_18px_50px_rgba(37,99,235,0.22)]" />
-              <img
-                src={aboutPhoto}
-                alt="Umesh Rajbanshi"
-                className="relative z-10 h-[420px] w-full object-contain drop-shadow-[0_28px_42px_rgba(15,23,42,0.18)] sm:h-[480px] lg:h-[520px]"
-              />
+              <div className="about-photo-frame relative z-10 h-[420px] w-full sm:h-[480px] lg:h-[520px]">
+                <img
+                  src={aboutPhoto}
+                  alt="Umesh Rajbanshi"
+                  className="about-photo-image h-full w-full object-contain drop-shadow-[0_28px_42px_rgba(15,23,42,0.18)]"
+                />
+              </div>
             </div>
           </ScrollReveal>
         </div>

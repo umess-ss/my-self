@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import rohanImage from "../assets/rohan.jpg";
+import homeImage from "../assets/home.jpeg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import CVModal from "./CVModal";
@@ -141,7 +141,7 @@ const Navigation = () => {
           <div className="flex items-center justify-between py-4">
             <Link to="/">
               <img
-                src={rohanImage}
+                src={homeImage}
                 alt="Umesh Rajbanshi"
                 className="w-12 h-12 rounded-full cursor-pointer hover:opacity-80 transition object-cover"
                 onClick={() => handleNavClick("home")}
