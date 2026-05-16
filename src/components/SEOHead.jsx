@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const SITE_NAME = "Umesh Rajbanshi";
 const SITE_URL = "https://umeshrajbanshi.com.np";
-const DEFAULT_IMAGE = `${SITE_URL}/favicon.jpg`;
+const DEFAULT_IMAGE = `${SITE_URL}/apple-touch-icon.png`;
 
 /**
  * Lightweight SEO component that updates document.title and meta tags
