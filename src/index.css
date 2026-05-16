@@ -548,6 +548,143 @@ section {
     0 0 0 1px rgba(255, 255, 255, 0.16) inset;
 }
 
+/* ===================== BLOG SECTION ===================== */
+.blog-section,
+.blog-detail-section {
+  isolation: isolate;
+}
+
+.blog-section::after,
+.blog-detail-section::after {
+  content: "";
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  width: min(58rem, 86vw);
+  aspect-ratio: 1.55;
+  z-index: 0;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at center, rgba(59, 130, 246, 0.12), rgba(14, 165, 233, 0.06) 42%, transparent 74%);
+  filter: blur(40px);
+  opacity: 0.58;
+  pointer-events: none;
+  transform: translateX(-20%);
+}
+
+.dark .blog-section::after,
+.dark .blog-detail-section::after {
+  background:
+    radial-gradient(ellipse at center, rgba(96, 165, 250, 0.13), rgba(14, 165, 233, 0.07) 44%, transparent 75%);
+  opacity: 0.48;
+}
+
+.blog-bg-grid,
+.blog-detail-bg-grid {
+  background:
+    linear-gradient(115deg, rgba(251, 250, 252, 0.98) 0%, rgba(239, 246, 255, 0.54) 48%, rgba(251, 250, 252, 0.98) 100%),
+    radial-gradient(circle at 78% 20%, rgba(59, 130, 246, 0.07), transparent 34%),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.034) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+  background-size: auto, 100% 100%, 72px 72px, 72px 72px;
+}
+
+.blog-bg-grid::after,
+.blog-detail-bg-grid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 76%, rgba(14, 165, 233, 0.042), transparent 30%),
+    linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.026) 44%, transparent 60%),
+    linear-gradient(25deg, transparent 22%, rgba(37, 99, 235, 0.018) 45%, transparent 67%);
+}
+
+.dark .blog-bg-grid,
+.dark .blog-detail-bg-grid {
+  background:
+    linear-gradient(115deg, rgba(17, 24, 39, 0.98) 0%, rgba(12, 34, 66, 0.38) 48%, rgba(17, 24, 39, 0.98) 100%),
+    radial-gradient(circle at 78% 20%, rgba(59, 130, 246, 0.1), transparent 35%),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.056) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.044) 1px, transparent 1px);
+  background-size: auto, 100% 100%, 72px 72px, 72px 72px;
+}
+
+.dark .blog-bg-grid::after,
+.dark .blog-detail-bg-grid::after {
+  background:
+    radial-gradient(circle at 18% 76%, rgba(14, 165, 233, 0.058), transparent 30%),
+    linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.034) 44%, transparent 60%),
+    linear-gradient(25deg, transparent 22%, rgba(37, 99, 235, 0.026) 45%, transparent 67%);
+}
+
+.blog-card,
+.blog-hero-card,
+.blog-article-card,
+.blog-related-card {
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.blog-card:hover,
+.blog-related-card:hover {
+  border-color: rgba(59, 130, 246, 0.52);
+  box-shadow:
+    0 28px 80px rgba(37, 99, 235, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.58);
+}
+
+.dark .blog-card,
+.dark .blog-hero-card,
+.dark .blog-article-card,
+.dark .blog-related-card {
+  background: rgba(15, 23, 42, 0.68);
+  box-shadow:
+    0 22px 70px rgba(2, 6, 23, 0.3),
+    inset 0 1px 0 rgba(148, 163, 184, 0.12);
+}
+
+.dark .blog-card:hover,
+.dark .blog-related-card:hover {
+  border-color: rgba(96, 165, 250, 0.5);
+  box-shadow:
+    0 30px 90px rgba(14, 165, 233, 0.15),
+    inset 0 1px 0 rgba(148, 163, 184, 0.16);
+}
+
+.blog-card-featured,
+.blog-hero-card,
+.blog-article-card {
+  box-shadow:
+    0 24px 80px rgba(37, 99, 235, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.blog-visual,
+.blog-detail-visual {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.blog-filter-pill {
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.blog-filter-pill-active {
+  border-color: rgba(96, 165, 250, 0.62);
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.96), rgba(14, 165, 233, 0.88));
+  box-shadow:
+    0 18px 44px rgba(37, 99, 235, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset;
+}
+
 .splash-ring {
   position: absolute;
   border-radius: 50%;

@@ -1,109 +1,202 @@
-import React from 'react';
+import { useMemo, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import {
+  ArrowRight,
+  BrainCircuit,
+  Calendar,
+  Cloud,
+  Code2,
+  Database,
+  Github,
+  Server,
+  Tag,
+  Timer,
+} from 'lucide-react';
 import { blogPosts } from '../data/BlogContent';
-import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import BlurText from './reactbits/BlurText';
 import ScrollReveal from './reactbits/ScrollReveal';
 import SEOHead from './SEOHead';
+import AbstractBackground from './AbstractBackground';
 
+const filters = ['All', 'Backend', 'Cloud', 'DevOps', 'AI', 'Python', 'Go', 'System Design'];
 
+const iconMap = {
+  ai: BrainCircuit,
+  cloud: Cloud,
+  devops: Github,
+  python: Code2,
+  go: Server,
+  backend: Server,
+  database: Database,
+};
 
-const BlogCard = ({ post }) => {
-
-  const navigate = useNavigate();
-
-  if (!post) return null;
-
-
-  const { id, title, date, tag, excerpt, image } = post;
-
-  const handleCardClick = () => {
-    navigate(`/blog/${id}`);
-    window.scrollTo(0, 0);
-  }
-
+const BlogVisual = ({ iconType, featured }) => {
+  const Icon = iconMap[iconType] || Server;
 
   return (
-    <div
-      onClick={handleCardClick}
-      className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer duration-300">
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-64 object-cover"
-        onError={(e) => {
-          e.target.src = 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400';
-        }}
-      />
-      <div className="p-6">
-        <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm">
-          {tag}
-        </span>
-        <p className="text-gray-500 dark:text-gray-400 text-sm mt-3 mb-2">{date}</p>
-        <h3 className="font-semibold text-xl mb-2 dark:text-white">{title}</h3>
-        {excerpt && <p className="text-gray-600 dark:text-gray-300">{excerpt}</p>}
-
-        {/* read more arrow */}
-        <div className="mt-3 flex items-center text-blue-600 dark:text-sky-500 font-bold text-sm group/btn">
-          <span>READ MORE</span>
-          <ArrowRight className="ml-1.5 w-4 h-4 transform group-hover/btn:translate-x-2 transition-transform duration-300" />
-        </div>
+    <div className={`blog-visual relative flex items-center justify-center overflow-hidden rounded-[18px] ${featured ? 'h-44' : 'h-32'}`}>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(135deg,rgba(37,99,235,0.9),rgba(14,165,233,0.58))]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:22px_22px] opacity-35" />
+      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/25 bg-white/14 text-white shadow-[0_18px_60px_rgba(2,6,23,0.25)] backdrop-blur-md">
+        <Icon size={featured ? 36 : 30} strokeWidth={1.8} />
       </div>
     </div>
   );
 };
 
-const Blog = ({ isHomePage }) => {
+const BlogCard = ({ post, featured = false }) => {
+  const navigate = useNavigate();
 
-  const displayPosts = isHomePage ? blogPosts.slice(0, 3) : blogPosts;
+  const openPost = () => {
+    navigate(`/blog/${post.id}`);
+    window.scrollTo(0, 0);
+  };
 
   return (
-    <section id="blog" className="min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-900 transition-colors duration-300">
-      {!isHomePage && (
-        <SEOHead
-          title="All Blog Posts"
-          description="Read all blog posts by Umesh Rajbanshi on AI, MLOps, Cloud Computing, Django, React, and modern software engineering."
-          url="https://umeshrajbanshi.com.np/all-blogs"
-        />
-      )}
-      <div className="container mx-auto px-4">
-        <ScrollReveal direction="up" distance={20}>
-          <p className="text-sky-500 font-semibold text-center mb-2">TECHNO TRENDS</p>
-        </ScrollReveal>
-        <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
-          <BlurText
-            text={isHomePage ? 'Recent Blog' : 'All Blog'}
-            animateBy="words"
-            delay={80}
-            direction="top"
-          />{" "}
-          <BlurText
-            text="Posts"
-            animateBy="words"
-            delay={100}
-            direction="bottom"
-            className="text-blue-600"
-          />
-        </h2>
+    <article
+      onClick={openPost}
+      className={`blog-card group flex h-full cursor-pointer flex-col rounded-[20px] p-4 transition-all duration-300 hover:-translate-y-1.5 ${featured ? 'blog-card-featured lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:gap-6' : ''}`}
+    >
+      <div className="relative">
+        <BlogVisual iconType={post.iconType} featured={featured} />
+        <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-blue-300/25 bg-white/85 px-3 py-1 text-xs font-bold text-blue-700 shadow-sm backdrop-blur dark:bg-slate-950/72 dark:text-blue-100">
+          <Tag size={12} />
+          {post.category}
+        </span>
+      </div>
 
+      <div className="flex flex-1 flex-col pt-5 lg:pt-0">
+        <div className="flex flex-wrap gap-3 text-xs font-semibold uppercase tracking-[0.12em] text-[#64748B] dark:text-gray-400">
+          <span className="inline-flex items-center gap-1.5">
+            <Calendar size={14} />
+            {post.date}
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Timer size={14} />
+            {post.readTime}
+          </span>
+        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {displayPosts.map((post, index) => (
-            <ScrollReveal key={post.id} delay={index * 0.1} direction="up" distance={40}>
-              <BlogCard post={post} />
-            </ScrollReveal>
+        <h3 className={`${featured ? 'mt-4 text-2xl md:text-3xl' : 'mt-4 text-xl'} font-bold leading-tight text-[#0F172A] dark:text-white`}>
+          {post.title}
+        </h3>
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#475569] dark:text-gray-300">
+          {post.excerpt}
+        </p>
+
+        <div className="mt-5 flex flex-wrap gap-2">
+          {post.tags.map((tag) => (
+            <span key={tag} className="rounded-full border border-blue-400/20 bg-blue-500/10 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+              {tag}
+            </span>
           ))}
         </div>
 
-        {/* Show "See More" button ONLY on the home page */}
-        {isHomePage && blogPosts.length > 5 && (
-          <div className="text-center mt-12">
+        <div className="mt-6">
+          <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 group-hover:shadow-blue-500/30">
+            Read Article
+            <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
+          </span>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+const Blog = ({ isHomePage }) => {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const filteredPosts = useMemo(() => {
+    if (activeFilter === 'All') return blogPosts;
+    return blogPosts.filter((post) => post.filters.includes(activeFilter));
+  }, [activeFilter]);
+
+  const featuredPost = filteredPosts[0];
+  const regularPosts = filteredPosts.slice(1);
+
+  return (
+    <section id="blog" className="blog-section relative overflow-hidden bg-[#FBFAFC] py-20 dark:bg-gray-900 transition-colors duration-300">
+      {!isHomePage && (
+        <SEOHead
+          title="Engineering Notes & Blog"
+          description="Technical notes by Umesh Rajbanshi on backend, cloud, DevOps, AI, Python, Go, and system design."
+          url="https://umeshrajbanshi.com.np/all-blogs"
+        />
+      )}
+      <div className="blog-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
+      <AbstractBackground variant="both" opacity={0.022} colorClass="text-sky-500 dark:text-sky-500" flip />
+
+      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4">
+        <ScrollReveal direction="up" distance={20}>
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
+              TECH WRITING
+            </p>
+            <h2 className="mt-4 text-4xl font-bold leading-tight text-[#0F172A] dark:text-white md:text-5xl">
+              Engineering Notes &{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-transparent">
+                Blog
+              </span>
+            </h2>
+            <p className="mt-5 text-base leading-relaxed text-[#475569] dark:text-gray-300 md:text-lg">
+              Thoughts, build logs, and technical notes from my backend, cloud, DevOps, AI, and system design learning journey.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal direction="up" distance={18} delay={0.05}>
+          <div className="mt-8 flex gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible">
+            {filters.map((filter) => {
+              const isActive = activeFilter === filter;
+              return (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`blog-filter-pill shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
+                    isActive
+                      ? 'blog-filter-pill-active text-white'
+                      : 'border-blue-400/20 bg-white/65 text-[#475569] hover:border-blue-400/50 hover:text-blue-600 dark:bg-slate-900/42 dark:text-gray-300 dark:hover:text-sky-200'
+                  }`}
+                >
+                  {filter}
+                </button>
+              );
+            })}
+          </div>
+        </ScrollReveal>
+
+        {featuredPost && (
+          <ScrollReveal direction="up" distance={30} delay={0.08}>
+            <div className="mt-8">
+              <BlogCard post={featuredPost} featured />
+            </div>
+          </ScrollReveal>
+        )}
+
+        {regularPosts.length > 0 && (
+          <ScrollReveal direction="up" distance={30} delay={0.12}>
+            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {regularPosts.map((post) => (
+                <BlogCard key={post.id} post={post} />
+              ))}
+            </div>
+          </ScrollReveal>
+        )}
+
+        {filteredPosts.length === 0 && (
+          <p className="mt-12 text-center text-[#64748B] dark:text-gray-400">
+            No articles found for this category.
+          </p>
+        )}
+
+        {isHomePage && (
+          <div className="mt-12 flex justify-center">
             <Link
               to="/all-blogs"
-              className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-[#1D4ED8] transition-all shadow-lg shadow-blue-500/20"
+              className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-white/70 px-6 py-3 font-semibold text-blue-700 shadow-lg shadow-blue-500/10 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/60 hover:bg-blue-500/10 dark:bg-slate-900/50 dark:text-blue-100"
             >
-              See All Posts
+              View All Notes
+              <ArrowRight size={18} />
             </Link>
           </div>
         )}
