@@ -1,6 +1,6 @@
 export const personalInfo = {
   name: "Umesh Rajbanshi",
-  title: "Electronics and Communication Engineer | AI & ML Enthusiast",
+  title: "Python Backend & Cloud Engineer",
   email: "ums.rbc07@gmail.com",
   phone: "9816386181",
   website: "umeshrajbanshi.com.np",

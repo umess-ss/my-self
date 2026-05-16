@@ -1,4 +1,13 @@
 import React, { useEffect, useState } from 'react';
+import homeImage from '../assets/home.jpeg';
+
+const terminalLines = [
+  'initializing api...',
+  'loading docker layers...',
+  'connecting aws cloud...',
+  'deploying portfolio...',
+  'ready.',
+];
 
 const SplashScreen = ({ onFinish }) => {
   const [visible, setVisible] = useState(true);
@@ -26,11 +35,11 @@ const SplashScreen = ({ onFinish }) => {
 
   return (
     <div
+      className="splash-screen"
       style={{
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: 'linear-gradient(135deg, #0f0c29, #302b63, #24243e)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -40,41 +49,51 @@ const SplashScreen = ({ onFinish }) => {
         pointerEvents: fadeOut ? 'none' : 'all',
       }}
     >
-      {/* Animated rings */}
-      <div style={{ position: 'relative', width: 160, height: 160, marginBottom: 32 }}>
+      <div className="portfolio-hero-bg absolute inset-0" />
+      <div className="portfolio-hero-grid absolute inset-0" />
+      <div className="splash-glow" aria-hidden="true" />
+
+      <div className="splash-avatar-shell">
         <div className="splash-ring splash-ring-1" />
         <div className="splash-ring splash-ring-2" />
         <div className="splash-ring splash-ring-3" />
-        {/* Center initials */}
-        <div style={{
-          position: 'absolute', inset: 0,
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-        }}>
-          <span style={{
-            fontSize: 52,
-            fontWeight: 800,
-            background: 'linear-gradient(135deg, #2563EB, #0EA5E9)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            fontFamily: 'Inter, sans-serif',
-            letterSpacing: '-2px',
-          }}>UR</span>
-        </div>
+        <img
+          src={homeImage}
+          alt="Umesh Rajbanshi"
+          className="splash-avatar"
+        />
       </div>
 
-      {/* Name */}
       <h1 className="splash-name">
         Umesh Rajbanshi
       </h1>
 
-      {/* Tagline */}
       <p className="splash-tagline">
-        Electronics Engineer · AI &amp; ML Enthusiast
+        Python Backend &amp; Cloud Engineer
       </p>
 
-      {/* Loading bar */}
-      <div className="splash-bar-track">
-        <div className="splash-bar-fill" />
+      <div className="splash-terminal-card" aria-label="Deployment status">
+        <div className="splash-terminal-header">
+          <span className="splash-terminal-dot" />
+          <span className="splash-terminal-dot" />
+          <span className="splash-terminal-dot" />
+          <span className="splash-terminal-title">deploying portfolio</span>
+        </div>
+        <div className="splash-terminal-body">
+          {terminalLines.map((line, index) => (
+            <div
+              key={line}
+              className="splash-terminal-line"
+              style={{ animationDelay: `${0.42 + index * 0.18}s` }}
+            >
+              <span className="splash-terminal-prompt">&gt;</span>
+              <span>{line}</span>
+            </div>
+          ))}
+        </div>
+        <div className="splash-bar-track">
+          <div className="splash-bar-fill" />
+        </div>
       </div>
     </div>
   );
