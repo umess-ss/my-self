@@ -51,6 +51,22 @@ section {
   /* same as navHeight */
 }
 
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* ===================== ABOUT PHOTO BLEND ===================== */
 .about-section {
   --about-section-bg: #FBFAFC;
