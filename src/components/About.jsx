@@ -5,7 +5,7 @@ import AbstractBackground from './AbstractBackground';
 
 const ProgressCircle = ({ percentage, label, color }) => {
   const strokeColors = {
-    purple: "#a855f7",
+    primary: "#2563EB",
     green: "#22c55e",
     orange: "#f97316",
   };
@@ -47,16 +47,16 @@ const ProgressCircle = ({ percentage, label, color }) => {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-20 bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300">
-      <AbstractBackground variant="waves" opacity={0.05} colorClass="text-purple-300 dark:text-purple-700" flip />
+    <section id="about" className="relative py-20 bg-[#FBFAFC] dark:bg-gray-900 overflow-hidden transition-colors duration-300">
+      <AbstractBackground variant="waves" opacity={0.05} colorClass="text-sky-500 dark:text-sky-500" flip />
       <div className="container mx-auto px-4">
         <ScrollReveal direction="up" distance={20}>
-          <p className="text-purple-600 font-semibold text-center mb-2">ABOUT ME</p>
+          <p className="text-sky-500 font-semibold text-center mb-2">ABOUT ME</p>
         </ScrollReveal>
 
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
           Who Is{" "}
-          <span className="text-purple-600">Umesh Rajbanshi</span>
+          <span className="text-blue-600">Umesh Rajbanshi</span>
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8 items-start">
@@ -72,16 +72,16 @@ export default function About() {
             <div>
               {/* Quote block */}
               <div className="relative mb-8">
-                <span className="absolute -top-4 -left-2 text-7xl leading-none text-purple-300 dark:text-purple-700 font-serif select-none">"</span>
-                <blockquote className="relative z-10 pl-6 pr-2 pt-4 italic text-gray-600 dark:text-gray-300 leading-relaxed text-lg border-l-4 border-purple-400 dark:border-purple-600">
+                <span className="absolute -top-4 -left-2 text-7xl leading-none text-sky-500/40 dark:text-sky-500/60 font-serif select-none">"</span>
+                <blockquote className="relative z-10 pl-6 pr-2 pt-4 italic text-gray-600 dark:text-gray-300 leading-relaxed text-lg border-l-4 border-sky-500 dark:border-sky-500">
                   I am a passionate and detail-oriented Electronics and Communication Engineer with a solid foundation in backend architecture and
                   a growing focus on AWS Cloud Operations. With a disciplined approach to debugging and error handling, I specialize in crafting robust,
                   scalable software solutions and maintaining high standards through CI/CD workflows and containerization. My expertise extends into AI and Deep Learning,
                   where I have experience integrating cutting-edge tools like Langchain, Crawl4ai, and Gemini into real-world engineering projects.
                   From optimizing system stability to building advanced computer vision applications like Blind Vision, my commitment to technical excellence has led to measurable successes in enhancing system reliability and project performance.
                 </blockquote>
-                <span className="block text-right text-7xl leading-none text-purple-300 dark:text-purple-700 font-serif select-none -mt-4">"</span>
-                <p className="text-right text-sm font-semibold text-purple-600 dark:text-purple-400 mt-1 pr-2">— Umesh Rajbanshi</p>
+                <span className="block text-right text-7xl leading-none text-sky-500/40 dark:text-sky-500/60 font-serif select-none -mt-4">"</span>
+                <p className="text-right text-sm font-semibold text-blue-600 dark:text-sky-500 mt-1 pr-2">— Umesh Rajbanshi</p>
               </div>
 
               <div className="flex flex-nowrap justify-between items-center gap-2 md:gap-8 mt-8">

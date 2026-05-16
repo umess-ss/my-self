@@ -24,7 +24,7 @@ function App() {
       <ThemeProvider>
         <Router>
           <SmoothScroll>
-          <div className="min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+          <div className="min-h-screen bg-[#FBFAFC] dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
             <ScrollToTop />
             <Navigation />

@@ -16,7 +16,32 @@ html.lenis, html.lenis body {
 /* Configure Tailwind CSS v4 dark mode to use class strategy */
 @variant dark (&:where(.dark, .dark *));
 
+:root {
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-accent: #0EA5E9;
+  --color-text: #0F172A;
+  --color-muted: #475569;
+  --color-bg: #FBFAFC;
+  --color-card: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-badge-bg: #EFF6FF;
+  --color-badge-border: #BFDBFE;
+  --color-badge-text: #2563EB;
+}
+
 @theme {
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-accent: #0EA5E9;
+  --color-text: #0F172A;
+  --color-muted: #475569;
+  --color-bg: #FBFAFC;
+  --color-card: #FFFFFF;
+  --color-border: #E2E8F0;
+  --color-badge-bg: #EFF6FF;
+  --color-badge-border: #BFDBFE;
+  --color-badge-text: #2563EB;
   --color-dark-bg: #111827;
   --color-dark-surface: #1f2937;
 }
@@ -51,16 +76,16 @@ section {
   animation: ringPulse 1.8s ease-in-out infinite;
 }
 .splash-ring-1 {
-  border-color: rgba(244, 114, 182, 0.6);
+  border-color: rgba(37, 99, 235, 0.6);
   animation-delay: 0s;
 }
 .splash-ring-2 {
-  border-color: rgba(168, 85, 247, 0.4);
+  border-color: rgba(14, 165, 233, 0.4);
   inset: -16px;
   animation-delay: 0.3s;
 }
 .splash-ring-3 {
-  border-color: rgba(99, 102, 241, 0.3);
+  border-color: rgba(37, 99, 235, 0.3);
   inset: -32px;
   animation-delay: 0.6s;
 }
@@ -94,7 +119,7 @@ section {
 
 .splash-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #f472b6, #a855f7);
+  background: linear-gradient(90deg, #2563EB, #0EA5E9);
   border-radius: 99px;
   animation: loadBar 1.8s cubic-bezier(0.4,0,0.2,1) 0.8s both;
 }
@@ -131,9 +156,9 @@ section {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.2px;
-  color: #e11d48;
+  color: #2563EB;
   background: transparent;
-  border: 1.5px solid #e11d48;
+  border: 1.5px solid #2563EB;
   border-radius: 8px;
   cursor: pointer;
   white-space: nowrap;
@@ -143,9 +168,9 @@ section {
 
 .cv-navbar-btn:hover {
   color: #fff;
-  background: linear-gradient(135deg, #e11d48, #db2777);
-  border-color: #e11d48;
-  box-shadow: 0 4px 16px rgba(225, 29, 72, 0.3);
+  background: #2563EB;
+  border-color: #2563EB;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
   transform: translateY(-1px);
 }
 
@@ -161,14 +186,14 @@ section {
 }
 
 .dark .cv-navbar-btn {
-  color: #fb7185;
-  border-color: #fb7185;
+  color: #0EA5E9;
+  border-color: #0EA5E9;
 }
 
 .dark .cv-navbar-btn:hover {
   color: #fff;
-  background: linear-gradient(135deg, #e11d48, #db2777);
-  border-color: #e11d48;
+  background: #2563EB;
+  border-color: #2563EB;
 }
 
 .cv-navbar-btn--mobile {
@@ -259,7 +284,7 @@ section {
   font-size: 0.75rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(135deg, #7c3aed, #db2777);
+  background: #2563EB;
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -269,7 +294,7 @@ section {
 
 .cv-download-btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
 }
 
 .cv-newtab-btn {
@@ -288,8 +313,8 @@ section {
 }
 
 .cv-newtab-btn:hover {
-  background: rgba(124, 58, 237, 0.1);
-  color: #7c3aed;
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563EB;
 }
 
 .dark .cv-newtab-btn {
@@ -298,8 +323,8 @@ section {
 }
 
 .dark .cv-newtab-btn:hover {
-  background: rgba(124, 58, 237, 0.2);
-  color: #a78bfa;
+  background: rgba(14, 165, 233, 0.2);
+  color: #0EA5E9;
 }
 
 .cv-close-btn {

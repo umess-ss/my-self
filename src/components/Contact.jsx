@@ -9,11 +9,11 @@ const ContactInfoCard = ({ icon: Icon, text, color }) => {
 
   const colorMap = {
     blue: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
-    purple: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400",
-    pink: "bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400",
+    primary: "bg-[#EFF6FF] text-[#2563EB] dark:bg-blue-900/30 dark:text-blue-400",
+    accent: "bg-[#EFF6FF] text-[#0EA5E9] dark:bg-sky-900/30 dark:text-sky-400",
   };
   return (
-    <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 flex items-center gap-4 shadow-sm hover:shadow-md transition-all duration-300" >
+    <div className="bg-white dark:bg-gray-800 border border-[#E2E8F0] dark:border-gray-700 rounded-lg p-6 flex items-center gap-4 shadow-sm hover:shadow-md transition-all duration-300" >
       <div className={`w-14 h-14 rounded-full flex items-center justify-center ${colorMap[color]}`}>
         <Icon size={24} />
       </div>
@@ -60,13 +60,13 @@ export default function Contact() {
 
   const contactInfo = [
     { icon: Phone, text: personalInfo.phone, color: 'blue' },
-    { icon: Mail, text: personalInfo.email, color: 'purple' },
-    { icon: MapPin, text: personalInfo.location, color: 'pink' },
+    { icon: Mail, text: personalInfo.email, color: 'primary' },
+    { icon: MapPin, text: personalInfo.location, color: 'accent' },
   ];
 
   return (
-    <section id="contact" className="relative min-h-screen py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden transition-colors duration-300">
-      <AbstractBackground variant="waves" opacity={0.04} colorClass="text-pink-300 dark:text-pink-800" />
+    <section id="contact" className="relative min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-800 overflow-hidden transition-colors duration-300">
+      <AbstractBackground variant="waves" opacity={0.04} colorClass="text-sky-500 dark:text-sky-500" />
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12">
           <BlurText
@@ -80,7 +80,7 @@ export default function Contact() {
             animateBy="words"
             delay={100}
             direction="bottom"
-            className="text-purple-600"
+            className="text-blue-600"
           />
         </h2>
         <div className="grid md:grid-cols-2 gap-12">
@@ -100,32 +100,32 @@ export default function Contact() {
                 name="name"
                 placeholder="Your Name"
                 required
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-blue-600"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Your Email"
                 required
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-blue-600"
               />
               <input
                 type="text"
                 name="subject"
                 placeholder="Subject"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-blue-600"
               />
               <textarea
                 name="message"
                 placeholder="Message"
                 rows="4"
                 required
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-pink-500"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-blue-600"
               />
 
               <button
                 type="submit"
-                className="w-full px-6 py-3 border-2 border-pink-600 text-pink-600 rounded-full hover:bg-pink-50 transition font-semibold cursor-pointer"
+                className="w-full px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-[#EFF6FF] transition font-semibold cursor-pointer"
               >
                 {result ? result : "Send Message Now"}
               </button>

@@ -53,7 +53,7 @@ const SplashScreen = ({ onFinish }) => {
           <span style={{
             fontSize: 52,
             fontWeight: 800,
-            background: 'linear-gradient(135deg, #f472b6, #a855f7)',
+            background: 'linear-gradient(135deg, #2563EB, #0EA5E9)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             fontFamily: 'Inter, sans-serif',

@@ -21,7 +21,7 @@ const BlogPostDetail = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold mb-4">Post not found</h2>
-        <button onClick={() => navigate('/')} className="text-purple-600 underline">
+        <button onClick={() => navigate('/')} className="text-[#2563EB] underline">
           Return to Home
         </button>
       </div>
@@ -43,7 +43,7 @@ const BlogPostDetail = () => {
         {/* Back Button */}
         <button
           onClick={() => navigate('/')}
-          className="group flex items-center gap-2 text-gray-500 hover:text-purple-600 dark:text-gray-400 dark:hover:text-purple-400 transition-colors mb-8"
+          className="group flex items-center gap-2 text-gray-500 hover:text-[#2563EB] dark:text-gray-400 dark:hover:text-sky-300 transition-colors mb-8"
         >
           <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
           <span className="font-medium">Back to Portfolio</span>
@@ -53,7 +53,7 @@ const BlogPostDetail = () => {
         {/* Header Section */}
         <header className="mb-10">
           <div className="flex flex-wrap gap-4 items-center mb-6">
-            <span className="bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1">
+            <span className="bg-[#EFF6FF] text-[#2563EB] dark:bg-sky-900/30 dark:text-sky-300 px-3 py-1 rounded-md text-sm font-bold flex items-center gap-1">
               <Tag size={14} /> {post.tag}
             </span>
             <div className="flex items-center gap-4 text-gray-400 text-sm">
@@ -82,12 +82,12 @@ const BlogPostDetail = () => {
 
 
         {/* Post Content */}
-        <div className="prose prose-lg prose-purple dark:prose-invert max-w-none">
-          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6 font-medium italic border-l-4 border-purple-500 pl-6">
+        <div className="prose prose-lg prose-sky dark:prose-invert max-w-none">
+          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6 font-medium italic border-l-4 border-[#2563EB] pl-6">
             {post.excerpt}
           </p>
 
-          <div className="prose prose-purple dark:prose-invert lg:prose-xl">
+          <div className="prose prose-sky dark:prose-invert lg:prose-xl">
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
         </div>

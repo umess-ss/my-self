@@ -8,7 +8,7 @@ import AbstractBackground from './AbstractBackground';
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer duration-300 h-full border border-gray-100 dark:border-gray-700">
+    <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-md overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all cursor-pointer duration-300 h-full border border-[#E2E8F0] dark:border-gray-700">
       <div className="relative overflow-hidden">
         <img
           src={project.image}
@@ -16,7 +16,7 @@ const ProjectCard = ({ project }) => {
           className="w-full h-52 object-cover transition-transform duration-500 hover:scale-105"
         />
         <div className="absolute top-3 right-3">
-          <span className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-purple-600 dark:text-purple-400 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
+          <span className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm text-blue-600 dark:text-sky-500 px-3 py-1 rounded-full text-xs font-semibold shadow-sm">
             {project.type}
           </span>
         </div>
@@ -26,7 +26,7 @@ const ProjectCard = ({ project }) => {
         <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 leading-relaxed line-clamp-2">{project.description}</p>
         <div className="flex flex-wrap gap-1.5 mb-4">
           {project.technologies.slice(0, 4).map((tech, index) => (
-            <span key={index} className="bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 px-2.5 py-1 rounded-full text-xs font-medium">
+            <span key={index} className="bg-[#EFF6FF] text-[#2563EB] dark:bg-blue-900/30 dark:text-blue-400 px-2.5 py-1 rounded-full text-xs font-medium">
               {tech}
             </span>
           ))}
@@ -41,7 +41,7 @@ const ProjectCard = ({ project }) => {
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-purple-600 bg-purple-50 rounded-lg hover:bg-purple-100 hover:text-purple-700 transition-all duration-200 dark:bg-purple-900/20 dark:text-purple-400 dark:hover:bg-purple-900/40"
+          className="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-blue-600 bg-[#EFF6FF] rounded-lg hover:bg-blue-100 hover:text-[#1D4ED8] transition-all duration-200 dark:bg-blue-900/20 dark:text-blue-400 dark:hover:bg-blue-900/40"
         >
           <Github size={16} />
           View Source
@@ -90,14 +90,14 @@ export default function Projects() {
   const handleMouseLeave = () => setIsPaused(false);
 
   return (
-    <section id="projects" className="relative min-h-screen py-20 bg-white dark:bg-gray-900 overflow-hidden transition-colors duration-300">
-      <AbstractBackground variant="both" opacity={0.05} colorClass="text-purple-400 dark:text-purple-600" flip />
+    <section id="projects" className="relative min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-900 overflow-hidden transition-colors duration-300">
+      <AbstractBackground variant="both" opacity={0.05} colorClass="text-sky-500 dark:text-sky-500" flip />
       <div className="container mx-auto px-4">
         {/* Header with nav buttons */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
           <div>
             <ScrollReveal direction="up" distance={20}>
-              <p className="text-purple-600 font-semibold mb-2">MY PORTFOLIO</p>
+              <p className="text-sky-500 font-semibold mb-2">MY PORTFOLIO</p>
             </ScrollReveal>
             <h2 className="text-4xl md:text-5xl font-bold">
               <BlurText
@@ -111,7 +111,7 @@ export default function Projects() {
                 animateBy="words"
                 delay={100}
                 direction="bottom"
-                className="text-purple-600"
+                className="text-blue-600"
               />
             </h2>
           </div>
@@ -120,14 +120,14 @@ export default function Projects() {
           <div className="flex items-center gap-3 mt-6 md:mt-0">
             <button
               onClick={goPrev}
-              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-purple-500 hover:text-purple-600 dark:hover:border-purple-400 dark:hover:text-purple-400 transition-all duration-200 hover:shadow-md cursor-pointer outline-none focus:outline-none"
+              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-blue-600 hover:text-blue-600 dark:hover:border-sky-500 dark:hover:text-sky-500 transition-all duration-200 hover:shadow-md cursor-pointer outline-none focus:outline-none"
               aria-label="Previous project"
             >
               <ChevronLeft size={20} />
             </button>
             <button
               onClick={goNext}
-              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-purple-500 hover:text-purple-600 dark:hover:border-purple-400 dark:hover:text-purple-400 transition-all duration-200 hover:shadow-md cursor-pointer outline-none focus:outline-none"
+              className="w-11 h-11 rounded-full border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center text-gray-500 dark:text-gray-400 hover:border-blue-600 hover:text-blue-600 dark:hover:border-sky-500 dark:hover:text-sky-500 transition-all duration-200 hover:shadow-md cursor-pointer outline-none focus:outline-none"
               aria-label="Next project"
             >
               <ChevronRight size={20} />
@@ -169,8 +169,8 @@ export default function Projects() {
               onClick={() => setCurrentIndex(i)}
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer outline-none focus:outline-none ${
                 i === currentIndex
-                  ? "w-8 bg-purple-600 dark:bg-purple-400"
-                  : "w-2 bg-gray-300 dark:bg-gray-600 hover:bg-purple-300 dark:hover:bg-purple-700"
+                  ? "w-8 bg-blue-600 dark:bg-sky-500"
+                  : "w-2 bg-gray-300 dark:bg-gray-600 hover:bg-blue-300 dark:hover:bg-blue-700"
               }`}
               aria-label={`Go to slide ${i + 1}`}
             />
