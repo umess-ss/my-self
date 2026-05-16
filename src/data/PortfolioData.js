@@ -8,7 +8,7 @@ export const personalInfo = {
 };
 
 export const aboutStats = [
-  { percentage: 90, label: "Learner", color: "purple" },
+  { percentage: 90, label: "Learner", color: "primary" },
   { percentage: 80, label: "Nature Lover", color: "green" },
   { percentage: 70, label: "Social Activist", color: "orange" },
 ];

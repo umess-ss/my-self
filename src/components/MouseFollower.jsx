@@ -69,19 +69,19 @@ const MouseFollower = () => {
                     }}
                     transition={{ duration: 0.2 }}
                 >
-                    {/* Outer glow - purple */}
+                    {/* Outer glow */}
                     <div className="absolute inset-0 w-12 h-12 -translate-x-1/2 -translate-y-1/2">
-                        <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-500/60 to-purple-600/60 blur-xl"></div>
+                        <div className="w-full h-full rounded-full bg-gradient-to-br from-blue-500/60 to-sky-500/60 blur-xl"></div>
                     </div>
 
-                    {/* Middle glow - pink with pulse */}
+                    {/* Middle glow */}
                     <div className="absolute inset-0 w-8 h-8 -translate-x-1/2 -translate-y-1/2">
-                        <div className="w-full h-full rounded-full bg-gradient-to-br from-pink-500/70 to-pink-600/70 blur-lg animate-pulse"></div>
+                        <div className="w-full h-full rounded-full bg-gradient-to-br from-sky-500/70 to-blue-600/70 blur-lg animate-pulse"></div>
                     </div>
 
                     {/* Inner glow - brighter center */}
                     <div className="absolute inset-0 w-4 h-4 -translate-x-1/2 -translate-y-1/2">
-                        <div className="w-full h-full rounded-full bg-gradient-to-br from-purple-400/80 to-pink-500/80 blur-md"></div>
+                        <div className="w-full h-full rounded-full bg-gradient-to-br from-sky-400/80 to-blue-500/80 blur-md"></div>
                     </div>
                 </motion.div>
             </motion.div>
@@ -104,7 +104,7 @@ const MouseFollower = () => {
                     }}
                     transition={{ duration: 0.3 }}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/40 via-pink-500/40 to-purple-500/40 rounded-full blur-3xl"></div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/40 via-sky-500/40 to-blue-500/40 rounded-full blur-3xl"></div>
                 </motion.div>
             </motion.div>
         </>

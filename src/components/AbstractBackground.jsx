@@ -7,13 +7,13 @@ import React from "react";
  * Props:
  *  - variant: "waves" | "arrows" | "both" (default: "both")
  *  - opacity: 0–1 (default: 0.07)
- *  - colorClass: tailwind text color for strokes (default: "text-purple-400")
+ *  - colorClass: tailwind text color for strokes (default: "text-sky-400")
  *  - flip: flip vertically (default: false)
  */
 const AbstractBackground = ({
   variant = "both",
   opacity = 0.07,
-  colorClass = "text-purple-400",
+  colorClass = "text-sky-400",
   flip = false,
 }) => {
   const showWaves = variant === "waves" || variant === "both";

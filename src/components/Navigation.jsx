@@ -147,7 +147,7 @@ const Navigation = () => {
                   bottom: 0,
                   height: "2.5px",
                   borderRadius: "99px",
-                  background: "linear-gradient(90deg, #e11d48, #ec4899)",
+                  background: "linear-gradient(90deg, #2563EB, #0EA5E9)",
                   transition: "left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s",
                   pointerEvents: "none",
                   ...indicatorStyle,
@@ -161,8 +161,8 @@ const Navigation = () => {
                   onClick={() => handleNavClick(item.id)}
                   className={`px-4 py-2 font-medium transition-colors duration-200 cursor-pointer outline-none ${
                     activeSection === item.id
-                      ? "text-pink-600 dark:text-pink-400"
-                      : "text-gray-700 hover:text-pink-600 dark:text-gray-300 dark:hover:text-pink-400"
+                      ? "text-[#2563EB] dark:text-sky-300"
+                      : "text-gray-700 hover:text-[#2563EB] dark:text-gray-300 dark:hover:text-sky-300"
                   }`}
                 >
                   {item.label}
@@ -228,7 +228,7 @@ const Navigation = () => {
                   onClick={() => handleNavClick(item.id)}
                   className={`block w-full text-left px-4 py-2 font-medium transition ${
                     activeSection === item.id
-                      ? "text-pink-600 bg-pink-50 dark:text-pink-400 dark:bg-pink-900/20"
+                      ? "text-[#2563EB] bg-[#EFF6FF] dark:text-sky-300 dark:bg-sky-900/20"
                       : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
                   }`}
                 >

@@ -10,7 +10,7 @@ import AbstractBackground from './AbstractBackground';
 const techGroups = [
   {
     label: 'Languages',
-    color: 'from-pink-500 to-rose-400',
+    color: 'from-blue-600 to-sky-500',
     skills: [
       { name: 'Python',     icon: 'python',      pct: 85 },
       { name: 'JavaScript', icon: 'javascript',  pct: 75 },
@@ -20,7 +20,7 @@ const techGroups = [
   },
   {
     label: 'Web & Backend',
-    color: 'from-violet-500 to-purple-400',
+    color: 'from-blue-600 to-sky-500',
     skills: [
       { name: 'Django',   icon: 'django',   pct: 80 },
       { name: 'React',    icon: 'react',    pct: 72 },
@@ -134,7 +134,7 @@ const HardSkillsPanel = () => {
 /* ── Resume card (category switcher) ─────────────────────── */
 const ResumeCard = ({ icon: Icon, label, color, isActive, onClick }) => {
   const colorMap = {
-    pink:   isActive ? 'bg-pink-600 text-white'   : 'bg-pink-100 text-pink-600 dark:bg-pink-900/30 dark:text-pink-400',
+    primary: isActive ? 'bg-blue-600 text-white'   : 'bg-[#EFF6FF] text-blue-600 dark:bg-blue-900/30 dark:text-blue-400',
     orange: isActive ? 'bg-orange-600 text-white' : 'bg-orange-100 text-orange-600 dark:bg-orange-900/30 dark:text-orange-400',
     blue:   isActive ? 'bg-blue-600 text-white'   : 'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400',
   };
@@ -142,7 +142,7 @@ const ResumeCard = ({ icon: Icon, label, color, isActive, onClick }) => {
   return (
     <div
       onClick={onClick}
-      className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 w-44 text-center hover:shadow-lg hover:-translate-y-2 transition-all cursor-pointer border-2 ${isActive ? 'border-purple-500' : 'border-transparent dark:border-gray-700'}`}
+      className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 w-44 text-center hover:shadow-lg hover:-translate-y-2 transition-all cursor-pointer border-2 ${isActive ? 'border-blue-600' : 'border-transparent dark:border-gray-700'}`}
     >
       <div className={`w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4 transition-colors ${colorMap[color]}`}>
         <Icon size={28} />
@@ -160,18 +160,18 @@ const Resume = () => {
     { icon: GraduationCap, label: 'Education',   color: 'orange' },
     { icon: Award,         label: 'Trainings',   color: 'blue'   },
     { icon: Code,          label: 'Hard Skills', color: 'orange' },
-    { icon: Brain,         label: 'Soft Skills', color: 'pink'   },
-    { icon: Rocket,        label: 'Experience',  color: 'pink'   },
+    { icon: Brain,         label: 'Soft Skills', color: 'primary' },
+    { icon: Rocket,        label: 'Experience',  color: 'primary' },
   ];
 
   const filteredData = experiences.filter((item) => item.category === activeCategory);
 
   return (
-    <section id="resume" className="relative min-h-screen py-20 bg-gray-50 dark:bg-gray-800 overflow-hidden transition-colors duration-300">
-      <AbstractBackground variant="arrows" opacity={0.04} colorClass="text-pink-400 dark:text-pink-700" />
+    <section id="resume" className="relative min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-800 overflow-hidden transition-colors duration-300">
+      <AbstractBackground variant="arrows" opacity={0.04} colorClass="text-sky-500 dark:text-sky-500" />
       <div className="container mx-auto px-4">
         <ScrollReveal direction="up" distance={20}>
-          <p className="text-pink-600 font-semibold text-center mb-2">MY RESUME</p>
+          <p className="text-sky-500 font-semibold text-center mb-2">MY RESUME</p>
         </ScrollReveal>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
           <BlurText
@@ -185,7 +185,7 @@ const Resume = () => {
             animateBy="words"
             delay={100}
             direction="bottom"
-            className="text-purple-600"
+            className="text-blue-600"
           />
         </h2>
 
@@ -211,7 +211,7 @@ const Resume = () => {
           ) : filteredData.length > 0 ? (
             filteredData.map((exp, index) => (
               <div key={index} className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-8 mb-6 transition-colors duration-300">
-                <h3 className="text-xl font-semibold text-pink-600 dark:text-pink-400 mb-2">
+                <h3 className="text-xl font-semibold text-blue-600 dark:text-sky-500 mb-2">
                   {exp.position}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 mb-4 font-medium">

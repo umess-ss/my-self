@@ -37,7 +37,7 @@ const BlogCard = ({ post }) => {
         }}
       />
       <div className="p-6">
-        <span className="bg-purple-600 text-white px-4 py-1 rounded-full text-sm">
+        <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm">
           {tag}
         </span>
         <p className="text-gray-500 dark:text-gray-400 text-sm mt-3 mb-2">{date}</p>
@@ -45,7 +45,7 @@ const BlogCard = ({ post }) => {
         {excerpt && <p className="text-gray-600 dark:text-gray-300">{excerpt}</p>}
 
         {/* read more arrow */}
-        <div className="mt-3 flex items-center text-purple-600 dark:text-purple-400 font-bold text-sm group/btn">
+        <div className="mt-3 flex items-center text-blue-600 dark:text-sky-500 font-bold text-sm group/btn">
           <span>READ MORE</span>
           <ArrowRight className="ml-1.5 w-4 h-4 transform group-hover/btn:translate-x-2 transition-transform duration-300" />
         </div>
@@ -59,7 +59,7 @@ const Blog = ({ isHomePage }) => {
   const displayPosts = isHomePage ? blogPosts.slice(0, 3) : blogPosts;
 
   return (
-    <section id="blog" className="min-h-screen py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="blog" className="min-h-screen py-20 bg-[#FBFAFC] dark:bg-gray-900 transition-colors duration-300">
       {!isHomePage && (
         <SEOHead
           title="All Blog Posts"
@@ -69,7 +69,7 @@ const Blog = ({ isHomePage }) => {
       )}
       <div className="container mx-auto px-4">
         <ScrollReveal direction="up" distance={20}>
-          <p className="text-purple-600 font-semibold text-center mb-2">TECHNO TRENDS</p>
+          <p className="text-sky-500 font-semibold text-center mb-2">TECHNO TRENDS</p>
         </ScrollReveal>
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">
           <BlurText
@@ -83,7 +83,7 @@ const Blog = ({ isHomePage }) => {
             animateBy="words"
             delay={100}
             direction="bottom"
-            className="text-purple-600"
+            className="text-blue-600"
           />
         </h2>
 
@@ -101,7 +101,7 @@ const Blog = ({ isHomePage }) => {
           <div className="text-center mt-12">
             <Link
               to="/all-blogs"
-              className="inline-flex items-center px-8 py-3 bg-purple-600 text-white font-bold rounded-full hover:bg-purple-700 transition-all shadow-lg hover:shadow-purple-200"
+              className="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-bold rounded-full hover:bg-[#1D4ED8] transition-all shadow-lg shadow-blue-500/20"
             >
               See All Posts
             </Link>
