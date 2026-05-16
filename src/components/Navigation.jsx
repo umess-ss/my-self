@@ -202,51 +202,41 @@ const Navigation = () => {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
+                className="group flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 transition-all duration-300 ease-in-out hover:bg-gray-100 active:scale-95 dark:text-gray-300 dark:hover:bg-gray-800"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMobileMenuOpen}
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  {isMobileMenuOpen ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
-                </svg>
+                <span className="relative block h-5 w-6">
+                  <span className={`absolute left-0 top-0 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "translate-y-2 rotate-45" : ""}`} />
+                  <span className={`absolute left-0 top-2 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "opacity-0 scale-x-0" : "opacity-100 scale-x-100"}`} />
+                  <span className={`absolute left-0 top-4 h-0.5 w-6 rounded-full bg-current transition-all duration-300 ease-in-out ${isMobileMenuOpen ? "-translate-y-2 -rotate-45" : ""}`} />
+                </span>
               </button>
             </div>
           </div>
 
-          {isMobileMenuOpen && (
-            <div className="md:hidden pb-4">
-              {navItems.map((item) => (
+          <div
+            className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+              isMobileMenuOpen ? "max-h-96 opacity-100 translate-y-0 pb-4 pointer-events-auto" : "max-h-0 opacity-0 -translate-y-2.5 pb-0 pointer-events-none"
+            }`}
+          >
+            <div className="rounded-2xl border border-white/60 bg-white/80 p-2 shadow-[0_18px_50px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/80 dark:shadow-[0_18px_55px_rgba(2,6,23,0.32)]">
+              {navItems.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`block w-full text-left px-4 py-2 font-medium transition ${
+                  style={{ transitionDelay: isMobileMenuOpen ? `${index * 35}ms` : "0ms" }}
+                  className={`block w-full rounded-xl px-4 py-2.5 text-left font-medium transition-all duration-300 ease-out ${
                     activeNavId === item.id
                       ? "text-[#2563EB] bg-[#EFF6FF] dark:text-sky-300 dark:bg-sky-900/20"
                       : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
-                  }`}
+                  } ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-1.5 opacity-0"}`}
                 >
                   {item.label}
                 </button>
               ))}
             </div>
-          )}
+          </div>
         </div>
       </nav>
       <CVModal isOpen={isCVOpen} onClose={() => setIsCVOpen(false)} />
