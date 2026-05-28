@@ -297,23 +297,19 @@ export default function Projects() {
         </Reveal>
 
         {featuredProjects.length > 0 && (
-          <Reveal delay={0.08} distance={16}>
-            <div className="mt-8 grid gap-5 lg:grid-cols-3">
-              {featuredProjects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} featured delay={index * 0.06} />
-              ))}
-            </div>
-          </Reveal>
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {featuredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} featured delay={index * 0.04} />
+            ))}
+          </div>
         )}
 
         {regularProjects.length > 0 && (
-          <Reveal delay={0.12} distance={16}>
-            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {regularProjects.map((project, index) => (
-                <ProjectCard key={project.id} project={project} delay={index * 0.035} />
-              ))}
-            </div>
-          </Reveal>
+          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {regularProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} delay={index * 0.025} />
+            ))}
+          </div>
         )}
 
         {filteredProjects.length === 0 && (

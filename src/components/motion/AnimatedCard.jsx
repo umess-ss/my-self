@@ -16,7 +16,7 @@ export default function AnimatedCard({
       className={className}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.18 }}
+      viewport={{ once: true, amount: 0.12, margin: '0px 0px -8% 0px' }}
       variants={
         shouldReduceMotion
           ? reducedFade
@@ -34,7 +34,6 @@ export default function AnimatedCard({
             }
       }
       whileHover={!shouldReduceMotion ? cardHover : undefined}
-      style={{ willChange: shouldReduceMotion ? 'opacity' : 'transform, opacity' }}
       {...props}
     >
       {children}

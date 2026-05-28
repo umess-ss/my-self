@@ -52,10 +52,9 @@ export const reducedFade = {
 };
 
 export const cardHover = {
-  y: -6,
-  scale: 1.01,
+  y: -3,
   transition: {
-    duration: 0.28,
+    duration: 0.22,
     ease: easeOut,
   },
 };
