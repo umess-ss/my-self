@@ -923,10 +923,10 @@ textarea.contact-input {
 
 .projects-bg-grid {
   background:
-    linear-gradient(115deg, rgba(251, 250, 252, 0.98) 0%, rgba(239, 246, 255, 0.54) 48%, rgba(251, 250, 252, 0.98) 100%),
-    radial-gradient(circle at 78% 20%, rgba(59, 130, 246, 0.07), transparent 34%),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.034) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+    linear-gradient(115deg, rgba(251, 250, 252, 0.985) 0%, rgba(239, 246, 255, 0.34) 48%, rgba(251, 250, 252, 0.985) 100%),
+    radial-gradient(circle at 78% 20%, rgba(59, 130, 246, 0.04), transparent 35%),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.022) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.018) 1px, transparent 1px);
   background-size: auto, 100% 100%, 72px 72px, 72px 72px;
 }
 
@@ -935,82 +935,238 @@ textarea.contact-input {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 76%, rgba(14, 165, 233, 0.042), transparent 30%),
-    linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.026) 44%, transparent 60%),
-    linear-gradient(25deg, transparent 22%, rgba(37, 99, 235, 0.018) 45%, transparent 67%);
+    radial-gradient(circle at 18% 76%, rgba(14, 165, 233, 0.026), transparent 31%),
+    linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.014) 44%, transparent 60%);
 }
 
 .dark .projects-bg-grid {
   background:
-    linear-gradient(115deg, rgba(17, 24, 39, 0.98) 0%, rgba(12, 34, 66, 0.38) 48%, rgba(17, 24, 39, 0.98) 100%),
-    radial-gradient(circle at 78% 20%, rgba(59, 130, 246, 0.1), transparent 35%),
-    linear-gradient(90deg, rgba(37, 99, 235, 0.056) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(14, 165, 233, 0.044) 1px, transparent 1px);
+    linear-gradient(115deg, rgba(17, 24, 39, 0.985) 0%, rgba(12, 34, 66, 0.24) 48%, rgba(17, 24, 39, 0.985) 100%),
+    radial-gradient(circle at 78% 20%, rgba(59, 130, 246, 0.055), transparent 36%),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.038) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px);
   background-size: auto, 100% 100%, 72px 72px, 72px 72px;
 }
 
 .dark .projects-bg-grid::after {
   background:
-    radial-gradient(circle at 18% 76%, rgba(14, 165, 233, 0.058), transparent 30%),
-    linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.034) 44%, transparent 60%),
-    linear-gradient(25deg, transparent 22%, rgba(37, 99, 235, 0.026) 45%, transparent 67%);
+    radial-gradient(circle at 18% 76%, rgba(14, 165, 233, 0.034), transparent 31%),
+    linear-gradient(135deg, transparent 0%, rgba(14, 165, 233, 0.022) 44%, transparent 60%);
 }
 
 .project-card {
-  border: 1px solid rgba(59, 130, 246, 0.25);
-  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.74);
   box-shadow:
-    0 14px 38px rgba(15, 23, 42, 0.065),
+    0 12px 34px rgba(15, 23, 42, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
   contain: layout paint style;
   content-visibility: auto;
   contain-intrinsic-size: 360px;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+  transition:
+    transform 0.22s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.22s cubic-bezier(0.25, 1, 0.5, 1),
+    box-shadow 0.22s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.22s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .project-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(59, 130, 246, 0.52);
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.28);
+  background: rgba(255, 255, 255, 0.86);
   box-shadow:
-    0 18px 46px rgba(37, 99, 235, 0.13),
+    0 16px 40px rgba(15, 23, 42, 0.07),
     inset 0 1px 0 rgba(255, 255, 255, 0.58);
 }
 
 .dark .project-card {
-  background: rgba(15, 23, 42, 0.82);
+  border-color: rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.42);
   box-shadow:
-    0 16px 44px rgba(2, 6, 23, 0.24),
+    0 16px 42px rgba(2, 6, 23, 0.18),
     inset 0 1px 0 rgba(148, 163, 184, 0.12);
 }
 
 .dark .project-card:hover {
-  border-color: rgba(96, 165, 250, 0.5);
+  border-color: rgba(96, 165, 250, 0.28);
+  background: rgba(15, 23, 42, 0.56);
   box-shadow:
-    0 20px 52px rgba(14, 165, 233, 0.11),
+    0 18px 46px rgba(2, 6, 23, 0.26),
     inset 0 1px 0 rgba(148, 163, 184, 0.16);
 }
 
 .project-card-featured {
   box-shadow:
-    0 18px 52px rgba(37, 99, 235, 0.1),
+    0 16px 46px rgba(37, 99, 235, 0.07),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .project-visual {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 219, 187, 0.22), transparent 28%),
+    linear-gradient(135deg, rgba(239, 246, 255, 0.82), rgba(219, 234, 254, 0.54));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+.dark .project-visual {
+  border-color: rgba(148, 163, 184, 0.14);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 219, 187, 0.08), transparent 30%),
+    linear-gradient(135deg, rgba(30, 41, 59, 0.62), rgba(15, 23, 42, 0.34));
+  box-shadow: inset 0 1px 0 rgba(148, 163, 184, 0.12);
+}
+
+.project-visual-grid {
+  background:
+    linear-gradient(90deg, rgba(37, 99, 235, 0.055) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.045) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.55;
+}
+
+.dark .project-visual-grid {
+  background:
+    linear-gradient(90deg, rgba(96, 165, 250, 0.07) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+  opacity: 0.4;
+}
+
+.project-visual-icon {
+  height: 3.25rem;
+  width: 3.25rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.68);
+  color: #2563EB;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.075);
+}
+
+.dark .project-visual-icon {
+  border-color: rgba(96, 165, 250, 0.2);
+  background: rgba(15, 23, 42, 0.56);
+  color: #93C5FD;
+  box-shadow: 0 14px 32px rgba(2, 6, 23, 0.22);
+}
+
+.project-category-pill {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(255, 255, 255, 0.78);
+  color: #2563EB;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.045);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.dark .project-category-pill {
+  border-color: rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.66);
+  color: #BFDBFE;
+}
+
+.project-tech-chip {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(248, 250, 252, 0.7);
+  color: #334155;
+}
+
+.dark .project-tech-chip {
+  border-color: rgba(148, 163, 184, 0.14);
+  background: rgba(30, 41, 59, 0.42);
+  color: #CBD5E1;
+}
+
+.project-primary-action,
+.project-more-action {
+  border: 1px solid rgba(37, 99, 235, 0.82);
+  background: #2563EB;
+  color: #F8FAFC;
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.16);
+}
+
+.project-primary-action:hover,
+.project-more-action:hover {
+  transform: translateY(-1px);
+  border-color: rgba(29, 78, 216, 0.9);
+  background: #1D4ED8;
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.22);
+}
+
+.project-secondary-action,
+.project-secondary-action-disabled,
+.project-action-disabled {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(255, 255, 255, 0.46);
+  color: #475569;
+}
+
+.project-secondary-action {
+  color: #2563EB;
+}
+
+.project-secondary-action:hover {
+  transform: translateY(-1px);
+  border-color: rgba(37, 99, 235, 0.34);
+  background: rgba(37, 99, 235, 0.07);
+}
+
+.project-action-disabled,
+.project-secondary-action-disabled {
+  opacity: 0.58;
+}
+
+.dark .project-primary-action,
+.dark .project-more-action {
+  border-color: rgba(96, 165, 250, 0.34);
+  background: rgba(37, 99, 235, 0.86);
+  color: #F8FAFC;
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.24);
+}
+
+.dark .project-primary-action:hover,
+.dark .project-more-action:hover {
+  background: rgba(59, 130, 246, 0.92);
+  box-shadow: 0 16px 34px rgba(2, 6, 23, 0.3);
+}
+
+.dark .project-secondary-action,
+.dark .project-secondary-action-disabled,
+.dark .project-action-disabled {
+  border-color: rgba(148, 163, 184, 0.16);
+  background: rgba(15, 23, 42, 0.32);
+  color: #CBD5E1;
+}
+
+.dark .project-secondary-action {
+  color: #BFDBFE;
+}
+
+.dark .project-secondary-action:hover {
+  border-color: rgba(96, 165, 250, 0.28);
+  background: rgba(37, 99, 235, 0.12);
 }
 
 .project-filter-pill {
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
 }
 
 .project-filter-pill-active {
-  border-color: rgba(96, 165, 250, 0.62);
-  background:
-    linear-gradient(135deg, rgba(37, 99, 235, 0.96), rgba(14, 165, 233, 0.88));
+  border-color: rgba(37, 99, 235, 0.82);
+  background: #2563EB;
   box-shadow:
-    0 18px 44px rgba(37, 99, 235, 0.24),
+    0 14px 34px rgba(37, 99, 235, 0.18),
     0 0 0 1px rgba(255, 255, 255, 0.16) inset;
+}
+
+@media (max-width: 640px) {
+  .project-card {
+    contain-intrinsic-size: 320px;
+  }
+
+  .project-visual-icon {
+    height: 3rem;
+    width: 3rem;
+  }
 }
 
 /* ===================== BLOG SECTION ===================== */
