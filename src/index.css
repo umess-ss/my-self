@@ -237,34 +237,34 @@ body,
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(circle at 82% 18%, rgba(59, 130, 246, 0.09), transparent 38%),
-    radial-gradient(circle at 66% 72%, rgba(14, 165, 233, 0.07), transparent 34%);
+    radial-gradient(circle at 82% 18%, rgba(59, 130, 246, 0.055), transparent 38%),
+    radial-gradient(circle at 66% 72%, rgba(14, 165, 233, 0.04), transparent 34%);
 }
 
 .hero-section::after,
 .contact-section::after {
   top: 18%;
   right: max(2rem, 8vw);
-  width: min(34rem, 58vw);
+  width: min(28rem, 48vw);
   aspect-ratio: 1;
   z-index: 0;
   border-radius: 999px;
   background:
-    radial-gradient(circle, rgba(59, 130, 246, 0.12), rgba(14, 165, 233, 0.06) 42%, transparent 72%);
-  filter: blur(28px);
-  opacity: 0.72;
+    radial-gradient(circle, rgba(59, 130, 246, 0.07), rgba(14, 165, 233, 0.035) 44%, transparent 74%);
+  filter: blur(34px);
+  opacity: 0.42;
 }
 
 .dark .hero-section::before,
 .dark .contact-section::before {
   background:
-    radial-gradient(circle at 82% 18%, rgba(59, 130, 246, 0.13), transparent 38%),
-    radial-gradient(circle at 66% 72%, rgba(14, 165, 233, 0.09), transparent 34%);
+    radial-gradient(circle at 82% 18%, rgba(59, 130, 246, 0.08), transparent 38%),
+    radial-gradient(circle at 66% 72%, rgba(14, 165, 233, 0.055), transparent 34%);
 }
 
 .dark .hero-section::after,
 .dark .contact-section::after {
-  opacity: 0.58;
+  opacity: 0.34;
 }
 
 .hero-left-content {
@@ -274,84 +274,60 @@ body,
 
 @keyframes heroPortraitFloat {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-4px); }
 }
 
 .hero-portrait-shell {
+  isolation: isolate;
   z-index: 1;
-  animation: heroPortraitFloat 7s ease-in-out infinite;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+  animation: heroPortraitFloat 11s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.9s ease;
 }
 
 .hero-portrait-shell:hover {
   animation-play-state: paused;
-  transform: translateY(-6px);
+  transform: translateY(-2px);
 }
 
 .hero-portrait-ambient {
+  z-index: 0;
   background:
-    radial-gradient(circle at 48% 42%, rgba(255, 255, 255, 0.68) 0%, rgba(239, 246, 255, 0.28) 31%, rgba(14, 165, 233, 0.16) 56%, rgba(37, 99, 235, 0.07) 74%, transparent 100%);
-  filter: blur(26px);
-  opacity: 0.82;
+    radial-gradient(circle at 50% 46%, rgba(255, 255, 255, 0.46) 0%, rgba(239, 246, 255, 0.2) 34%, rgba(14, 165, 233, 0.075) 58%, transparent 78%);
+  filter: blur(30px);
+  opacity: 0.46;
   transition: opacity 0.7s ease, filter 0.7s ease;
 }
 
 .dark .hero-portrait-ambient {
   background:
-    radial-gradient(circle at 48% 42%, rgba(96, 165, 250, 0.18) 0%, rgba(14, 165, 233, 0.14) 42%, rgba(37, 99, 235, 0.1) 66%, transparent 100%);
-  opacity: 0.72;
+    radial-gradient(circle at 50% 46%, rgba(96, 165, 250, 0.1) 0%, rgba(14, 165, 233, 0.075) 42%, rgba(37, 99, 235, 0.045) 63%, transparent 82%);
+  opacity: 0.36;
 }
 
-.hero-portrait-ring {
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  box-shadow: 0 0 54px rgba(37, 99, 235, 0.08);
-  transition: opacity 0.7s ease, box-shadow 0.7s ease;
-}
-
-.hero-portrait-ring--inner {
-  opacity: 0.72;
-}
-
-.hero-portrait-ring--outer {
-  border-color: rgba(14, 165, 233, 0.18);
-  opacity: 0.56;
-}
-
-.dark .hero-portrait-ring {
-  border-color: rgba(96, 165, 250, 0.28);
-  box-shadow: 0 0 60px rgba(14, 165, 233, 0.09);
-}
-
-.dark .hero-portrait-ring--outer {
-  border-color: rgba(14, 165, 233, 0.22);
-}
-
-.hero-portrait-glass {
-  background: rgba(255, 255, 255, 0.38);
+.hero-portrait-frame {
+  z-index: 2;
+  border: 1px solid rgba(37, 99, 235, 0.18);
   box-shadow:
-    0 30px 90px rgba(37, 99, 235, 0.14),
-    inset 0 1px 0 rgba(255, 255, 255, 0.48);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+    0 22px 70px rgba(37, 99, 235, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42);
 }
 
-.dark .hero-portrait-glass {
-  background: rgba(15, 23, 42, 0.34);
+.dark .hero-portrait-frame {
+  border-color: rgba(96, 165, 250, 0.2);
   box-shadow:
-    0 30px 94px rgba(14, 165, 233, 0.13),
-    inset 0 1px 0 rgba(148, 163, 184, 0.16);
+    0 24px 74px rgba(14, 165, 233, 0.085),
+    inset 0 0 0 1px rgba(148, 163, 184, 0.14);
 }
 
 .hero-portrait-image {
   box-shadow:
-    0 22px 60px rgba(15, 23, 42, 0.22),
-    0 0 0 4px rgba(255, 255, 255, 0.82),
-    0 0 0 1px rgba(37, 99, 235, 0.14),
-    0 0 58px rgba(37, 99, 235, 0.12);
+    0 18px 46px rgba(15, 23, 42, 0.2),
+    0 0 0 3px rgba(255, 255, 255, 0.86),
+    0 0 0 1px rgba(37, 99, 235, 0.12);
   -webkit-mask-image:
-    radial-gradient(circle at center, #000 73%, rgba(0, 0, 0, 0.92) 84%, rgba(0, 0, 0, 0.62) 92%, transparent 100%);
+    radial-gradient(circle at center, #000 78%, rgba(0, 0, 0, 0.94) 89%, rgba(0, 0, 0, 0.68) 96%, transparent 100%);
   mask-image:
-    radial-gradient(circle at center, #000 73%, rgba(0, 0, 0, 0.92) 84%, rgba(0, 0, 0, 0.62) 92%, transparent 100%);
+    radial-gradient(circle at center, #000 78%, rgba(0, 0, 0, 0.94) 89%, rgba(0, 0, 0, 0.68) 96%, transparent 100%);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
@@ -360,10 +336,9 @@ body,
 
 .dark .hero-portrait-image {
   box-shadow:
-    0 24px 70px rgba(2, 6, 23, 0.44),
-    0 0 0 4px rgba(15, 23, 42, 0.76),
-    0 0 0 1px rgba(96, 165, 250, 0.18),
-    0 0 64px rgba(14, 165, 233, 0.14);
+    0 20px 54px rgba(2, 6, 23, 0.46),
+    0 0 0 3px rgba(15, 23, 42, 0.8),
+    0 0 0 1px rgba(96, 165, 250, 0.16);
 }
 
 @media (prefers-reduced-motion: reduce) {
