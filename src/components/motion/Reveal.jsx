@@ -1,11 +1,11 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { easeOut } from './animations';
+import { easeOut, reducedFade, staggerContainer } from './animations';
 
-const offsets = {
-  up: { y: 16 },
-  down: { y: -16 },
-  left: { x: 16 },
-  right: { x: -16 },
+const directionOffset = {
+  up: { y: 18 },
+  down: { y: -18 },
+  left: { x: 18 },
+  right: { x: -18 },
   none: {},
 };
 
@@ -14,25 +14,52 @@ export default function Reveal({
   as = 'div',
   className = '',
   delay = 0,
-  duration = 0.48,
+  duration = 0.56,
   direction = 'up',
-  amount = 0.16,
+  distance = 18,
+  amount = 0.18,
   once = true,
+  stagger = false,
 }) {
   const shouldReduceMotion = useReducedMotion();
   const Component = motion[as] || motion.div;
+  const offset = direction === 'none'
+    ? {}
+    : Object.fromEntries(
+        Object.entries(directionOffset[direction] || directionOffset.up).map(([axis, value]) => [
+          axis,
+          Math.sign(value) * distance,
+        ])
+      );
+
+  const variants = shouldReduceMotion
+    ? reducedFade
+    : {
+        hidden: {
+          opacity: 0,
+          ...offset,
+        },
+        visible: {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          transition: {
+            duration,
+            delay,
+            ease: easeOut,
+            ...(stagger ? staggerContainer.visible.transition : {}),
+          },
+        },
+      };
 
   return (
     <Component
       className={className}
-      initial={{ opacity: 0, ...(shouldReduceMotion ? {} : offsets[direction] || offsets.up) }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      variants={variants}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once, amount }}
-      transition={{
-        duration: shouldReduceMotion ? 0.18 : duration,
-        delay: shouldReduceMotion ? 0 : delay,
-        ease: easeOut,
-      }}
+      style={{ willChange: shouldReduceMotion ? 'opacity' : 'transform, opacity' }}
     >
       {children}
     </Component>

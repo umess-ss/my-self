@@ -1081,25 +1081,25 @@ body,
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 8px 16px;
+  padding: 7px 16px;
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0;
+  letter-spacing: 0.2px;
   color: #2563EB;
-  background: rgba(37, 99, 235, 0.06);
-  border: 1px solid rgba(37, 99, 235, 0.28);
-  border-radius: 999px;
+  background: transparent;
+  border: 1.5px solid #2563EB;
+  border-radius: 8px;
   cursor: pointer;
   white-space: nowrap;
   outline: none;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .cv-navbar-btn:hover {
-  color: #1D4ED8;
-  background: rgba(37, 99, 235, 0.1);
-  border-color: rgba(37, 99, 235, 0.45);
-  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.12);
+  color: #fff;
+  background: #2563EB;
+  border-color: #2563EB;
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
   transform: translateY(-1px);
 }
 
@@ -1115,15 +1115,14 @@ body,
 }
 
 .dark .cv-navbar-btn {
-  color: #7DD3FC;
-  background: rgba(14, 165, 233, 0.08);
-  border-color: rgba(14, 165, 233, 0.32);
+  color: #0EA5E9;
+  border-color: #0EA5E9;
 }
 
 .dark .cv-navbar-btn:hover {
-  color: #E0F2FE;
-  background: rgba(14, 165, 233, 0.12);
-  border-color: rgba(14, 165, 233, 0.48);
+  color: #fff;
+  background: #2563EB;
+  border-color: #2563EB;
 }
 
 .cv-navbar-btn--mobile {
