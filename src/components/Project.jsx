@@ -157,11 +157,10 @@ const ProjectVisual = memo(function ProjectVisual({ iconType, featured }) {
   const Icon = projectIconMap[iconType] || Server;
 
   return (
-    <div className={`project-visual relative flex items-center justify-center overflow-hidden rounded-[18px] ${featured ? 'h-36' : 'h-28'}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(135deg,rgba(37,99,235,0.92),rgba(14,165,233,0.58))]" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:22px_22px] opacity-35" />
-      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/25 bg-white/14 text-white shadow-[0_18px_60px_rgba(2,6,23,0.25)] backdrop-blur-md">
-        <Icon size={featured ? 34 : 30} strokeWidth={1.8} />
+    <div className={`project-visual relative flex items-center justify-center overflow-hidden rounded-2xl ${featured ? 'h-32' : 'h-24'}`}>
+      <div className="project-visual-grid absolute inset-0" aria-hidden="true" />
+      <div className="project-visual-icon relative flex items-center justify-center">
+        <Icon size={featured ? 30 : 26} strokeWidth={1.8} />
       </div>
     </div>
   );
@@ -171,33 +170,33 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
   const sourceDisabled = project.sourceUrl === '#';
 
   return (
-    <article className={`project-card group flex h-full flex-col rounded-[20px] p-4 ${featured ? 'project-card-featured' : ''}`}>
+    <article className={`project-card group flex h-full flex-col rounded-[18px] p-4 sm:p-5 ${featured ? 'project-card-featured' : ''}`}>
       <div className="relative">
         <ProjectVisual iconType={project.iconType} featured={featured} />
-        <span className="absolute right-3 top-3 rounded-full border border-blue-300/25 bg-white/85 px-3 py-1 text-xs font-bold text-blue-700 shadow-sm backdrop-blur dark:bg-slate-950/72 dark:text-blue-100">
+        <span className="project-category-pill absolute right-3 top-3 rounded-full px-3 py-1 text-xs font-semibold">
           {project.category}
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col pt-5">
-        <h3 className={`${featured ? 'text-xl' : 'text-lg'} font-bold leading-snug text-[#0F172A] dark:text-white`}>
+      <div className="flex flex-1 flex-col pt-4">
+        <h3 className={`${featured ? 'text-[1.18rem]' : 'text-[1.05rem]'} font-bold leading-snug text-[#0F172A] dark:text-white`}>
           {project.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#475569] dark:text-gray-300">
+        <p className="mt-3 flex-1 text-sm leading-[1.65] text-[#475569] dark:text-gray-300">
           {project.description}
         </p>
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-1.5">
           {project.tech.map((tech) => (
-            <span key={tech} className="rounded-full border border-blue-400/20 bg-blue-500/10 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+            <span key={tech} className="project-tech-chip rounded-full px-2.5 py-1 text-xs font-medium">
               {tech}
             </span>
           ))}
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-2.5">
           {sourceDisabled ? (
-            <span className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-slate-300/70 px-4 py-2 text-sm font-semibold text-slate-400 dark:border-slate-700 dark:text-slate-500">
+            <span className="project-action-disabled inline-flex cursor-not-allowed items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
               <Github size={16} />
               View Source
             </span>
@@ -207,7 +206,7 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
               href={project.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 hover:shadow-blue-500/30"
+              className="project-primary-action inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300"
             >
               <Github size={16} />
               View Source
@@ -215,7 +214,7 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
           )}
           {featured && (
             sourceDisabled ? (
-              <span className="inline-flex cursor-not-allowed items-center gap-2 rounded-full border border-blue-400/25 px-4 py-2 text-sm font-semibold text-blue-700 opacity-60 dark:text-blue-100">
+              <span className="project-secondary-action-disabled inline-flex cursor-not-allowed items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold">
                 View Details
                 <ArrowUpRight size={16} />
               </span>
@@ -225,7 +224,7 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
                 href={project.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-blue-400/25 px-4 py-2 text-sm font-semibold text-blue-700 transition-all duration-300 hover:border-blue-400/60 hover:bg-blue-500/10 dark:text-blue-100"
+                className="project-secondary-action inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300"
               >
                 View Details
                 <ArrowUpRight size={16} />
@@ -257,12 +256,12 @@ export default function Projects() {
       <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600 dark:text-sky-300">
               MY PORTFOLIO
             </p>
             <h2 className="mt-4 text-4xl font-bold leading-tight text-[#0F172A] dark:text-white md:text-5xl">
               Featured{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-transparent">
+              <span className="text-blue-600 dark:text-sky-300">
                 Projects
               </span>
             </h2>
@@ -273,7 +272,7 @@ export default function Projects() {
         </Reveal>
 
         <Reveal delay={0.05} distance={14}>
-          <div className="mt-8 flex gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible">
+          <div className="mt-8 flex gap-2.5 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible">
             {filters.map((filter) => {
               const isActive = activeFilter === filter;
               return (
@@ -285,7 +284,7 @@ export default function Projects() {
                   className={`project-filter-pill shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                     isActive
                       ? 'project-filter-pill-active text-white'
-                      : 'border-blue-400/20 bg-white/65 text-[#475569] hover:border-blue-400/50 hover:text-blue-600 dark:bg-slate-900/42 dark:text-gray-300 dark:hover:text-sky-200'
+                      : 'border-blue-400/18 bg-white/60 text-[#475569] hover:border-blue-400/38 hover:text-blue-600 dark:bg-slate-900/36 dark:text-gray-300 dark:hover:text-sky-200'
                   }`}
                 >
                   {filter}
@@ -296,7 +295,7 @@ export default function Projects() {
         </Reveal>
 
         {featuredProjects.length > 0 && (
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {featuredProjects.map((project) => (
               <ProjectCard key={project.id} project={project} featured />
             ))}
@@ -304,7 +303,7 @@ export default function Projects() {
         )}
 
         {regularProjects.length > 0 && (
-          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {regularProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
@@ -323,7 +322,7 @@ export default function Projects() {
             href="https://github.com/umess-ss"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-white/70 px-6 py-3 font-semibold text-blue-700 shadow-lg shadow-blue-500/10 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/60 hover:bg-blue-500/10 dark:bg-slate-900/50 dark:text-blue-100"
+            className="project-more-action inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition-all duration-300"
           >
             <Github size={18} />
             View More on GitHub

@@ -53,7 +53,7 @@ export default function Home({ splashDone = false }) {
   return (
     <section id="home" className="hero-section relative min-h-screen flex items-center overflow-hidden bg-[#FBFAFC] pt-20 pb-10 dark:bg-gray-950 transition-colors duration-300">
       {/* Decorative background layers */}
-      <AbstractBackground variant="waves" opacity={0.08} colorClass="text-sky-500 dark:text-sky-500" />
+      <AbstractBackground variant="waves" opacity={0.05} colorClass="text-sky-500 dark:text-sky-500" />
       <div className="absolute inset-0 -z-10">
         <div className="portfolio-hero-bg absolute inset-0" />
         <div className="portfolio-hero-grid absolute inset-0" />
@@ -62,16 +62,16 @@ export default function Home({ splashDone = false }) {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-14 lg:gap-[4.5rem] xl:gap-20 items-center">
           {/* Left — Text content */}
-          <div className="hero-left-content text-left">
+          <div className="hero-left-content max-w-[38rem] text-left">
             <MotionDiv {...motionProps(heroItem(0.08))}>
-              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#2563EB] dark:text-[#60A5FA] mb-4">
+              <p className="mb-5 text-sm font-semibold uppercase tracking-[0.13em] text-[#2563EB] dark:text-[#60A5FA]">
                 APIs THAT SHIP. INFRA THAT SCALES.
               </p>
             </MotionDiv>
 
-            <MotionH1 {...motionProps(heroItem(0.16))} className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 leading-[1.04] tracking-normal text-[#0F172A] dark:text-white">
+            <MotionH1 {...motionProps(heroItem(0.16))} className="mb-5 max-w-[34rem] text-4xl font-bold leading-[1.03] tracking-normal text-[#0F172A] dark:text-white sm:text-5xl lg:text-6xl">
               I am
-              <span className="relative block text-transparent align-baseline">
+              <span className="relative block text-[#2563EB] align-baseline dark:text-[#60A5FA]">
                 <SplitText
                   text={personalInfo.name}
                   delay={36}
@@ -82,27 +82,21 @@ export default function Home({ splashDone = false }) {
                   tag="span"
                   startAnimation={splashDone}
                 />
-                <span
-                  aria-hidden="true"
-                  className="absolute inset-0 pointer-events-none select-none bg-gradient-to-r from-[#2563EB] to-[#0EA5E9] bg-clip-text text-transparent"
-                >
-                  {personalInfo.name}
-                </span>
               </span>
             </MotionH1>
 
             <MotionDiv {...motionProps(heroItem(0.28))}>
-              <div className="mb-7 max-w-xl">
-                <p className="text-xl md:text-2xl font-medium text-[#0F172A] dark:text-gray-200 mb-4">
+              <div className="mb-8 max-w-[35rem]">
+                <p className="mb-5 text-lg font-medium text-[#0F172A] dark:text-gray-200 md:text-xl">
                   Python Backend & Cloud Engineer
                 </p>
-                <div className="flex flex-col gap-2 mb-4">
+                <div className="mb-6 flex flex-col gap-2">
                   {heroSkillRows.map((row) => (
                     <div key={row.join("-")} className="flex flex-wrap gap-2">
                       {row.map((skill) => (
                         <span
                           key={skill}
-                          className="inline-flex items-center rounded-full border border-[#BFDBFE] bg-[#EFF6FF] px-3.5 py-1.5 text-sm font-semibold text-[#2563EB] shadow-sm shadow-blue-500/20 backdrop-blur transition-colors duration-300 hover:border-blue-600 hover:text-blue-600 dark:border-blue-600/60 dark:bg-blue-600/10 dark:text-blue-100 dark:shadow-none"
+                          className="inline-flex items-center rounded-full border border-blue-400/25 bg-blue-500/[0.06] px-3 py-1.5 text-sm font-medium text-blue-700 transition-colors duration-300 hover:border-blue-500/40 hover:bg-blue-500/[0.08] dark:border-blue-400/20 dark:bg-blue-400/[0.07] dark:text-blue-100"
                         >
                           {skill}
                         </span>
@@ -110,14 +104,14 @@ export default function Home({ splashDone = false }) {
                     </div>
                   ))}
                 </div>
-                <p className="text-base md:text-lg text-[#475569] dark:text-gray-300 leading-relaxed">
+                <p className="max-w-[34rem] text-base leading-[1.75] text-[#475569] dark:text-gray-300 md:text-[1.0625rem]">
                   I've shipped production APIs and automated cloud infrastructure serving real users across AWS, Docker, and Terraform pipelines. I'm looking to join a team that moves fast and cares about what runs in production.
                 </p>
-                <div className="mt-4 flex flex-wrap gap-[10px]">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {["10+ Projects", "3+ Yrs Building", "AWS • Docker • CI/CD"].map((stat) => (
                     <span
                       key={stat}
-                      className="inline-flex items-center rounded-full border border-[#BFDBFE] bg-[#EFF6FF] px-3 py-1 text-sm font-medium text-[#2563EB] dark:text-blue-100 dark:bg-blue-600/10 dark:border-blue-600/60"
+                      className="inline-flex items-center rounded-full border border-blue-400/20 bg-white/45 px-3 py-1 text-xs font-medium text-blue-700 dark:border-blue-400/20 dark:bg-slate-950/20 dark:text-blue-100"
                     >
                       {stat}
                     </span>
@@ -127,7 +121,7 @@ export default function Home({ splashDone = false }) {
             </MotionDiv>
 
             <MotionDiv {...motionProps(heroItem(0.4))}>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap items-center gap-3">
                 <AnimatedButton
                   as="a"
                   href="#projects"
@@ -148,7 +142,7 @@ export default function Home({ splashDone = false }) {
                   href="https://github.com/umess-ss"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-4 py-2 font-medium text-gray-500 transition-colors hover:text-blue-600"
+                  className="inline-flex items-center justify-center px-4 py-2 font-medium text-slate-500 transition-colors hover:text-blue-600 dark:text-slate-400 dark:hover:text-sky-300"
                 >
                   View GitHub
                 </AnimatedButton>
@@ -157,17 +151,15 @@ export default function Home({ splashDone = false }) {
           </div>
 
           {/* Right — Profile image with decorative ring */}
-          <MotionDiv {...motionProps(heroVisual)}>
-            <div className="flex justify-center md:justify-end md:-translate-y-3 lg:-translate-y-4">
-              <div className="hero-portrait-shell group relative grid place-items-center">
-                <div className="hero-portrait-ambient absolute -inset-16 rounded-full" />
-                <div className="hero-portrait-ring hero-portrait-ring--inner absolute -inset-7 rounded-full" />
-                <div className="hero-portrait-ring hero-portrait-ring--outer absolute -inset-12 rounded-full" />
-                <div className="hero-portrait-glass absolute -inset-4 rounded-full" />
+          <MotionDiv {...motionProps(heroVisual)} className="overflow-visible">
+            <div className="flex justify-center overflow-visible md:justify-end md:-translate-y-2 lg:-translate-y-3">
+              <div className="hero-portrait-shell group relative grid place-items-center overflow-visible">
+                <div className="hero-portrait-ambient absolute -inset-10 rounded-full" />
+                <div className="hero-portrait-frame absolute -inset-3 rounded-full" />
                 <img
                   src={homeImage}
                   alt="Umesh Rajbanshi — Backend and Cloud Engineer"
-                  className="hero-portrait-image relative z-10 h-[21rem] w-[21rem] rounded-full object-cover object-[50%_38%] transition-all duration-700 ease-out group-hover:scale-[1.025] md:h-[24.5rem] md:w-[24.5rem] lg:h-[27.5rem] lg:w-[27.5rem]"
+                  className="hero-portrait-image relative z-10 h-[19rem] w-[19rem] rounded-full object-cover object-[50%_38%] transition-all duration-700 ease-out group-hover:scale-[1.015] md:h-[22rem] md:w-[22rem] lg:h-[24rem] lg:w-[24rem]"
                 />
               </div>
             </div>
