@@ -142,32 +142,24 @@ const Navigation = () => {
 
   return (
     <>
-      <nav aria-label="Main navigation" className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-md z-40 transition-colors duration-300">
+      <nav aria-label="Main navigation" className="portfolio-nav fixed top-0 left-0 right-0 z-40 border-b border-slate-200/70 bg-white/88 shadow-[0_10px_34px_rgba(15,23,42,0.06)] backdrop-blur-md transition-colors duration-300 dark:border-slate-800/80 dark:bg-slate-950/86 dark:shadow-[0_10px_34px_rgba(2,6,23,0.18)]">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-3.5">
-            <Link to="/">
+          <div className="flex items-center justify-between py-3">
+            <Link to="/" aria-label="Go to homepage" className="nav-avatar-link">
               <img
                 src={homeImage}
                 alt="Umesh Rajbanshi"
-                className="h-[3.25rem] w-[3.25rem] rounded-full cursor-pointer object-cover object-[50%_38%] shadow-sm ring-2 ring-white/85 transition duration-300 hover:scale-105 hover:opacity-90 dark:ring-slate-800"
+                className="nav-avatar h-11 w-11 rounded-full object-cover object-[50%_38%]"
                 onClick={() => handleNavClick("home")}
               />
             </Link>
 
-            <div className="hidden md:flex items-center gap-1" ref={navRef} style={{ position: "relative" }}>
+            <div className="hidden md:flex items-center gap-1.5" ref={navRef} style={{ position: "relative" }}>
               {/* Sliding underline indicator */}
               <MotionSpan
                 className="nav-indicator"
                 animate={indicatorStyle}
-                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.34, ease: easeOut }}
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  height: "2.5px",
-                  borderRadius: "99px",
-                  background: "linear-gradient(90deg, #2563EB, #0EA5E9)",
-                  pointerEvents: "none",
-                }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.42, ease: easeOut }}
               />
 
               {navItems.map((item) => (
@@ -176,10 +168,10 @@ const Navigation = () => {
                   data-nav-id={item.id}
                   onClick={() => handleNavClick(item.id)}
                   whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
-                  className={`px-4 py-2 font-medium transition-colors duration-200 cursor-pointer outline-none ${
+                  className={`nav-link ${
                     activeNavId === item.id
-                      ? "text-[#2563EB] dark:text-sky-300"
-                      : "text-gray-700 hover:text-[#2563EB] dark:text-gray-300 dark:hover:text-sky-300"
+                      ? "nav-link-active"
+                      : ""
                   }`}
                 >
                   {item.label}
@@ -209,7 +201,7 @@ const Navigation = () => {
               <ThemeToggle />
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="group flex h-10 w-10 items-center justify-center rounded-lg text-gray-700 transition-all duration-300 ease-in-out hover:bg-gray-100 active:scale-95 dark:text-gray-300 dark:hover:bg-gray-800"
+                className="nav-menu-toggle group flex h-10 w-10 items-center justify-center rounded-full text-slate-700 transition duration-300 active:scale-95 dark:text-slate-300"
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 aria-expanded={isMobileMenuOpen}
               >
@@ -227,16 +219,16 @@ const Navigation = () => {
               isMobileMenuOpen ? "max-h-96 opacity-100 translate-y-0 pb-4 pointer-events-auto" : "max-h-0 opacity-0 -translate-y-2.5 pb-0 pointer-events-none"
             }`}
           >
-            <div className="rounded-2xl border border-white/60 bg-white/80 p-2 shadow-[0_18px_50px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-900/80 dark:shadow-[0_18px_55px_rgba(2,6,23,0.32)]">
+            <div className="mobile-nav-panel rounded-2xl border border-slate-200/70 bg-white/88 p-2 shadow-[0_18px_50px_rgba(15,23,42,0.12)] backdrop-blur-xl dark:border-slate-700/70 dark:bg-slate-950/86 dark:shadow-[0_18px_55px_rgba(2,6,23,0.32)]">
               {navItems.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
                   style={{ transitionDelay: isMobileMenuOpen ? `${index * 35}ms` : "0ms" }}
-                  className={`block w-full rounded-xl px-4 py-2.5 text-left font-medium transition-all duration-300 ease-out ${
+                  className={`mobile-nav-link block w-full rounded-xl px-4 py-2.5 text-left font-medium transition-all duration-300 ease-out ${
                     activeNavId === item.id
-                      ? "text-[#2563EB] bg-[#EFF6FF] dark:text-sky-300 dark:bg-sky-900/20"
-                      : "text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-800"
+                      ? "mobile-nav-link-active text-[#2563EB] bg-[#EFF6FF] dark:text-sky-300 dark:bg-sky-900/20"
+                      : "text-slate-700 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-900"
                   } ${isMobileMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-1.5 opacity-0"}`}
                 >
                   {item.label}
