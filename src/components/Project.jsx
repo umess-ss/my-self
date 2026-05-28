@@ -249,7 +249,7 @@ export default function Projects() {
   const regularProjects = filteredProjects.filter((project) => !project.featured);
 
   return (
-    <section id="projects" className="projects-section relative overflow-hidden bg-[#FBFAFC] py-20 dark:bg-gray-900 transition-colors duration-300">
+    <section id="projects" className="projects-section relative overflow-hidden bg-[#FBFAFC] py-20 transition-colors duration-300 dark:bg-slate-950 md:py-24">
       <div className="projects-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
       <AbstractBackground variant="both" opacity={0.022} colorClass="text-sky-500 dark:text-sky-500" flip />
 

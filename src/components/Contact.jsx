@@ -85,12 +85,12 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="contact-section relative min-h-screen overflow-hidden bg-[#FBFAFC] py-20 transition-colors duration-300 dark:bg-gray-950">
+    <section id="contact" className="contact-section relative overflow-hidden bg-[#FBFAFC] py-20 transition-colors duration-300 dark:bg-slate-950 md:py-24">
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <div className="portfolio-hero-bg absolute inset-0" />
         <div className="portfolio-hero-grid absolute inset-0" />
       </div>
-      <AbstractBackground variant="waves" opacity={0.025} colorClass="text-sky-500 dark:text-sky-500" />
+      <AbstractBackground variant="waves" opacity={0.018} colorClass="text-sky-500 dark:text-sky-500" />
       <div className="container relative z-10 mx-auto px-4">
         <div className="mx-auto mb-12 max-w-3xl text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#2563EB] dark:text-[#60A5FA]">

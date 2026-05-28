@@ -12,7 +12,7 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="about-section relative overflow-hidden bg-[#FBFAFC] py-20 transition-colors duration-300 dark:bg-gray-900 md:py-24">
+    <section id="about" className="about-section relative overflow-hidden bg-[#FBFAFC] py-20 transition-colors duration-300 dark:bg-slate-950 md:py-24">
       <div className="about-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
       <AbstractBackground variant="waves" opacity={0.014} colorClass="text-sky-500 dark:text-sky-500" flip />
       <div className="container relative z-10 mx-auto px-4">
