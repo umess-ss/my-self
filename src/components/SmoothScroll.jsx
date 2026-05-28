@@ -10,24 +10,31 @@ const SmoothScroll = ({ children }) => {
 
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.75,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       smoothWheel: true,
+      wheelMultiplier: 0.9,
     });
 
     lenisRef.current = lenis;
     lenisInstance = lenis;
+    let rafId;
+    let isActive = true;
 
     function raf(time) {
+      if (!isActive) return;
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      rafId = requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(raf);
+    rafId = requestAnimationFrame(raf);
 
     return () => {
+      isActive = false;
+      cancelAnimationFrame(rafId);
       lenis.destroy();
+      lenisRef.current = null;
       lenisInstance = null;
     };
   }, []);

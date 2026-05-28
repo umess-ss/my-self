@@ -10,12 +10,12 @@ import React from "react";
  *  - colorClass: tailwind text color for strokes (default: "text-sky-400")
  *  - flip: flip vertically (default: false)
  */
-const AbstractBackground = ({
+const AbstractBackground = React.memo(function AbstractBackground({
   variant = "both",
   opacity = 0.07,
   colorClass = "text-sky-400",
   flip = false,
-}) => {
+}) {
   const showWaves = variant === "waves" || variant === "both";
   const showArrows = variant === "arrows" || variant === "both";
 
@@ -143,6 +143,6 @@ const AbstractBackground = ({
       )}
     </div>
   );
-};
+});
 
 export default AbstractBackground;

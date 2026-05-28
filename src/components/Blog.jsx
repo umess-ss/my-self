@@ -16,7 +16,6 @@ import { blogPosts } from '../data/BlogContent';
 import SEOHead from './SEOHead';
 import AbstractBackground from './AbstractBackground';
 import AnimatedButton from './motion/AnimatedButton';
-import AnimatedCard from './motion/AnimatedCard';
 import Reveal from './motion/Reveal';
 
 const filters = ['All', 'Backend', 'Cloud', 'DevOps', 'AI', 'Python', 'Go', 'System Design'];
@@ -45,7 +44,7 @@ const BlogVisual = ({ iconType, featured }) => {
   );
 };
 
-const BlogCard = ({ post, featured = false, delay = 0 }) => {
+const BlogCard = ({ post, featured = false }) => {
   const navigate = useNavigate();
 
   const openPost = () => {
@@ -54,9 +53,8 @@ const BlogCard = ({ post, featured = false, delay = 0 }) => {
   };
 
   return (
-    <AnimatedCard
+    <article
       onClick={openPost}
-      delay={delay}
       className={`blog-card group flex h-full cursor-pointer flex-col rounded-[20px] p-4 transition-all duration-300 hover:-translate-y-1.5 ${featured ? 'blog-card-featured lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:gap-6' : ''}`}
     >
       <div className="relative">
@@ -101,7 +99,7 @@ const BlogCard = ({ post, featured = false, delay = 0 }) => {
           </span>
         </div>
       </div>
-    </AnimatedCard>
+    </article>
   );
 };
 
@@ -180,8 +178,8 @@ const Blog = ({ isHomePage }) => {
         {regularPosts.length > 0 && (
           <Reveal delay={0.12} distance={16}>
             <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {regularPosts.map((post, index) => (
-                <BlogCard key={post.id} post={post} delay={index * 0.04} />
+              {regularPosts.map((post) => (
+                <BlogCard key={post.id} post={post} />
               ))}
             </div>
           </Reveal>

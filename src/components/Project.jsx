@@ -12,7 +12,6 @@ import {
 } from 'lucide-react';
 import AbstractBackground from './AbstractBackground';
 import AnimatedButton from './motion/AnimatedButton';
-import AnimatedCard from './motion/AnimatedCard';
 import Reveal from './motion/Reveal';
 
 const filters = ['All', 'Backend', 'Cloud/DevOps', 'AI/ML', 'Full Stack', 'Mobile', 'Go'];
@@ -168,11 +167,11 @@ const ProjectVisual = ({ iconType, featured }) => {
   );
 };
 
-const ProjectCard = ({ project, featured = false, delay = 0 }) => {
+const ProjectCard = ({ project, featured = false }) => {
   const sourceDisabled = project.sourceUrl === '#';
 
   return (
-    <AnimatedCard delay={delay} className={`project-card group flex h-full flex-col rounded-[20px] p-4 transition-all duration-300 ${featured ? 'project-card-featured' : ''}`}>
+    <article className={`project-card group flex h-full flex-col rounded-[20px] p-4 ${featured ? 'project-card-featured' : ''}`}>
       <div className="relative">
         <ProjectVisual iconType={project.iconType} featured={featured} />
         <span className="absolute right-3 top-3 rounded-full border border-blue-300/25 bg-white/85 px-3 py-1 text-xs font-bold text-blue-700 shadow-sm backdrop-blur dark:bg-slate-950/72 dark:text-blue-100">
@@ -235,7 +234,7 @@ const ProjectCard = ({ project, featured = false, delay = 0 }) => {
           )}
         </div>
       </div>
-    </AnimatedCard>
+    </article>
   );
 };
 
@@ -298,16 +297,16 @@ export default function Projects() {
 
         {featuredProjects.length > 0 && (
           <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {featuredProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} featured delay={index * 0.04} />
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} featured />
             ))}
           </div>
         )}
 
         {regularProjects.length > 0 && (
           <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {regularProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} delay={index * 0.025} />
+            {regularProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
             ))}
           </div>
         )}
