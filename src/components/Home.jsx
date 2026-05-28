@@ -1,10 +1,15 @@
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import { personalInfo } from "../data/PortfolioData";
 import homeImage from "../assets/home.jpeg";
 import myCV from '../assets/myCV.pdf';
 import SplitText from "./reactbits/SplitText";
-import ScrollReveal from "./reactbits/ScrollReveal";
 import AbstractBackground from "./AbstractBackground";
+import AnimatedButton from "./motion/AnimatedButton";
+import { easeOut } from "./motion/animations";
+
+const MotionDiv = motion.div;
+const MotionH1 = motion.h1;
 
 const heroSkillRows = [
   [
@@ -23,6 +28,28 @@ const heroSkillRows = [
 ];
 
 export default function Home({ splashDone = false }) {
+  const shouldReduceMotion = useReducedMotion();
+  const heroItem = (delay = 0) => shouldReduceMotion
+    ? {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1, transition: { duration: 0.2, delay: Math.min(delay, 0.12), ease: easeOut } },
+      }
+    : {
+        hidden: { opacity: 0, y: 18 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.56, delay, ease: easeOut } },
+      };
+  const heroVisual = shouldReduceMotion
+    ? heroItem(0.12)
+    : {
+        hidden: { opacity: 0, y: 20, scale: 0.985 },
+        visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, delay: 0.24, ease: easeOut } },
+      };
+  const motionProps = (variants) => ({
+    variants,
+    initial: "hidden",
+    animate: "visible",
+  });
+
   return (
     <section id="home" className="hero-section relative min-h-screen flex items-center overflow-hidden bg-[#FBFAFC] pt-20 pb-10 dark:bg-gray-950 transition-colors duration-300">
       {/* Decorative background layers */}
@@ -36,13 +63,13 @@ export default function Home({ splashDone = false }) {
         <div className="grid md:grid-cols-2 gap-14 lg:gap-[4.5rem] xl:gap-20 items-center">
           {/* Left — Text content */}
           <div className="hero-left-content text-left">
-            <ScrollReveal delay={0.1} direction="up" distance={20} startAnimation={splashDone}>
+            <MotionDiv {...motionProps(heroItem(0.08))}>
               <p className="text-sm font-semibold uppercase tracking-[0.15em] text-[#2563EB] dark:text-[#60A5FA] mb-4">
                 APIs THAT SHIP. INFRA THAT SCALES.
               </p>
-            </ScrollReveal>
+            </MotionDiv>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 leading-[1.04] tracking-normal text-[#0F172A] dark:text-white">
+            <MotionH1 {...motionProps(heroItem(0.16))} className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 leading-[1.04] tracking-normal text-[#0F172A] dark:text-white">
               I am
               <span className="relative block text-transparent align-baseline">
                 <SplitText
@@ -62,9 +89,9 @@ export default function Home({ splashDone = false }) {
                   {personalInfo.name}
                 </span>
               </span>
-            </h1>
+            </MotionH1>
 
-            <ScrollReveal delay={0.4} direction="up" distance={20} startAnimation={splashDone}>
+            <MotionDiv {...motionProps(heroItem(0.28))}>
               <div className="mb-7 max-w-xl">
                 <p className="text-xl md:text-2xl font-medium text-[#0F172A] dark:text-gray-200 mb-4">
                   Python Backend & Cloud Engineer
@@ -97,37 +124,40 @@ export default function Home({ splashDone = false }) {
                   ))}
                 </div>
               </div>
-            </ScrollReveal>
+            </MotionDiv>
 
-            <ScrollReveal delay={0.6} direction="up" distance={20} startAnimation={splashDone}>
+            <MotionDiv {...motionProps(heroItem(0.4))}>
               <div className="flex flex-wrap gap-3">
-                <a
+                <AnimatedButton
+                  as="a"
                   href="#projects"
                   className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-3.5 font-medium text-white shadow-lg shadow-blue-500/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/20"
                 >
                   View Projects
-                </a>
-                <a
+                </AnimatedButton>
+                <AnimatedButton
+                  as="a"
                   href={myCV}
                   download="umesh_cv.pdf"
                   className="inline-flex items-center justify-center rounded-full border-[1.5px] border-blue-600 bg-transparent px-8 py-3.5 font-medium text-blue-600 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1D4ED8] hover:text-white"
                 >
                   Download CV
-                </a>
-                <a
+                </AnimatedButton>
+                <AnimatedButton
+                  as="a"
                   href="https://github.com/umess-ss"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-4 py-2 font-medium text-gray-500 transition-colors hover:text-blue-600"
                 >
                   View GitHub
-                </a>
+                </AnimatedButton>
               </div>
-            </ScrollReveal>
+            </MotionDiv>
           </div>
 
           {/* Right — Profile image with decorative ring */}
-          <ScrollReveal delay={0.3} direction="right" distance={60} startAnimation={splashDone}>
+          <MotionDiv {...motionProps(heroVisual)}>
             <div className="flex justify-center md:justify-end md:-translate-y-3 lg:-translate-y-4">
               <div className="hero-portrait-shell group relative grid place-items-center">
                 <div className="hero-portrait-ambient absolute -inset-16 rounded-full" />
@@ -141,7 +171,7 @@ export default function Home({ splashDone = false }) {
                 />
               </div>
             </div>
-          </ScrollReveal>
+          </MotionDiv>
         </div>
       </div>
     </section>

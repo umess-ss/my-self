@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { easeOut } from "../motion/animations";
 
 const ScrollReveal = ({
   children,
@@ -15,6 +16,7 @@ const ScrollReveal = ({
 }) => {
   const ref = useRef(null);
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     if (startAnimation === true) {
@@ -50,8 +52,10 @@ const ScrollReveal = ({
   const variants = {
     hidden: {
       opacity: 0,
-      scale: scale !== 1 ? scale : undefined,
-      ...directionMap[direction],
+      ...(shouldReduceMotion ? {} : {
+        scale: scale !== 1 ? scale : undefined,
+        ...directionMap[direction],
+      }),
     },
     visible: {
       opacity: 1,
@@ -59,9 +63,9 @@ const ScrollReveal = ({
       x: 0,
       scale: 1,
       transition: {
-        duration,
+        duration: shouldReduceMotion ? 0.2 : duration,
         delay,
-        ease: [0.25, 0.1, 0.25, 1],
+        ease: easeOut,
       },
     },
   };
@@ -73,7 +77,7 @@ const ScrollReveal = ({
       variants={variants}
       initial="hidden"
       animate={shouldAnimate ? "visible" : "hidden"}
-      style={{ willChange: "transform, opacity" }}
+      style={{ willChange: shouldReduceMotion ? "opacity" : "transform, opacity" }}
     >
       {children}
     </motion.div>

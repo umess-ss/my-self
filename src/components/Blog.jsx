@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
@@ -13,9 +13,10 @@ import {
   Timer,
 } from 'lucide-react';
 import { blogPosts } from '../data/BlogContent';
-import ScrollReveal from './reactbits/ScrollReveal';
 import SEOHead from './SEOHead';
 import AbstractBackground from './AbstractBackground';
+import AnimatedButton from './motion/AnimatedButton';
+import Reveal from './motion/Reveal';
 
 const filters = ['All', 'Backend', 'Cloud', 'DevOps', 'AI', 'Python', 'Go', 'System Design'];
 
@@ -29,7 +30,7 @@ const iconMap = {
   database: Database,
 };
 
-const BlogVisual = ({ iconType, featured }) => {
+const BlogVisual = memo(function BlogVisual({ iconType, featured }) {
   const Icon = iconMap[iconType] || Server;
 
   return (
@@ -41,9 +42,9 @@ const BlogVisual = ({ iconType, featured }) => {
       </div>
     </div>
   );
-};
+});
 
-const BlogCard = ({ post, featured = false }) => {
+const BlogCard = memo(function BlogCard({ post, featured = false }) {
   const navigate = useNavigate();
 
   const openPost = () => {
@@ -100,7 +101,7 @@ const BlogCard = ({ post, featured = false }) => {
       </div>
     </article>
   );
-};
+});
 
 const Blog = ({ isHomePage }) => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -126,7 +127,7 @@ const Blog = ({ isHomePage }) => {
       <AbstractBackground variant="both" opacity={0.022} colorClass="text-sky-500 dark:text-sky-500" flip />
 
       <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4">
-        <ScrollReveal direction="up" distance={20}>
+        <Reveal>
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
               TECH WRITING
@@ -141,15 +142,16 @@ const Blog = ({ isHomePage }) => {
               Thoughts, build logs, and technical notes from my backend, cloud, DevOps, AI, and system design learning journey.
             </p>
           </div>
-        </ScrollReveal>
+        </Reveal>
 
-        <ScrollReveal direction="up" distance={18} delay={0.05}>
+        <Reveal delay={0.05} distance={14}>
           <div className="mt-8 flex gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible">
             {filters.map((filter) => {
               const isActive = activeFilter === filter;
               return (
-                <button
+                <AnimatedButton
                   key={filter}
+                  as="button"
                   type="button"
                   onClick={() => setActiveFilter(filter)}
                   className={`blog-filter-pill shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
@@ -159,28 +161,28 @@ const Blog = ({ isHomePage }) => {
                   }`}
                 >
                   {filter}
-                </button>
+                </AnimatedButton>
               );
             })}
           </div>
-        </ScrollReveal>
+        </Reveal>
 
         {featuredPost && (
-          <ScrollReveal direction="up" distance={30} delay={0.08}>
+          <Reveal delay={0.08} distance={16}>
             <div className="mt-8">
               <BlogCard post={featuredPost} featured />
             </div>
-          </ScrollReveal>
+          </Reveal>
         )}
 
         {regularPosts.length > 0 && (
-          <ScrollReveal direction="up" distance={30} delay={0.12}>
+          <Reveal delay={0.12} distance={16}>
             <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {regularPosts.map((post) => (
                 <BlogCard key={post.id} post={post} />
               ))}
             </div>
-          </ScrollReveal>
+          </Reveal>
         )}
 
         {filteredPosts.length === 0 && (
