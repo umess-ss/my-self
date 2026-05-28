@@ -1,9 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import homeImage from "../assets/home.jpeg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import CVModal from "./CVModal";
 import { getLenis } from "./SmoothScroll";
+import { easeOut } from "./motion/animations";
+
+const MotionSpan = motion.span;
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -11,6 +15,7 @@ const Navigation = () => {
   const [isCVOpen, setIsCVOpen] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState({});
   const navRef = useRef(null);
+  const shouldReduceMotion = useReducedMotion();
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -149,18 +154,17 @@ const Navigation = () => {
             </Link>
 
             <div className="hidden md:flex items-center gap-1" ref={navRef} style={{ position: "relative" }}>
-              {/* Sliding underline indicator */}
-              <span
+              <MotionSpan
                 className="nav-indicator"
+                animate={indicatorStyle}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.32, ease: easeOut }}
                 style={{
                   position: "absolute",
                   bottom: 0,
                   height: "2.5px",
                   borderRadius: "99px",
                   background: "linear-gradient(90deg, #2563EB, #0EA5E9)",
-                  transition: "left 0.35s cubic-bezier(0.4, 0, 0.2, 1), width 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s",
                   pointerEvents: "none",
-                  ...indicatorStyle,
                 }}
               />
 

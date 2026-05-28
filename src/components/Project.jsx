@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import {
   ArrowUpRight,
   BrainCircuit,
@@ -152,7 +152,7 @@ const projects = [
   },
 ];
 
-const ProjectVisual = ({ iconType, featured }) => {
+const ProjectVisual = memo(function ProjectVisual({ iconType, featured }) {
   const Icon = projectIconMap[iconType] || Server;
 
   return (
@@ -164,31 +164,31 @@ const ProjectVisual = ({ iconType, featured }) => {
       </div>
     </div>
   );
-};
+});
 
-const ProjectCard = ({ project, featured = false }) => {
+const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
   const sourceDisabled = project.sourceUrl === '#';
 
   return (
-    <article className={`project-card group flex h-full flex-col rounded-[20px] p-4 transition-all duration-300 hover:-translate-y-1.5 ${featured ? 'project-card-featured' : ''}`}>
+    <article className={`project-card group flex h-full flex-col rounded-2xl p-5 ${featured ? 'project-card-featured' : ''}`}>
       <div className="relative">
         <ProjectVisual iconType={project.iconType} featured={featured} />
-        <span className="absolute right-3 top-3 rounded-full border border-blue-300/25 bg-white/85 px-3 py-1 text-xs font-bold text-blue-700 shadow-sm backdrop-blur dark:bg-slate-950/72 dark:text-blue-100">
+        <span className="absolute right-3 top-3 rounded-full border border-blue-300/25 bg-white/90 px-3 py-1 text-xs font-semibold text-blue-700 shadow-sm dark:bg-slate-950/82 dark:text-blue-100">
           {project.category}
         </span>
       </div>
 
       <div className="flex flex-1 flex-col pt-5">
-        <h3 className={`${featured ? 'text-xl' : 'text-lg'} font-bold leading-snug text-[#0F172A] dark:text-white`}>
+        <h3 className={`${featured ? 'text-xl' : 'text-lg'} font-semibold leading-snug text-[#0F172A] dark:text-white`}>
           {project.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#475569] dark:text-gray-300">
+        <p className="mt-3 flex-1 text-sm leading-[1.7] text-[#475569] dark:text-gray-300">
           {project.description}
         </p>
 
         <div className="mt-5 flex flex-wrap gap-2">
           {project.tech.map((tech) => (
-            <span key={tech} className="rounded-full border border-blue-400/20 bg-blue-500/10 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+            <span key={tech} className="rounded-full border border-blue-400/18 bg-blue-500/[0.07] px-2.5 py-1 text-xs font-medium text-blue-700 dark:text-blue-100">
               {tech}
             </span>
           ))}
@@ -233,7 +233,7 @@ const ProjectCard = ({ project, featured = false }) => {
       </div>
     </article>
   );
-};
+});
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
