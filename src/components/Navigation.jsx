@@ -169,10 +169,11 @@ const Navigation = () => {
               />
 
               {navItems.map((item) => (
-                <button
+                <MotionButton
                   key={item.id}
                   data-nav-id={item.id}
                   onClick={() => handleNavClick(item.id)}
+                  whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
                   className={`px-4 py-2 font-medium transition-colors duration-200 cursor-pointer outline-none ${
                     activeNavId === item.id
                       ? "text-[#2563EB] dark:text-sky-300"
@@ -180,7 +181,7 @@ const Navigation = () => {
                   }`}
                 >
                   {item.label}
-                </button>
+                </MotionButton>
               ))}
 
               <button

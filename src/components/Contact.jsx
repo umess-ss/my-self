@@ -4,6 +4,7 @@ import { personalInfo } from '../data/PortfolioData';
 import BlurText from './reactbits/BlurText';
 import ScrollReveal from './reactbits/ScrollReveal';
 import AbstractBackground from './AbstractBackground';
+import AnimatedButton from './motion/AnimatedButton';
 
 const ContactInfoCard = ({ icon: Icon, text, color }) => {
 
@@ -127,12 +128,13 @@ export default function Contact() {
                 className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-gray-100 rounded-lg focus:outline-none focus:border-blue-600"
               />
 
-              <button
+              <AnimatedButton
                 type="submit"
+                as="button"
                 className="w-full px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-full hover:bg-[#EFF6FF] transition font-semibold cursor-pointer"
               >
                 {result ? result : "Send Message Now"}
-              </button>
+              </AnimatedButton>
             </form>
           </div>
 

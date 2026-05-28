@@ -10,8 +10,9 @@ import {
   Smartphone,
   TerminalSquare,
 } from 'lucide-react';
-import ScrollReveal from './reactbits/ScrollReveal';
 import AbstractBackground from './AbstractBackground';
+import AnimatedButton from './motion/AnimatedButton';
+import Reveal from './motion/Reveal';
 
 const filters = ['All', 'Backend', 'Cloud/DevOps', 'AI/ML', 'Full Stack', 'Mobile', 'Go'];
 
@@ -201,7 +202,8 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
               View Source
             </span>
           ) : (
-            <a
+            <AnimatedButton
+              as="a"
               href={project.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -209,7 +211,7 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
             >
               <Github size={16} />
               View Source
-            </a>
+            </AnimatedButton>
           )}
           {featured && (
             sourceDisabled ? (
@@ -218,7 +220,8 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
                 <ArrowUpRight size={16} />
               </span>
             ) : (
-              <a
+              <AnimatedButton
+                as="a"
                 href={project.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -226,7 +229,7 @@ const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
               >
                 View Details
                 <ArrowUpRight size={16} />
-              </a>
+              </AnimatedButton>
             )
           )}
         </div>
@@ -252,7 +255,7 @@ export default function Projects() {
       <AbstractBackground variant="both" opacity={0.022} colorClass="text-sky-500 dark:text-sky-500" flip />
 
       <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4">
-        <ScrollReveal direction="up" distance={20}>
+        <Reveal>
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
               MY PORTFOLIO
@@ -267,15 +270,16 @@ export default function Projects() {
               A collection of backend, cloud, AI, and full-stack projects I’ve built while learning production-grade engineering.
             </p>
           </div>
-        </ScrollReveal>
+        </Reveal>
 
-        <ScrollReveal direction="up" distance={18} delay={0.05}>
+        <Reveal delay={0.05} distance={14}>
           <div className="mt-8 flex gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible">
             {filters.map((filter) => {
               const isActive = activeFilter === filter;
               return (
-                <button
+                <AnimatedButton
                   key={filter}
+                  as="button"
                   type="button"
                   onClick={() => setActiveFilter(filter)}
                   className={`project-filter-pill shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
@@ -285,30 +289,26 @@ export default function Projects() {
                   }`}
                 >
                   {filter}
-                </button>
+                </AnimatedButton>
               );
             })}
           </div>
-        </ScrollReveal>
+        </Reveal>
 
         {featuredProjects.length > 0 && (
-          <ScrollReveal direction="up" distance={30} delay={0.08}>
-            <div className="mt-8 grid gap-5 lg:grid-cols-3">
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} featured />
-              ))}
-            </div>
-          </ScrollReveal>
+          <div className="mt-8 grid gap-5 lg:grid-cols-3">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} featured />
+            ))}
+          </div>
         )}
 
         {regularProjects.length > 0 && (
-          <ScrollReveal direction="up" distance={30} delay={0.12}>
-            <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {regularProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-          </ScrollReveal>
+          <div className="mt-6 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {regularProjects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
         )}
 
         {filteredProjects.length === 0 && (
@@ -318,7 +318,8 @@ export default function Projects() {
         )}
 
         <div className="mt-12 flex justify-center">
-          <a
+          <AnimatedButton
+            as="a"
             href="https://github.com/umess-ss"
             target="_blank"
             rel="noopener noreferrer"
@@ -327,7 +328,7 @@ export default function Projects() {
             <Github size={18} />
             View More on GitHub
             <ArrowUpRight size={18} />
-          </a>
+          </AnimatedButton>
         </div>
       </div>
     </section>
