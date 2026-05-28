@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
   ArrowRight,
@@ -30,7 +30,7 @@ const iconMap = {
   database: Database,
 };
 
-const BlogVisual = ({ iconType, featured }) => {
+const BlogVisual = memo(function BlogVisual({ iconType, featured }) {
   const Icon = iconMap[iconType] || Server;
 
   return (
@@ -42,9 +42,9 @@ const BlogVisual = ({ iconType, featured }) => {
       </div>
     </div>
   );
-};
+});
 
-const BlogCard = ({ post, featured = false }) => {
+const BlogCard = memo(function BlogCard({ post, featured = false }) {
   const navigate = useNavigate();
 
   const openPost = () => {
@@ -101,7 +101,7 @@ const BlogCard = ({ post, featured = false }) => {
       </div>
     </article>
   );
-};
+});
 
 const Blog = ({ isHomePage }) => {
   const [activeFilter, setActiveFilter] = useState('All');

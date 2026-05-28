@@ -533,7 +533,7 @@ body,
 }
 
 .projects-section::after {
-  content: "";
+  content: none;
   position: absolute;
   top: 18%;
   left: 50%;
@@ -592,12 +592,10 @@ body,
 
 .project-card {
   border: 1px solid rgba(59, 130, 246, 0.25);
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow:
     0 14px 38px rgba(15, 23, 42, 0.065),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   contain: layout paint style;
   content-visibility: auto;
   contain-intrinsic-size: 360px;
@@ -613,7 +611,7 @@ body,
 }
 
 .dark .project-card {
-  background: rgba(15, 23, 42, 0.65);
+  background: rgba(15, 23, 42, 0.82);
   box-shadow:
     0 16px 44px rgba(2, 6, 23, 0.24),
     inset 0 1px 0 rgba(148, 163, 184, 0.12);
@@ -638,8 +636,6 @@ body,
 
 .project-filter-pill {
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 
 .project-filter-pill-active {
@@ -659,7 +655,7 @@ body,
 
 .blog-section::after,
 .blog-detail-section::after {
-  content: "";
+  content: none;
   position: absolute;
   top: 16%;
   left: 50%;
@@ -726,12 +722,10 @@ body,
 .blog-article-card,
 .blog-related-card {
   border: 1px solid rgba(59, 130, 246, 0.25);
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.9);
   box-shadow:
     0 14px 38px rgba(15, 23, 42, 0.065),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   contain: layout paint style;
   content-visibility: auto;
   contain-intrinsic-size: 380px;
@@ -751,7 +745,7 @@ body,
 .dark .blog-hero-card,
 .dark .blog-article-card,
 .dark .blog-related-card {
-  background: rgba(15, 23, 42, 0.68);
+  background: rgba(15, 23, 42, 0.82);
   box-shadow:
     0 16px 44px rgba(2, 6, 23, 0.24),
     inset 0 1px 0 rgba(148, 163, 184, 0.12);
@@ -780,8 +774,6 @@ body,
 
 .blog-filter-pill {
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 
 .blog-filter-pill-active {

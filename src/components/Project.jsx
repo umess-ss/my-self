@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { memo, useMemo, useState } from 'react';
 import {
   ArrowUpRight,
   BrainCircuit,
@@ -153,7 +153,7 @@ const projects = [
   },
 ];
 
-const ProjectVisual = ({ iconType, featured }) => {
+const ProjectVisual = memo(function ProjectVisual({ iconType, featured }) {
   const Icon = projectIconMap[iconType] || Server;
 
   return (
@@ -165,9 +165,9 @@ const ProjectVisual = ({ iconType, featured }) => {
       </div>
     </div>
   );
-};
+});
 
-const ProjectCard = ({ project, featured = false }) => {
+const ProjectCard = memo(function ProjectCard({ project, featured = false }) {
   const sourceDisabled = project.sourceUrl === '#';
 
   return (
@@ -236,7 +236,7 @@ const ProjectCard = ({ project, featured = false }) => {
       </div>
     </article>
   );
-};
+});
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
