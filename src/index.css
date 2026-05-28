@@ -341,6 +341,304 @@ body,
     0 0 0 1px rgba(96, 165, 250, 0.16);
 }
 
+/* ===================== CONTACT SECTION ===================== */
+.contact-info-card,
+.contact-form,
+.contact-map-panel {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow:
+    0 18px 52px rgba(15, 23, 42, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.54);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.dark .contact-info-card,
+.dark .contact-form,
+.dark .contact-map-panel {
+  border-color: rgba(96, 165, 250, 0.16);
+  background: rgba(15, 23, 42, 0.54);
+  box-shadow:
+    0 20px 58px rgba(2, 6, 23, 0.28),
+    inset 0 1px 0 rgba(148, 163, 184, 0.1);
+}
+
+.contact-info-card {
+  display: flex;
+  min-height: 4.75rem;
+  align-items: center;
+  gap: 0.9rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s ease, background-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(37, 99, 235, 0.34);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.dark .contact-info-card:hover {
+  border-color: rgba(56, 189, 248, 0.28);
+  background: rgba(15, 23, 42, 0.66);
+}
+
+.contact-info-card:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.72);
+  outline-offset: 3px;
+}
+
+.dark .contact-info-card:focus-visible {
+  outline-color: rgba(56, 189, 248, 0.76);
+}
+
+.contact-info-icon {
+  display: grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 999px;
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.12);
+}
+
+.dark .contact-info-icon {
+  color: #7DD3FC;
+  background: rgba(14, 165, 233, 0.09);
+  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.12);
+}
+
+.contact-info-label {
+  display: block;
+  margin-bottom: 0.15rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748B;
+}
+
+.dark .contact-info-label {
+  color: #94A3B8;
+}
+
+.contact-info-value {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  color: #0F172A;
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dark .contact-info-value {
+  color: #E2E8F0;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+  border-radius: 1.25rem;
+  padding: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .contact-form {
+    padding: 1.5rem;
+  }
+}
+
+.contact-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.contact-field label {
+  color: #334155;
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.dark .contact-field label {
+  color: #CBD5E1;
+}
+
+.contact-input {
+  width: 100%;
+  min-height: 3rem;
+  border: 1px solid rgba(148, 163, 184, 0.36);
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 0.8rem 0.95rem;
+  color: #0F172A;
+  font-size: 1rem;
+  line-height: 1.5;
+  outline: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea.contact-input {
+  min-height: 8.5rem;
+  resize: vertical;
+}
+
+.contact-input::placeholder {
+  color: #94A3B8;
+}
+
+.contact-input:hover {
+  border-color: rgba(37, 99, 235, 0.34);
+}
+
+.contact-input:focus-visible {
+  border-color: rgba(37, 99, 235, 0.72);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.dark .contact-input {
+  border-color: rgba(148, 163, 184, 0.22);
+  background: rgba(2, 6, 23, 0.32);
+  color: #F8FAFC;
+}
+
+.dark .contact-input::placeholder {
+  color: #64748B;
+}
+
+.dark .contact-input:hover {
+  border-color: rgba(56, 189, 248, 0.28);
+}
+
+.dark .contact-input:focus-visible {
+  border-color: rgba(56, 189, 248, 0.62);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12);
+}
+
+.contact-submit-btn {
+  display: inline-flex;
+  min-height: 3.1rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #2563EB, #0EA5E9);
+  padding: 0.85rem 1.5rem;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.2);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+.contact-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.24);
+}
+
+.contact-submit-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.contact-submit-btn:focus-visible {
+  outline: 2px solid rgba(37, 99, 235, 0.72);
+  outline-offset: 3px;
+}
+
+.contact-submit-btn:disabled {
+  cursor: wait;
+  filter: saturate(0.85);
+  opacity: 0.78;
+  transform: none;
+}
+
+.contact-result {
+  min-height: 1.25rem;
+  color: #64748B;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.contact-result-success {
+  color: #2563EB;
+}
+
+.contact-result-error {
+  color: #B91C1C;
+}
+
+.dark .contact-result {
+  color: #94A3B8;
+}
+
+.dark .contact-result-success {
+  color: #7DD3FC;
+}
+
+.dark .contact-result-error {
+  color: #FCA5A5;
+}
+
+.contact-map-panel {
+  overflow: hidden;
+  border-radius: 1.25rem;
+}
+
+.contact-map-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+  padding: 1rem 1.1rem;
+}
+
+.contact-map-kicker {
+  color: #64748B;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.contact-map-location {
+  color: #0F172A;
+  font-weight: 700;
+}
+
+.dark .contact-map-kicker {
+  color: #94A3B8;
+}
+
+.dark .contact-map-location {
+  color: #E2E8F0;
+}
+
+.contact-map-frame {
+  height: min(28rem, 58vh);
+  min-height: 22rem;
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.contact-map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: saturate(0.85) contrast(0.96);
+}
+
+.dark .contact-map-frame iframe {
+  filter: saturate(0.72) contrast(0.9) brightness(0.82);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
