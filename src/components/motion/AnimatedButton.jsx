@@ -17,7 +17,6 @@ export default function AnimatedButton({
       disabled={as === 'button' ? disabled : undefined}
       whileHover={!disabled && !shouldReduceMotion ? buttonHover : undefined}
       whileTap={!disabled && !shouldReduceMotion ? buttonTap : undefined}
-      transition={{ duration: 0.22 }}
       {...props}
     >
       {children}

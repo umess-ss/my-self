@@ -55,11 +55,11 @@ const BlogCard = memo(function BlogCard({ post, featured = false }) {
   return (
     <article
       onClick={openPost}
-      className={`blog-card group flex h-full cursor-pointer flex-col rounded-[20px] p-4 transition-all duration-300 hover:-translate-y-1.5 ${featured ? 'blog-card-featured lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:gap-6' : ''}`}
+      className={`blog-card group flex h-full cursor-pointer flex-col rounded-2xl p-5 ${featured ? 'blog-card-featured lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:gap-6' : ''}`}
     >
       <div className="relative">
         <BlogVisual iconType={post.iconType} featured={featured} />
-        <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-blue-300/25 bg-white/85 px-3 py-1 text-xs font-bold text-blue-700 shadow-sm backdrop-blur dark:bg-slate-950/72 dark:text-blue-100">
+        <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-blue-300/25 bg-white/90 px-3 py-1 text-xs font-semibold text-blue-700 shadow-sm dark:bg-slate-950/82 dark:text-blue-100">
           <Tag size={12} />
           {post.category}
         </span>
@@ -77,23 +77,23 @@ const BlogCard = memo(function BlogCard({ post, featured = false }) {
           </span>
         </div>
 
-        <h3 className={`${featured ? 'mt-4 text-2xl md:text-3xl' : 'mt-4 text-xl'} font-bold leading-tight text-[#0F172A] dark:text-white`}>
+        <h3 className={`${featured ? 'mt-4 text-2xl md:text-3xl' : 'mt-4 text-xl'} font-semibold leading-tight text-[#0F172A] dark:text-white`}>
           {post.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-[#475569] dark:text-gray-300">
+        <p className="mt-3 flex-1 text-sm leading-[1.7] text-[#475569] dark:text-gray-300">
           {post.excerpt}
         </p>
 
         <div className="mt-5 flex flex-wrap gap-2">
           {post.tags.map((tag) => (
-            <span key={tag} className="rounded-full border border-blue-400/20 bg-blue-500/10 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+            <span key={tag} className="rounded-full border border-blue-400/18 bg-blue-500/[0.07] px-2.5 py-1 text-xs font-medium text-blue-700 dark:text-blue-100">
               {tag}
             </span>
           ))}
         </div>
 
         <div className="mt-6">
-          <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 group-hover:shadow-blue-500/30">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[#2563EB] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/16 transition-colors duration-200 group-hover:bg-[#1D4ED8]">
             Read Article
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
           </span>

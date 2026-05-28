@@ -8,7 +8,6 @@ import { getLenis } from "./SmoothScroll";
 import { easeOut } from "./motion/animations";
 
 const MotionSpan = motion.span;
-const MotionButton = motion.button;
 
 const Navigation = () => {
   const [activeSection, setActiveSection] = useState("home");
@@ -155,11 +154,10 @@ const Navigation = () => {
             </Link>
 
             <div className="hidden md:flex items-center gap-1" ref={navRef} style={{ position: "relative" }}>
-              {/* Sliding underline indicator */}
               <MotionSpan
                 className="nav-indicator"
                 animate={indicatorStyle}
-                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.34, ease: easeOut }}
+                transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.32, ease: easeOut }}
                 style={{
                   position: "absolute",
                   bottom: 0,
