@@ -775,7 +775,7 @@ section {
 .resume-content-panel {
   border: 1px solid var(--portfolio-border);
   border-radius: 1.75rem;
-  background: rgba(17, 20, 24, 0.56);
+  background: var(--portfolio-surface-strong);
   box-shadow: none;
 }
 
