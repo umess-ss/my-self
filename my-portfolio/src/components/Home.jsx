@@ -51,9 +51,9 @@ export default function Home({ splashDone = false }) {
   });
 
   return (
-    <section id="home" className="hero-section relative min-h-screen flex items-center overflow-hidden bg-[#FBFAFC] pt-20 pb-10 dark:bg-gray-950 transition-colors duration-300">
+    <section id="home" className="hero-section relative min-h-screen flex items-center overflow-hidden bg-[#FBFAFC] pt-24 pb-14 dark:bg-slate-950 transition-colors duration-300">
       {/* Decorative background layers */}
-      <AbstractBackground variant="waves" opacity={0.05} colorClass="text-sky-500 dark:text-sky-500" />
+      <AbstractBackground variant="waves" opacity={0.025} colorClass="text-sky-500 dark:text-sky-500" />
       <div className="absolute inset-0 -z-10">
         <div className="portfolio-hero-bg absolute inset-0" />
         <div className="portfolio-hero-grid absolute inset-0" />
@@ -125,7 +125,7 @@ export default function Home({ splashDone = false }) {
                 <AnimatedButton
                   as="a"
                   href="#projects"
-                  className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-8 py-3.5 font-medium text-white shadow-lg shadow-blue-500/20 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-xl hover:shadow-blue-500/20"
+                  className="site-primary-action inline-flex items-center justify-center rounded-full px-8 py-3.5 font-medium transition-all duration-300 ease-out"
                 >
                   View Projects
                 </AnimatedButton>
@@ -133,7 +133,7 @@ export default function Home({ splashDone = false }) {
                   as="a"
                   href={myCV}
                   download="umesh_cv.pdf"
-                  className="inline-flex items-center justify-center rounded-full border-[1.5px] border-blue-600 bg-transparent px-8 py-3.5 font-medium text-blue-600 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-[#1D4ED8] hover:text-white"
+                  className="site-secondary-action inline-flex items-center justify-center rounded-full px-8 py-3.5 font-medium transition-all duration-300 ease-out"
                 >
                   Download CV
                 </AnimatedButton>

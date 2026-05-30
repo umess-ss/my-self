@@ -207,7 +207,7 @@ const resumeCardVariants = {
 };
 
 const Tag = ({ children }) => (
-  <span className="inline-flex max-w-full rounded-full border border-blue-400/25 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+  <span className="resume-tag inline-flex max-w-full rounded-full px-3 py-1 text-xs font-medium">
     {children}
   </span>
 );
@@ -217,7 +217,7 @@ const PanelCard = ({ children, className = '' }) => (
     layout
     variants={resumeCardVariants}
     className={`resume-glass-card w-full max-w-full overflow-hidden rounded-2xl p-4 transition-colors duration-300 hover:border-blue-400/45 sm:rounded-[18px] sm:p-5 ${className}`}
-    whileHover={{ y: -4 }}
+    whileHover={{ y: -2 }}
     transition={{ type: 'spring', stiffness: 380, damping: 34 }}
   >
     {children}
@@ -226,10 +226,10 @@ const PanelCard = ({ children, className = '' }) => (
 
 const EducationPanel = () => (
   <div className="relative w-full max-w-full space-y-5 pl-5 sm:pl-7">
-    <div className="absolute left-[7px] top-3 h-[calc(100%-1.5rem)] w-px bg-gradient-to-b from-blue-500/60 via-sky-400/25 to-transparent sm:left-[9px]" />
+    <div className="absolute left-[7px] top-3 h-[calc(100%-1.5rem)] w-px bg-blue-500/22 sm:left-[9px]" />
     {educationItems.map((item) => (
       <div key={item.title} className="relative w-full max-w-full">
-        <div className="absolute -left-5 top-6 h-4 w-4 rounded-full border-[3px] border-[#FBFAFC] bg-gradient-to-br from-blue-600 to-sky-400 shadow-[0_0_26px_rgba(37,99,235,0.45)] dark:border-gray-800 sm:-left-7 sm:h-5 sm:w-5 sm:border-4" />
+        <div className="absolute -left-5 top-6 h-4 w-4 rounded-full border-[3px] border-[#FBFAFC] bg-blue-600 shadow-[0_0_20px_rgba(37,99,235,0.26)] dark:border-slate-950 sm:-left-7 sm:h-5 sm:w-5 sm:border-4" />
         <PanelCard>
           <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0 max-w-full">
@@ -347,19 +347,19 @@ const Resume = () => {
   const [activeCategory, setActiveCategory] = useState('education');
 
   return (
-    <section id="resume" className="resume-section relative w-full max-w-full overflow-hidden bg-[#FBFAFC] px-0 pt-10 pb-12 transition-colors duration-300 dark:bg-gray-900 sm:pt-12 sm:pb-16">
+    <section id="resume" className="resume-section relative w-full max-w-full overflow-hidden bg-[#FBFAFC] px-0 py-20 transition-colors duration-300 dark:bg-slate-950 md:py-24">
       <div className="resume-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
       <AbstractBackground variant="both" opacity={0.02} colorClass="text-sky-500 dark:text-sky-500" />
 
       <div className="relative z-10 mx-auto w-full max-w-[1160px] overflow-hidden px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="up" distance={20}>
           <div className="mb-6 max-w-full sm:mb-7">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600 dark:text-sky-300">
               MY RESUME
             </p>
             <h2 className="mt-4 max-w-full break-words text-3xl font-bold leading-tight text-[#0F172A] dark:text-white sm:text-4xl lg:text-5xl">
               Experience &{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-transparent">
+              <span className="text-blue-600 dark:text-sky-300">
                 Skills
               </span>
             </h2>
@@ -378,7 +378,7 @@ const Resume = () => {
                       key={key}
                       type="button"
                       onClick={() => setActiveCategory(key)}
-                      whileHover={{ y: -2, scale: 1.015 }}
+                      whileHover={{ y: -1, scale: 1.005 }}
                       whileTap={{ scale: 0.98 }}
                       transition={{ type: 'spring', stiffness: 420, damping: 32 }}
                       className={`resume-tab group relative inline-flex shrink-0 items-center gap-2 overflow-hidden rounded-full border px-3 py-2.5 text-xs font-semibold transition-all duration-300 ease-in-out sm:gap-3 sm:px-4 sm:py-3 sm:text-sm lg:w-full lg:rounded-2xl ${
@@ -390,7 +390,7 @@ const Resume = () => {
                       {isActive && (
                         <motion.span
                           layoutId="resume-active-tab"
-                          className="absolute inset-0 rounded-[inherit] bg-gradient-to-br from-blue-600 to-sky-400"
+                          className="absolute inset-0 rounded-[inherit] bg-blue-600 dark:bg-sky-500/20"
                           transition={{ type: 'spring', stiffness: 420, damping: 36 }}
                         />
                       )}

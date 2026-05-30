@@ -34,11 +34,10 @@ const BlogVisual = memo(function BlogVisual({ iconType, featured }) {
   const Icon = iconMap[iconType] || Server;
 
   return (
-    <div className={`blog-visual relative flex items-center justify-center overflow-hidden rounded-[18px] ${featured ? 'h-44' : 'h-32'}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_24%,rgba(255,255,255,0.22),transparent_28%),linear-gradient(135deg,rgba(37,99,235,0.9),rgba(14,165,233,0.58))]" />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.16)_1px,transparent_1px),linear-gradient(0deg,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:22px_22px] opacity-35" />
-      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-white/25 bg-white/14 text-white shadow-[0_18px_60px_rgba(2,6,23,0.25)] backdrop-blur-md">
-        <Icon size={featured ? 36 : 30} strokeWidth={1.8} />
+    <div className={`blog-visual relative flex items-center justify-center overflow-hidden rounded-2xl ${featured ? 'h-40' : 'h-28'}`}>
+      <div className="blog-visual-grid absolute inset-0" aria-hidden="true" />
+      <div className="blog-visual-icon relative flex items-center justify-center">
+        <Icon size={featured ? 31 : 26} strokeWidth={1.8} />
       </div>
     </div>
   );
@@ -55,11 +54,19 @@ const BlogCard = memo(function BlogCard({ post, featured = false }) {
   return (
     <article
       onClick={openPost}
-      className={`blog-card group flex h-full cursor-pointer flex-col rounded-[20px] p-4 transition-all duration-300 hover:-translate-y-1.5 ${featured ? 'blog-card-featured lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:gap-6' : ''}`}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openPost();
+        }
+      }}
+      role="button"
+      tabIndex={0}
+      className={`blog-card group flex h-full cursor-pointer flex-col rounded-[18px] p-4 transition-all duration-300 sm:p-5 ${featured ? 'blog-card-featured lg:grid lg:grid-cols-[0.95fr_1.05fr] lg:gap-6' : ''}`}
     >
       <div className="relative">
         <BlogVisual iconType={post.iconType} featured={featured} />
-        <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-blue-300/25 bg-white/85 px-3 py-1 text-xs font-bold text-blue-700 shadow-sm backdrop-blur dark:bg-slate-950/72 dark:text-blue-100">
+        <span className="blog-category-pill absolute right-3 top-3 inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold">
           <Tag size={12} />
           {post.category}
         </span>
@@ -86,14 +93,14 @@ const BlogCard = memo(function BlogCard({ post, featured = false }) {
 
         <div className="mt-5 flex flex-wrap gap-2">
           {post.tags.map((tag) => (
-            <span key={tag} className="rounded-full border border-blue-400/20 bg-blue-500/10 px-2.5 py-1 text-xs font-semibold text-blue-700 dark:text-blue-100">
+            <span key={tag} className="blog-tag-chip rounded-full px-2.5 py-1 text-xs font-medium">
               {tag}
             </span>
           ))}
         </div>
 
         <div className="mt-6">
-          <span className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-600 to-sky-500 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition-all duration-300 group-hover:shadow-blue-500/30">
+          <span className="blog-read-action inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300">
             Read Article
             <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1" />
           </span>
@@ -115,7 +122,7 @@ const Blog = ({ isHomePage }) => {
   const regularPosts = filteredPosts.slice(1);
 
   return (
-    <section id="blog" className="blog-section relative overflow-hidden bg-[#FBFAFC] py-20 dark:bg-gray-900 transition-colors duration-300">
+    <section id="blog" className="blog-section relative overflow-hidden bg-[#FBFAFC] py-20 dark:bg-slate-950 transition-colors duration-300 md:py-24">
       {!isHomePage && (
         <SEOHead
           title="Engineering Notes & Blog"
@@ -129,12 +136,12 @@ const Blog = ({ isHomePage }) => {
       <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4">
         <Reveal>
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-sky-300">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600 dark:text-sky-300">
               TECH WRITING
             </p>
             <h2 className="mt-4 text-4xl font-bold leading-tight text-[#0F172A] dark:text-white md:text-5xl">
               Engineering Notes &{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-sky-400 bg-clip-text text-transparent">
+              <span className="text-blue-600 dark:text-sky-300">
                 Blog
               </span>
             </h2>
@@ -157,7 +164,7 @@ const Blog = ({ isHomePage }) => {
                   className={`blog-filter-pill shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition-all duration-300 ${
                     isActive
                       ? 'blog-filter-pill-active text-white'
-                      : 'border-blue-400/20 bg-white/65 text-[#475569] hover:border-blue-400/50 hover:text-blue-600 dark:bg-slate-900/42 dark:text-gray-300 dark:hover:text-sky-200'
+                      : 'border-blue-400/18 bg-white/60 text-[#475569] hover:border-blue-400/38 hover:text-blue-600 dark:bg-slate-900/36 dark:text-gray-300 dark:hover:text-sky-200'
                   }`}
                 >
                   {filter}
@@ -195,7 +202,7 @@ const Blog = ({ isHomePage }) => {
           <div className="mt-12 flex justify-center">
             <Link
               to="/all-blogs"
-              className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-white/70 px-6 py-3 font-semibold text-blue-700 shadow-lg shadow-blue-500/10 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/60 hover:bg-blue-500/10 dark:bg-slate-900/50 dark:text-blue-100"
+              className="site-secondary-action inline-flex items-center gap-2 rounded-full px-6 py-3 font-semibold transition-all duration-300"
             >
               View All Notes
               <ArrowRight size={18} />
