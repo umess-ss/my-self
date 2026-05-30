@@ -12,6 +12,7 @@ echo "🚀 Deploying to gh-pages branch..."
 # Next.js static export creates 'out' folder
 rm -rf out/.git
 cd out
+touch .nojekyll
 
 git init -b gh-pages
 git config user.name "$USER_NAME"
