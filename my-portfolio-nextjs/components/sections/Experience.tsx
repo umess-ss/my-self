@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AnimatedList, AnimatedListItem, BorderGlow, ScrollReveal } from "@/components/ui/MotionEffects";
 
 const categories = [
   { key: "education", label: "Education", icon: GraduationCap },
@@ -110,15 +111,15 @@ const experienceItems = [
 ];
 
 function PanelCard({ children }: { children: React.ReactNode }) {
-  return <div className="resume-glass-card w-full max-w-full overflow-hidden rounded-2xl p-4 transition-colors duration-300 sm:rounded-[18px] sm:p-5">{children}</div>;
+  return <BorderGlow className="resume-glass-card w-full max-w-full overflow-hidden rounded-2xl p-4 transition-colors duration-300 sm:rounded-[18px] sm:p-5">{children}</BorderGlow>;
 }
 
 function EducationPanel() {
   return (
-    <div className="relative w-full max-w-full space-y-5 pl-5 sm:pl-7">
+    <AnimatedList className="relative w-full max-w-full space-y-5 pl-5 sm:pl-7">
       <div className="absolute left-[7px] top-3 h-[calc(100%-1.5rem)] w-px bg-[rgba(255,219,187,0.18)] sm:left-[9px]" />
       {educationItems.map((item) => (
-        <div key={item.title} className="relative w-full max-w-full">
+        <AnimatedListItem key={item.title} className="relative w-full max-w-full">
           <div className="absolute -left-5 top-6 h-4 w-4 rounded-full border-[3px] border-[var(--portfolio-bg)] bg-[var(--portfolio-warm)] sm:-left-7 sm:h-5 sm:w-5 sm:border-4" />
           <PanelCard>
             <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
@@ -140,63 +141,70 @@ function EducationPanel() {
               ))}
             </ul>
           </PanelCard>
-        </div>
+        </AnimatedListItem>
       ))}
-    </div>
+    </AnimatedList>
   );
 }
 
 function TrainingsPanel() {
   return (
-    <div className="grid w-full max-w-full gap-4 lg:grid-cols-3">
+    <AnimatedList className="grid w-full max-w-full gap-4 lg:grid-cols-3">
       {trainingItems.map((item) => (
-        <PanelCard key={item.title}>
+        <AnimatedListItem key={item.title}>
+        <PanelCard>
           <h3 className="text-lg font-bold text-[var(--portfolio-text)]">{item.title}</h3>
           <p className="mt-1 font-semibold text-[var(--portfolio-warm)]">{item.issuer}</p>
           <p className="mt-3 text-sm leading-relaxed text-[var(--portfolio-muted)]">{item.description}</p>
           <div className="mt-5 flex flex-wrap gap-2">{item.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div>
         </PanelCard>
+        </AnimatedListItem>
       ))}
-    </div>
+    </AnimatedList>
   );
 }
 
 function SkillsPanel() {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <AnimatedList className="grid gap-4 md:grid-cols-2">
       {skillGroups.map(({ label, icon: Icon, skills }) => (
-        <PanelCard key={label}>
+        <AnimatedListItem key={label}>
+        <PanelCard>
           <div className="mb-4 flex items-center gap-3">
             <span className="about-stat-icon"><Icon size={18} /></span>
             <h3 className="text-lg font-bold text-[var(--portfolio-text)]">{label}</h3>
           </div>
           <div className="flex flex-wrap gap-2">{skills.map((skill) => <Badge key={skill}>{skill}</Badge>)}</div>
         </PanelCard>
+        </AnimatedListItem>
       ))}
-    </div>
+    </AnimatedList>
   );
 }
 
 function SoftSkillsPanel() {
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <AnimatedList className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {softSkills.map(({ title, icon: Icon }) => (
-        <PanelCard key={title}>
+        <AnimatedListItem key={title}>
+        <PanelCard>
           <div className="flex items-center gap-3">
             <span className="about-stat-icon"><Icon size={18} /></span>
             <h3 className="m-0 text-base font-bold text-[var(--portfolio-text)]">{title}</h3>
           </div>
         </PanelCard>
+        </AnimatedListItem>
       ))}
-    </div>
+    </AnimatedList>
   );
 }
 
 function ExperiencePanel() {
   return (
-    <div className="grid gap-4">
+    <AnimatedList className="grid gap-4">
       {experienceItems.map((item) => (
-        <PanelCard key={item.project}>
+        <AnimatedListItem key={item.project}>
+        <PanelCard>
           <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
             <div>
               <h3 className="text-xl font-bold text-[var(--portfolio-text)]">{item.role}</h3>
@@ -214,8 +222,9 @@ function ExperiencePanel() {
           </ul>
           <div className="mt-5 flex flex-wrap gap-2">{item.tags.map((tag) => <Badge key={tag}>{tag}</Badge>)}</div>
         </PanelCard>
+        </AnimatedListItem>
       ))}
-    </div>
+    </AnimatedList>
   );
 }
 
@@ -224,7 +233,7 @@ export function Experience({ compact = false }: { compact?: boolean }) {
     <section id="resume" className="resume-section relative overflow-hidden py-24 transition-colors duration-300 md:py-32">
       <div className="resume-bg-grid absolute inset-0 pointer-events-none" aria-hidden="true" />
       <div className="relative z-10 mx-auto w-full max-w-[1180px] px-4">
-        <div className="mb-10 max-w-3xl">
+        <ScrollReveal className="mb-10 max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[var(--portfolio-warm)]">RESUME</p>
           <h2 className="mt-4 text-4xl font-semibold leading-tight text-[var(--portfolio-text)] md:text-5xl">
             Training, education, and applied engineering.
@@ -232,7 +241,7 @@ export function Experience({ compact = false }: { compact?: boolean }) {
           <p className="mt-5 text-base leading-[1.8] text-[var(--portfolio-muted)] md:text-lg">
             Education, cloud training, backend projects, and the technical stack I use to build production-oriented systems.
           </p>
-        </div>
+        </ScrollReveal>
 
         <Tabs defaultValue={compact ? "experience" : "education"} className="resume-content-panel grid gap-5 p-4 md:grid-cols-[260px_1fr] md:p-5">
           <TabsList className="grid gap-3 md:content-start">

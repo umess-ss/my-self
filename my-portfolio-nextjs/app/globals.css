@@ -67,6 +67,54 @@ body::selection {
   color: var(--portfolio-text);
 }
 
+.click-spark-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.click-spark {
+  position: absolute;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--portfolio-warm);
+  box-shadow:
+    0 0 0 0 rgba(255, 219, 187, 0.48),
+    0 0 18px rgba(255, 219, 187, 0.65);
+  transform: translate(-50%, -50%);
+  animation: clickSpark 680ms ease-out forwards;
+}
+
+.click-spark::before,
+.click-spark::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  border: 1px solid currentColor;
+  border-radius: inherit;
+  opacity: 0.5;
+}
+
+.click-spark::after {
+  inset: -0.95rem;
+  opacity: 0.28;
+}
+
+@keyframes clickSpark {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.45);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2.9);
+  }
+}
+
 .brand-display {
   font-family: var(--font-inter), Inter, system-ui, sans-serif;
   font-feature-settings: "kern" 1, "ss01" 1;
@@ -372,11 +420,22 @@ section {
 
 .nav-menu-toggle {
   background: rgba(255, 219, 187, 0.045);
+  color: var(--portfolio-text);
+  border: 1px solid var(--portfolio-border);
 }
 
 .nav-menu-toggle:hover {
   background: rgba(255, 219, 187, 0.08);
   color: var(--portfolio-warm);
+}
+
+.mobile-nav-panel {
+  background: color-mix(in srgb, var(--portfolio-surface) 94%, transparent);
+  color: var(--portfolio-text);
+}
+
+.dark .mobile-nav-panel {
+  background: rgba(23, 18, 14, 0.96);
 }
 
 .mobile-nav-link {
@@ -385,6 +444,15 @@ section {
 
 .mobile-nav-link-active {
   box-shadow: inset 0 0 0 1px rgba(255, 219, 187, 0.16);
+}
+
+.mobile-nav-panel .mobile-nav-link {
+  color: var(--portfolio-muted);
+}
+
+.mobile-nav-panel .mobile-nav-link:hover,
+.mobile-nav-panel .mobile-nav-link-active {
+  color: var(--portfolio-warm);
 }
 
 .cv-navbar-btn {
@@ -573,6 +641,77 @@ section {
   line-height: 1.55;
 }
 
+.magic-rings {
+  position: absolute;
+  inset: -2.2rem;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.magic-rings span {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(155, 88, 48, 0.2);
+  border-radius: 2.35rem;
+  animation: magicRingPulse 5.5s ease-in-out infinite;
+}
+
+.magic-rings span:nth-child(2) {
+  inset: 1rem;
+  animation-delay: 0.9s;
+}
+
+.magic-rings span:nth-child(3) {
+  inset: 2rem;
+  animation-delay: 1.8s;
+}
+
+.dark .magic-rings span {
+  border-color: rgba(255, 219, 187, 0.16);
+}
+
+@keyframes magicRingPulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.98) rotate(0deg);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.025) rotate(1.25deg);
+  }
+}
+
+.pixel-transition {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.55rem;
+}
+
+.pixel-transition-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  pointer-events: none;
+}
+
+.pixel-transition-grid span {
+  background: color-mix(in srgb, var(--portfolio-warm) 44%, transparent);
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 240ms var(--portfolio-ease),
+    transform 320ms var(--portfolio-ease);
+  transition-delay: calc(var(--pixel-index) * 10ms);
+}
+
+.pixel-transition:hover .pixel-transition-grid span {
+  opacity: 0.18;
+  transform: scale(1);
+}
+
 .about-section {
   --about-section-bg: var(--portfolio-bg);
 }
@@ -650,6 +789,29 @@ section {
   border-color: rgba(255, 219, 187, 0.24);
   background: var(--portfolio-surface-strong);
   box-shadow: var(--portfolio-shadow-md);
+}
+
+.border-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.border-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 0%), rgba(255, 219, 187, 0.38), transparent 34%),
+    linear-gradient(135deg, rgba(255, 219, 187, 0.18), transparent 42%, rgba(155, 88, 48, 0.22));
+  opacity: 0;
+  transition: opacity 220ms var(--portfolio-ease);
+}
+
+.border-glow:hover::before,
+.border-glow:focus-within::before {
+  opacity: 1;
 }
 
 .about-stat-icon {

@@ -1,12 +1,13 @@
 import { ArrowUpRight, Github } from "lucide-react";
 import { Project } from "@/data/projects";
 import { Button } from "@/components/ui/button";
+import { BorderGlow } from "@/components/ui/MotionEffects";
 
 export function ProjectCard({ project, featured = false }: { project: Project; featured?: boolean }) {
   const sourceDisabled = project.sourceUrl === "#";
 
   return (
-    <article className={`project-card group grid gap-8 rounded-[18px] p-5 sm:p-7 lg:grid-cols-[0.9fr_1.1fr] lg:p-8 ${featured ? "project-card-featured" : ""}`}>
+    <BorderGlow as="article" className={`project-card group grid gap-8 rounded-[18px] p-5 sm:p-7 lg:grid-cols-[0.9fr_1.1fr] lg:p-8 ${featured ? "project-card-featured" : ""}`}>
       <div className="flex flex-col justify-between gap-8">
         <div>
           <span className="project-category-pill inline-flex rounded-full px-3 py-1 text-xs font-semibold">
@@ -71,6 +72,6 @@ export function ProjectCard({ project, featured = false }: { project: Project; f
           ) : null}
         </div>
       </div>
-    </article>
+    </BorderGlow>
   );
 }

@@ -1,4 +1,5 @@
 import { Github, Globe, Heart, Linkedin, Mail } from "lucide-react";
+import { FadeContent } from "@/components/ui/MotionEffects";
 
 const socialLinks = [
   { label: "Email", href: "mailto:ums.rbc07@gmail.com", icon: Mail },
@@ -23,7 +24,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="container mx-auto px-4">
         {/* Top section */}
-        <div className="footer-top">
+        <FadeContent className="footer-top">
           <div className="footer-brand-col">
             <p className="footer-brand-name">Umesh Rajbanshi</p>
             <p className="footer-tagline">
@@ -59,7 +60,7 @@ export function Footer() {
               ))}
             </div>
           </div>
-        </div>
+        </FadeContent>
 
         {/* Bottom bar */}
         <div className="footer-bottom">
@@ -67,7 +68,7 @@ export function Footer() {
             &copy; {currentYear} Umesh Rajbanshi. All rights reserved.
           </p>
           <p className="footer-credit">
-            Crafted with <Heart size={13} className="footer-heart" /> in Kathmandu, Nepal
+            Crafted with <Heart size={13} className="footer-heart" /> by Umesh Rajbanshi
           </p>
         </div>
       </div>
