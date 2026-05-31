@@ -437,6 +437,27 @@ section {
   z-index: 1;
 }
 
+.middle-divider {
+  width: 1px;
+  height: 70%;
+  align-self: center;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(80, 60, 40, 0.14),
+    transparent
+  );
+}
+
+.dark .middle-divider {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 219, 187, 0.12),
+    transparent
+  );
+}
+
 @keyframes heroPortraitFloat {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-2px); }
@@ -1394,6 +1415,10 @@ textarea.contact-input {
 
   .hero-portrait-image {
     height: 16rem;
+    max-width: 16rem;
+  }
+
+  .hero-focus-card {
     max-width: 16rem;
   }
 }

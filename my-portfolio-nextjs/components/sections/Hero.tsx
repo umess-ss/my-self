@@ -27,7 +27,7 @@ export function Hero() {
       </div>
 
       <div className="hero-container mx-auto px-4">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.03fr_0.88fr] lg:gap-12">
+        <div className="hero-grid grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_1px_420px] lg:gap-12">
           <div className="hero-left-content max-w-[39.5rem] text-left">
 <p className="mb-5 font-mono text-xs font-bold uppercase tracking-[0.28em] text-[var(--portfolio-text)]">
   Hello, I&apos;m
@@ -78,6 +78,8 @@ export function Hero() {
 </div>
             
           </div>
+
+          <div className="middle-divider hidden lg:block" aria-hidden="true" />
 
           <div className="overflow-visible">
             <div className="flex justify-center overflow-visible lg:justify-start">
