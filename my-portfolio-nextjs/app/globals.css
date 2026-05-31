@@ -919,7 +919,7 @@ textarea.contact-input {
   display: block;
   width: 100%;
   height: 100%;
-  filter: grayscale(1) invert(0.9) contrast(0.82) brightness(0.78);
+  filter: none;
 }
 
 /* ──────────── Footer ──────────── */
@@ -1134,21 +1134,125 @@ textarea.contact-input {
 }
 
 @media (max-width: 640px) {
+  body {
+    font-size: 14px;
+  }
+
   .hero-section,
   .about-section,
   .resume-section,
   .projects-section,
   .contact-section {
-    padding-top: 4.5rem;
-    padding-bottom: 4.5rem;
+    padding-top: 4.25rem;
+    padding-bottom: 3.75rem;
+  }
+
+  .container,
+  .hero-container {
+    width: 100%;
+  }
+
+  .portfolio-nav .container,
+  .hero-container,
+  .about-section .container,
+  .contact-section .container,
+  .projects-section > div,
+  .resume-section > div {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .nav-logo-text {
     display: none;
   }
 
+  .brand-logo {
+    max-width: 13rem;
+    overflow: hidden;
+    font-size: 1.34rem;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+
+  .cv-navbar-btn {
+    min-height: 2.25rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.72rem;
+  }
+
+  .theme-toggle-btn,
+  .nav-menu-toggle {
+    height: 2.25rem;
+    width: 2.25rem;
+  }
+
+  .hero-left-content {
+    max-width: 100%;
+  }
+
+  .hero-section h1 {
+    max-width: 100%;
+    font-size: 2.15rem;
+    letter-spacing: -0.03em;
+    white-space: normal;
+  }
+
+  .about-section h2,
+  .resume-section h2,
+  .projects-section h2,
+  .contact-section h2 {
+    font-size: 2rem;
+    line-height: 1.12;
+  }
+
+  .hero-section p,
+  .about-section p,
+  .resume-section p,
+  .projects-section p,
+  .contact-section p {
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  .hero-section .site-primary-action,
+  .hero-section .site-secondary-action {
+    width: 100%;
+    min-height: 2.65rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.86rem;
+  }
+
+  .hero-section a[href*="github.com"] {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.86rem;
+  }
+
   .project-card {
+    gap: 1.4rem;
+    padding: 1rem;
     contain-intrinsic-size: 320px;
+  }
+
+  .project-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .project-study-panel {
+    border-left: 0;
+    border-top: 1px solid var(--portfolio-border);
+    padding-top: 1.2rem;
+    padding-left: 0;
+  }
+
+  .project-system-row {
+    grid-template-columns: 1.1rem 1fr;
+    gap: 0.55rem;
+    font-size: 0.86rem;
+  }
+
+  .project-system-row span {
+    width: 1.1rem;
   }
 
   .hero-capability-list {
@@ -1162,6 +1266,135 @@ textarea.contact-input {
 
   .about-photo-frame {
     border-radius: 1.5rem;
+  }
+
+  .hero-portrait-image {
+    height: 18rem;
+    max-width: 18rem;
+  }
+
+  .hero-focus-card {
+    max-width: 18rem;
+    padding: 0.85rem;
+  }
+
+  .logo-loop {
+    margin-bottom: 1.5rem;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .logo-loop-track {
+    gap: 2rem;
+    padding: 0.55rem 0;
+  }
+
+  .logo-loop-item img,
+  .logo-loop-item svg {
+    height: 42px;
+    max-width: 90px;
+  }
+
+  .resume-content-panel {
+    border-radius: 1.1rem;
+    padding: 0.8rem;
+  }
+
+  .resume-tab {
+    border-radius: 0.9rem;
+    padding: 0.7rem 0.8rem;
+    font-size: 0.82rem;
+  }
+
+  .resume-glass-card {
+    border-radius: 0.9rem;
+    padding: 0.9rem;
+  }
+
+  .contact-info-card {
+    min-height: auto;
+    padding: 0.85rem;
+  }
+
+  .contact-info-icon {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+
+  .contact-info-value {
+    font-size: 0.86rem;
+    overflow-wrap: anywhere;
+    white-space: normal;
+  }
+
+  .contact-form {
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  .contact-input {
+    min-height: 2.75rem;
+    border-radius: 0.75rem;
+    padding: 0.72rem 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  textarea.contact-input {
+    min-height: 7.5rem;
+  }
+
+  .contact-submit-btn {
+    min-height: 2.8rem;
+    font-size: 0.9rem;
+  }
+
+  .contact-map-panel {
+    border-radius: 1rem;
+  }
+
+  .contact-map-frame {
+    height: 20rem;
+    min-height: 18rem;
+  }
+
+  .footer-top,
+  .footer-bottom {
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand-logo {
+    max-width: 10.7rem;
+    font-size: 1.16rem;
+  }
+
+  .portfolio-nav .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .mobile-nav-actions {
+    gap: 0.45rem;
+  }
+
+  .cv-navbar-btn--mobile {
+    padding-inline: 0.6rem;
+  }
+
+  .hero-section h1 {
+    font-size: 1.92rem;
+  }
+
+  .about-section h2,
+  .resume-section h2,
+  .projects-section h2,
+  .contact-section h2 {
+    font-size: 1.72rem;
+  }
+
+  .hero-portrait-image {
+    height: 16rem;
+    max-width: 16rem;
   }
 }
 
@@ -1187,6 +1420,19 @@ textarea.contact-input {
   animation-delay: 1.6s;
 }
 
+@media (max-width: 640px) {
+  .brand-logo {
+    max-width: 13rem;
+    overflow: hidden;
+    font-size: 1.34rem;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+}
 
-
-
+@media (max-width: 390px) {
+  .brand-logo {
+    max-width: 10.7rem;
+    font-size: 1.16rem;
+  }
+}

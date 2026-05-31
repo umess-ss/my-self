@@ -43,7 +43,7 @@ const themeInitScript = `
 (function(){
   try {
     var saved = localStorage.getItem('portfolio-theme');
-    var dark = saved ? saved === 'dark' : true;
+    var dark = saved ? saved === 'dark' : false;
     document.documentElement.classList.toggle('dark', dark);
   } catch(e) {}
 })();

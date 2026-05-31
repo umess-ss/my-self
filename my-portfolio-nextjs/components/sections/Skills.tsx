@@ -1,11 +1,12 @@
 import { LogoLoop } from "@/components/ui/LogoLoop";
 
 const skillGroups = [
-  { label: "Backend", detail: "Python, FastAPI, Django, Node.js, Express, Go, REST APIs, middleware, service boundaries" },
-  { label: "Data", detail: "PostgreSQL, MongoDB, SQLite, schema modeling, repositories, migrations, transactions" },
-  { label: "Auth", detail: "JWT, RBAC, protected routes, account ownership, role-based dashboards" },
-  { label: "Cloud", detail: "AWS ECS, ECR, ALB, SSM Parameter Store, CloudWatch, deployment architecture" },
-  { label: "Delivery", detail: "Docker, Terraform, GitHub Actions, CI/CD, environment configuration, repeatable releases" }
+  { label: "Backend", detail: "Python, FastAPI, Django, Node.js, Express, Go, REST APIs, middleware, validation" },
+  { label: "Data", detail: "PostgreSQL, MongoDB, SQLite, schema design, migrations, transactions, repositories" },
+  { label: "Auth", detail: "JWT, RBAC, protected routes, account ownership, role-based dashboards, secure API access" },
+  { label: "Cloud", detail: "AWS EC2, S3, Lambda, API Gateway, DynamoDB, RDS, IAM, VPC, ECS, ECR, ALB, Route 53, CloudWatch, SSM, serverless workflows, container deployment" },
+  { label: "Delivery", detail: "Docker, Terraform, GitHub Actions, CI/CD, environment configuration, deployment automation" },
+  { label: "AI/ML", detail: "NumPy, Pandas, EDA, scikit-learn, model evaluation, TensorFlow, PyTorch, CNNs, RNNs, transformer basics, YOLO, MiDaS, computer vision" }
 ];
 
 const techLogos = [
@@ -33,7 +34,7 @@ export function Skills() {
             The practical stack behind the work.
           </h2>
           <p className="mt-5 text-base leading-[1.8] text-[var(--portfolio-muted)] md:text-lg">
-            A focused set of tools and concerns I use to build backend systems that can survive beyond the demo.
+            A focused set of tools and engineering concerns I use to build backend systems that are clear, deployable, and reliable.
           </p>
         </div>
         <LogoLoop logos={techLogos} speed={120} logoHeight={62} gap={52} ariaLabel="Backend and cloud technology logos" />

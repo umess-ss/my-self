@@ -1,7 +1,19 @@
-const principles = [
-  "Design APIs around explicit contracts, permission boundaries, and predictable failure modes.",
-  "Keep infrastructure understandable: Docker, cloud services, logs, secrets, and deployment steps should be traceable.",
-  "Prefer boring reliability over clever abstractions unless the abstraction pays for itself."
+const focusAreas = [
+  {
+    title: "Backend Systems",
+    description:
+      "I build APIs, authentication flows, role-based access control, database-backed features, and structured backend modules using Django, FastAPI, Node.js, and Go."
+  },
+  {
+    title: "Cloud & Deployment",
+    description:
+      "I work with Docker, AWS, GitHub Actions, Terraform, logs, secrets, and deployment workflows to move projects beyond local development."
+  },
+  {
+    title: "AI/ML Engineering",
+    description:
+      "I have built AI/ML-based projects involving computer vision, deep learning, YOLO object detection, MiDaS depth estimation, and voice-guided assistive navigation."
+  }
 ];
 
 export function About() {
@@ -23,18 +35,24 @@ export function About() {
           <div>
             <div className="max-w-[43rem] space-y-6 text-lg leading-[1.8] text-[var(--portfolio-muted)]">
               <p>
-                I&apos;m a backend and cloud-focused engineer based in Nepal. My work sits close to the parts users rarely see but always feel: authentication, authorization, database boundaries, deployment pipelines, observability, and system behavior under real use.
+                I&apos;m an Electronics, Communication and Information Engineering graduate from Advanced College of Engineering and Management, focused on backend engineering, cloud systems, and AI-driven applications.
               </p>
               <p>
-                I&apos;ve built with FastAPI, Django, Node.js, Go, PostgreSQL, MongoDB, Docker, AWS, Terraform, and GitHub Actions. I like systems that can be explained clearly and operated confidently.
+                I build backend systems using Django, FastAPI, Node.js, Go, PostgreSQL, MongoDB, Docker, AWS, and GitHub Actions. My project work spans REST APIs, authentication, role-based access control, database design, cloud deployment, serverless workflows, and AI/ML systems involving computer vision, deep learning, YOLO, MiDaS, and voice-guided navigation.
+              </p>
+              <p>
+                I am currently working as a backend trainee, contributing to API design, authorization flows, database structure, documentation, and backend project planning. My goal is to build systems that are clear, reliable, and practical enough for real-world use.
               </p>
             </div>
 
             <div className="mt-12 border-y border-[var(--portfolio-border)]">
-              {principles.map((principle, index) => (
-                <div key={principle} className="grid gap-4 border-b border-[var(--portfolio-border)] py-6 last:border-b-0 sm:grid-cols-[4rem_1fr]">
+              {focusAreas.map((area, index) => (
+                <div key={area.title} className="grid gap-4 border-b border-[var(--portfolio-border)] py-6 last:border-b-0 sm:grid-cols-[4rem_1fr]">
                   <span className="font-mono text-sm text-[var(--portfolio-warm)]">0{index + 1}</span>
-                  <p className="max-w-[42rem] text-base leading-[1.75] text-[var(--portfolio-muted)]">{principle}</p>
+                  <div className="max-w-[42rem]">
+                    <h3 className="text-lg font-semibold text-[var(--portfolio-text)]">{area.title}</h3>
+                    <p className="mt-2 text-base leading-[1.75] text-[var(--portfolio-muted)]">{area.description}</p>
+                  </div>
                 </div>
               ))}
             </div>

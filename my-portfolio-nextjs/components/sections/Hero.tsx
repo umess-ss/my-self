@@ -41,7 +41,7 @@ export function Hero() {
             </p>
             <div className="mb-9 max-w-[37rem]">
               <p className="text-lg leading-[1.75] text-[var(--portfolio-muted)] md:text-xl">
-                I build dependable APIs, secure backend workflows, and cloud delivery systems that can be understood, deployed, monitored, and improved in production.
+                I build backend systems with authentication, role-based access, databases, Docker, and AWS deployment. My work includes restaurant POS systems, LMS platforms, banking APIs, and serverless cloud applications.
               </p>
             </div>
 

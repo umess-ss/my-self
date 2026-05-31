@@ -32,7 +32,7 @@ const routeActiveMap: Record<string, string> = {
 };
 
 function ThemeToggle() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -163,7 +163,7 @@ export function Navbar() {
             <ThemeToggle />
           </div>
 
-          <div className="flex items-center gap-3 md:hidden">
+          <div className="mobile-nav-actions flex items-center gap-3 md:hidden">
             <CVDialog triggerClassName="cv-navbar-btn cv-navbar-btn--mobile" label="CV" />
             <ThemeToggle />
             <Sheet>
