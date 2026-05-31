@@ -21,12 +21,14 @@ const navItems = [
   { label: "About", id: "about", href: "/#about" },
   { label: "Resume", id: "resume", href: "/experience" },
   { label: "Projects", id: "projects", href: "/projects" },
+  { label: "Blog", id: "blog", href: "/all-blogs" },
   { label: "Contact", id: "contact", href: "/contact" }
 ];
 
 const routeActiveMap: Record<string, string> = {
   "/": "home",
   "/projects": "projects",
+  "/all-blogs": "blog",
   "/experience": "resume",
   "/contact": "contact"
 };
@@ -97,7 +99,7 @@ export function Navbar() {
   const activeNavId = useMemo(() => activeSection, [activeSection]);
 
   useEffect(() => {
-    setActiveSection(routeActiveMap[pathname] ?? "home");
+    setActiveSection(pathname.startsWith("/blog") ? "blog" : routeActiveMap[pathname] ?? "home");
   }, [pathname]);
 
   useEffect(() => {

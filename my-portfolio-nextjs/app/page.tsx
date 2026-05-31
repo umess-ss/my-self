@@ -1,4 +1,5 @@
 import { About } from "@/components/sections/About";
+import { Blog } from "@/components/sections/Blog";
 import { Contact } from "@/components/sections/Contact";
 import { Experience } from "@/components/sections/Experience";
 import { Hero } from "@/components/sections/Hero";
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Skills />
       <Experience compact />
       <Projects limit={3} />
+      <Blog limit={3} />
       <Contact compact />
     </main>
   );

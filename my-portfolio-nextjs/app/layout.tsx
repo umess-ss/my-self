@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ClickSpark, GsapScrollEffects } from "@/components/ui/MotionEffects";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -60,9 +61,12 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className={`${inter.variable} ${jetbrains.variable}`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <ClickSpark>
+          <GsapScrollEffects />
+          <Navbar />
+          {children}
+          <Footer />
+        </ClickSpark>
       </body>
     </html>
   );
